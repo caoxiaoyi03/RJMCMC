@@ -1,0 +1,1328 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 12.29    112.42   112.42 1815852030     0.00     0.00  std::vector<double, std::allocator<double> >::_M_fill_insert(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, unsigned long, double const&)
+ 10.63    209.65    97.24 1140752198     0.00     0.00  matrix::operator*(matrix const&) const
+  8.55    287.80    78.14 22126061725     0.00     0.00  matrix::cols() const
+  7.43    355.78    67.98 2283325263     0.00     0.00  matrix::operator+=(matrix const&)
+  6.21    412.54    56.75 4712477891     0.00     0.00  std::vector<dvector, std::allocator<dvector> >::vector(unsigned long, dvector const&, std::allocator<dvector> const&)
+  4.26    451.50    38.96 6353894204     0.00     0.00  std::vector<dvector, std::allocator<dvector> >::at(unsigned long)
+  4.22    490.07    38.57 2428698229     0.00     0.00  matrix::matrix(long, long, double)
+  3.97    526.33    36.26 5992644831     0.00     0.00  std::vector<dvector, std::allocator<dvector> >::~vector()
+  3.47    558.09    31.76 7741783318     0.00     0.00  matrix::operator()(long, long)
+  3.42    589.35    31.25 36798458     0.00     0.00  MCMCEnv::reData(long, bool, std::vector<bool, std::allocator<bool> > const&) const
+  2.75    614.49    25.14 1215411984     0.00     0.00  std::vector<dvector, std::allocator<dvector> >::vector(std::vector<dvector, std::allocator<dvector> > const&)
+  2.68    639.01    24.52                             matrixl::setValue(long, long, long)
+  2.39    660.83    21.82                             matrixl::~matrixl()
+  2.11    680.12    19.29 1815852030     0.00     0.00  std::vector<double, std::allocator<double> >::resize(unsigned long, double)
+  2.02    698.56    18.44 36798458     0.00     0.00  MCMCEnv::datacov(long, bool, std::vector<bool, std::allocator<bool> > const&) const
+  2.01    716.93    18.37 1140752198     0.00     0.00  matrix::transpose() const
+  1.96    734.86    17.93 1251601972     0.00     0.00  std::vector<dvector, std::allocator<dvector> >::operator=(std::vector<dvector, std::allocator<dvector> > const&)
+  1.96    752.76    17.90 2626784542     0.00     0.00  std::vector<dvector, std::allocator<dvector> >::at(unsigned long) const
+  1.86    769.78    17.02 1105774607     0.00     0.00  matrix::matrix(long, long, dvector const&)
+  1.46    783.15    13.37 2373594100     0.00     0.00  std::vector<double, std::allocator<double> >::operator=(std::vector<double, std::allocator<double> > const&)
+  1.22    794.33    11.18 2596643591     0.00     0.00  matrix::assertEqualDim(matrix const&, bool) const
+  0.96    803.07     8.74 73596916     0.00     0.00  matrix::determinant() const
+  0.84    810.79     7.72 36798458     0.00     0.00  ClusterFlags::onezerocluster(long) const
+  0.74    817.54     6.76 625573786     0.00     0.00  void std::vector<long, std::allocator<long> >::_M_insert_aux<long>(__gnu_cxx::__normal_iterator<long*, std::vector<long, std::allocator<long> > >, long&&)
+  0.73    824.20     6.65 313318328     0.00     0.00  matrix::operator-=(matrix const&)
+  0.70    830.60     6.40 146695224     0.00     0.00  gammaf(double)
+  0.65    836.53     5.93 36798458     0.00     0.00  matrix::datasum()
+  0.62    842.22     5.69 36798458     0.00     0.00  matrix::rbind(matrix const&) const
+  0.54    847.20     4.98 2207907480     0.00     0.00  matrix::getValue(long, long) const
+  0.49    851.66     4.47 2207907480     0.00     0.00  matrix::setValue(long, long, double)
+  0.41    855.40     3.74 36748497     0.00     0.00  ClusterFlags::flagnum(long) const
+  0.38    858.87     3.47 1251147572     0.00     0.00  long* std::__uninitialized_move_a<long*, long*, std::allocator<long> >(long*, long*, long*, std::allocator<long>&)
+  0.37    862.29     3.42 1105774607     0.00     0.00  matrix::getRow(long) const
+  0.37    865.65     3.36  9167368     0.00     0.00  MCMCEnv::calcLogDensity(std::vector<bool, std::allocator<bool> > const&) const
+  0.35    868.87     3.22 73596916     0.00     0.00  matrix::getBlock(long, long, long, long)
+  0.34    871.97     3.10 92436011     0.00     0.00  dvector* std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<dvector const*, std::vector<dvector, std::allocator<dvector> > >, dvector*, dvector>(__gnu_cxx::__normal_iterator<dvector const*, std::vector<dvector, std::allocator<dvector> > >, __gnu_cxx::__normal_iterator<dvector const*, std::vector<dvector, std::allocator<dvector> > >, dvector*, std::allocator<dvector>&)
+  0.31    874.82     2.85                             matrix::getEarliestTime(long) const
+  0.31    877.66     2.84 110395374     0.00     0.00  void std::vector<std::vector<long, std::allocator<long> >, std::allocator<std::vector<long, std::allocator<long> > > >::_M_insert_aux<std::vector<long, std::allocator<long> > const&>(__gnu_cxx::__normal_iterator<std::vector<long, std::allocator<long> >*, std::vector<std::vector<long, std::allocator<long> >, std::allocator<std::vector<long, std::allocator<long> > > > >, std::vector<long, std::allocator<long> > const&&&)
+  0.30    880.41     2.75 1103953740     0.00     0.00  ClusterFlags::getFlag(long, long) const
+  0.28    882.99     2.58 313318328     0.00     0.00  matrix::operator-(matrix const&) const
+  0.28    885.51     2.52                             std::vector<long, std::allocator<long> >::at(unsigned long)
+  0.26    887.86     2.35        1     2.35     2.35  global constructors keyed to matrix::matrix()
+  0.25    890.18     2.32 73596916     0.00     0.00  matrix::operator*(double) const
+  0.24    892.33     2.15                             double* std::__uninitialized_move_a<double*, double*, std::allocator<double> >(double*, double*, double*, std::allocator<double>&)
+  0.22    894.35     2.03 1251601972     0.00     0.00  matrix::operator=(matrix const&)
+  0.21    896.26     1.91 625573786     0.00     0.00  std::vector<long, std::allocator<long> >::_M_check_len(unsigned long, char const*) const
+  0.21    898.14     1.88                             std::vector<long, std::allocator<long> >::resize(unsigned long, long)
+  0.18    899.78     1.64                             matrixl::operator=(matrixl const&)
+  0.16    901.26     1.48 1140752198     0.00     0.00  matrix::rows() const
+  0.16    902.71     1.45 4170589725     0.00     0.00  matrix::~matrix()
+  0.16    904.15     1.44                             matrix::getCol(long) const
+  0.10    905.05     0.90                             std::vector<lvector, std::allocator<lvector> >::operator=(std::vector<lvector, std::allocator<lvector> > const&)
+  0.10    905.93     0.88                             lvector* std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<lvector const*, std::vector<lvector, std::allocator<lvector> > >, lvector*, lvector>(__gnu_cxx::__normal_iterator<lvector const*, std::vector<lvector, std::allocator<lvector> > >, __gnu_cxx::__normal_iterator<lvector const*, std::vector<lvector, std::allocator<lvector> > >, lvector*, std::allocator<lvector>&)
+  0.09    906.72     0.79                             matrix::dim() const
+  0.07    907.40     0.68 74051312     0.00     0.00  matrix::matrix(long, long, double)
+  0.07    908.08     0.68                             matrixl::datasum()
+  0.07    908.72     0.64 625573786     0.00     0.00  std::_Vector_base<long, std::allocator<long> >::_M_allocate(unsigned long)
+  0.06    909.30     0.58 36798458     0.00     0.00  std::vector<std::vector<long, std::allocator<long> >, std::allocator<std::vector<long, std::allocator<long> > > >::~vector()
+  0.04    909.66     0.36 64754960     0.00     0.00  matrix::matrix()
+  0.04    910.01     0.35 36748497     0.00     0.00  ClusterTree::calcKcWeight() const
+  0.04    910.34     0.34                             ClusterFlags::ClusterFlags(long, std::vector<unsigned long, std::allocator<unsigned long> > const&)
+  0.04    910.67     0.33 73596916     0.00     0.00  matrix::operator+(matrix const&) const
+  0.03    910.98     0.31                             matrix::matrix(long, long, double const**)
+  0.03    911.26     0.28 23541521     0.00     0.00  MCMCEnv::getTreeFromID(unsigned long long)
+  0.03    911.52     0.26 10506750     0.00     0.00  ran2(long*)
+  0.03    911.76     0.24                             ClusterFlags::nonemptynum() const
+  0.02    911.98     0.23  2700000     0.00     0.00  ran_num_log(std::vector<double, std::allocator<double> > const&, std::vector<unsigned long long, std::allocator<unsigned long long> > const&)
+  0.02    912.18     0.20                             matrix::operator+(double) const
+  0.02    912.38     0.20                             void std::vector<long, std::allocator<long> >::_M_insert_aux<long const&>(__gnu_cxx::__normal_iterator<long*, std::vector<long, std::allocator<long> > >, long const&&&)
+  0.02    912.56     0.18 38784811     0.00     0.00  ClusterTree::getSampleNum() const
+  0.02    912.70     0.14   100000     0.00     0.01  MCMCEnv::sampleZ()
+  0.01    912.83     0.13   300001     0.00     0.00  MCMCEnv::writeStatus(std::ostream&) const
+  0.01    912.93     0.11   300001     0.00     0.00  operator<<(std::ostream&, ClusterFlags const&)
+  0.01    913.03     0.10                             ClusterTree::fillWeights(std::vector<double, std::allocator<double> >)
+  0.01    913.12     0.09  1956699     0.00     0.00  MCMCEnv::getTreeFromID(unsigned long long) const
+  0.01    913.21     0.09  1010085     0.00     0.00  ran_gamma(double, double)
+  0.01    913.29     0.08     8127     0.00     0.00  std::vector<std::vector<long, std::allocator<long> >, std::allocator<std::vector<long, std::allocator<long> > > >::operator=(std::vector<std::vector<long, std::allocator<long> >, std::allocator<std::vector<long, std::allocator<long> > > > const&)
+  0.01    913.36     0.07                             std::vector<long, std::allocator<long> >::~vector()
+  0.01    913.42     0.06                             matrix::matrix()
+  0.01    913.48     0.06                             std::vector<lvector, std::allocator<lvector> >::vector(unsigned long, lvector const&, std::allocator<lvector> const&)
+  0.01    913.54     0.06                             ClusterFlags::getTimeSampleByCluster(long) const
+  0.01    913.59     0.05   200001     0.00     0.00  std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true>::_Hashtable(std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true> const&)
+  0.01    913.64     0.05   133508     0.00     0.00  ran_beta(double, double)
+  0.01    913.69     0.05                             matrix::operator==(matrix const&) const
+  0.00    913.73     0.04 19657645     0.00     0.00  ClusterFlags::operator()(long, long)
+  0.00    913.77     0.04 14019106     0.00     0.00  ClusterFlags::cols(int) const
+  0.00    913.81     0.04  7958922     0.00     0.00  ClusterFlags::operator()(long, long) const
+  0.00    913.85     0.04  1223087     0.00     0.00  ClusterTree::writeWeights(std::ostream&) const
+  0.00    913.89     0.04   454394     0.00     0.00  MCMCEnv::calcClusterMean(unsigned long, ClusterTree const&) const
+  0.00    913.93     0.04   195194     0.00     0.00  ClusterFlags::tflagnum(long, long) const
+  0.00    913.97     0.04    49952     0.00     0.00  MCMCEnv::getMergeSet() const
+  0.00    914.01     0.04                             main
+  0.00    914.04     0.03                             matrix::getData() const
+  0.00    914.07     0.03  1058727     0.00     0.00  ran_unif(double, double)
+  0.00    914.10     0.03   235042     0.00     0.00  betad(double, double, double)
+  0.00    914.12     0.02  2700000     0.00     0.00  std::_Rb_tree<double, std::pair<double const, unsigned long long>, std::_Select1st<std::pair<double const, unsigned long long> >, std::less<double>, std::allocator<std::pair<double const, unsigned long long> > >::_M_erase(std::_Rb_tree_node<std::pair<double const, unsigned long long> >*)
+  0.00    914.14     0.02   300001     0.00     0.00  MCMCEnv::writeTree(std::ostream&) const
+  0.00    914.16     0.02   100000     0.00     0.00  MCMCEnv::sampleTao()
+  0.00    914.18     0.02    49986     0.00     0.00  MCMCEnv::flagBirth(std::pair<unsigned long, unsigned long long> const&, double&, double&, double&)
+  0.00    914.20     0.02        1     0.02     0.02  global constructors keyed to ran2(long*)
+  0.00    914.22     0.02        1     0.02     0.02  global constructors keyed to MCMCEnv::NumOfTP
+  0.00    914.24     0.02                             matrix::operator-(double) const
+  0.00    914.26     0.02                             MCMCEnv::IndexToCoor(unsigned long) const
+  0.00    914.27     0.02   100000     0.00     0.00  mcmc::SplitMerge_move(double&)
+  0.00    914.28     0.01  3703599     0.00     0.00  ClusterTree::getChildID(unsigned long) const
+  0.00    914.29     0.01   952484     0.00     0.00  std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true>::_M_allocate_node(std::pair<unsigned long long const, ClusterTree> const&)
+  0.00    914.30     0.01   307794     0.00     0.00  void std::vector<unsigned long long, std::allocator<unsigned long long> >::_M_insert_aux<unsigned long long const&>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, unsigned long long const&&&)
+  0.00    914.31     0.01   234954     0.00     0.00  betaf(double, double)
+  0.00    914.32     0.01   199957     0.00     0.00  MCMCEnv::getSplitSet() const
+  0.00    914.33     0.01   149950     0.00     0.00  std::vector<std::pair<unsigned long long, unsigned long long>, std::allocator<std::pair<unsigned long long, unsigned long long> > >::reserve(unsigned long)
+  0.00    914.34     0.01   100032     0.00     0.00  ClusterTree::ClusterTree(ClusterTree&, unsigned long long, unsigned long)
+  0.00    914.35     0.01   100000     0.00     0.00  MCMCEnv::sampleWeight()
+  0.00    914.36     0.01    50046     0.00     0.00  MCMCEnv::flagSplit(double&, bool&, double&, std::pair<unsigned long, unsigned long long> const&)
+  0.00    914.37     0.01    50046     0.00     0.00  MCMCEnv::apSplit(std::pair<unsigned long, unsigned long long> const&, bool, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&, long, double, double, MCMCEnv const&) const
+  0.00    914.38     0.01    49875     0.00     0.00  MCMCEnv::apMerge(std::pair<unsigned long long, unsigned long long> const&, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&, long, long, double, double, MCMCEnv const&) const
+  0.00    914.39     0.01     3436     0.00     0.00  MCMCEnv::flagDeath(std::pair<unsigned long long, unsigned long long> const&, double&, double&, double&)
+  0.00    914.40     0.01        1     0.01     0.01  global constructors keyed to ClusterTree::numTimePoints
+  0.00    914.41     0.01        1     0.01     0.01  ClusterTree::setNumOfTimePoints(unsigned long)
+  0.00    914.42     0.01                             MCMCEnv::reData(long, bool, std::vector<bool, std::allocator<bool> > const&, std::ostream&) const
+  0.00    914.43     0.01                             unsigned long* std::vector<unsigned long, std::allocator<unsigned long> >::_M_allocate_and_copy<__gnu_cxx::__normal_iterator<unsigned long const*, std::vector<unsigned long, std::allocator<unsigned long> > > >(unsigned long, __gnu_cxx::__normal_iterator<unsigned long const*, std::vector<unsigned long, std::allocator<unsigned long> > >, __gnu_cxx::__normal_iterator<unsigned long const*, std::vector<unsigned long, std::allocator<unsigned long> > >)
+  0.00    914.44     0.01                             operator<<(std::ostream&, matrix const&)
+  0.00    914.45     0.01   400000     0.00     0.00  ClusterFlags::rows() const
+  0.00    914.45     0.01   100000     0.00     0.00  mcmc::BirthDeath_move(double&)
+  0.00    914.46     0.01                             ran_exp(double)
+  0.00    914.46     0.01                             ClusterFlags::ClusterFlags()
+  0.00    914.47     0.01                             frame_dummy
+  0.00    914.47     0.00 36798458     0.00     0.00  matrix::matrix(matrix const&)
+  0.00    914.47     0.00  1152550     0.00     0.00  ClusterTree::~ClusterTree()
+  0.00    914.47     0.00  1060071     0.00     0.00  ClusterTree::getSampleNum(unsigned long) const
+  0.00    914.47     0.00  1052517     0.00     0.00  ClusterTree::ClusterTree(ClusterTree const&)
+  0.00    914.47     0.00   661369     0.00     0.00  ClusterTree::getNumOfChildren() const
+  0.00    914.47     0.00   454396     0.00     0.00  matrix::operator*=(double)
+  0.00    914.47     0.00   307794     0.00     0.00  __gnu_cxx::new_allocator<unsigned long long>::allocate(unsigned long, void const*)
+  0.00    914.47     0.00   307794     0.00     0.00  void std::vector<double, std::allocator<double> >::_M_insert_aux<double>(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, double&&)
+  0.00    914.47     0.00   253277     0.00     0.00  f_fmin(double, double)
+  0.00    914.47     0.00   227197     0.00     0.00  MCMCEnv::calcClusterDist(unsigned long, ClusterTree const&, long, ClusterTree const&) const
+  0.00    914.47     0.00   200003     0.00     0.00  ClusterFlags::~ClusterFlags()
+  0.00    914.47     0.00   200002     0.00     0.00  MCMCEnv::~MCMCEnv()
+  0.00    914.47     0.00   200001     0.00     0.00  MCMCEnv::MCMCEnv(MCMCEnv const&)
+  0.00    914.47     0.00   100033     0.00     0.00  std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true>::_M_insert_bucket(std::pair<unsigned long long const, ClusterTree> const&, unsigned long, unsigned long)
+  0.00    914.47     0.00   100032     0.00     0.00  ClusterTree::setChild(unsigned long long, unsigned long)
+  0.00    914.47     0.00   100032     0.00     0.00  MCMCEnv::createTree(unsigned long long, unsigned long)
+  0.00    914.47     0.00   100000     0.00     0.00  MCMCEnv::treeSummary() const
+  0.00    914.47     0.00    99998     0.00     0.00  MCMCEnv::getDeathSet() const
+  0.00    914.47     0.00    99856     0.00     0.00  MCMCEnv::calcPChos(std::pair<unsigned long long, unsigned long long> const&, bool, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&) const
+  0.00    914.47     0.00    53311     0.00     0.00  ClusterTree::removeChild(unsigned long)
+  0.00    914.47     0.00    53311     0.00     0.00  MCMCEnv::removeTree(unsigned long long)
+  0.00    914.47     0.00    49986     0.00     0.00  MCMCEnv::apBirth(std::pair<unsigned long, unsigned long long> const&, long, double, double, double, MCMCEnv const&) const
+  0.00    914.47     0.00    49875     0.00     0.00  MCMCEnv::flagMerge(double&, double&, std::pair<unsigned long long, unsigned long long> const&)
+  0.00    914.47     0.00    32508     0.00     0.00  std::vector<long, std::allocator<long> >::operator=(std::vector<long, std::allocator<long> > const&)
+  0.00    914.47     0.00     8127     0.00     0.00  ClusterFlags::operator=(ClusterFlags const&)
+  0.00    914.47     0.00     8127     0.00     0.00  MCMCEnv::operator=(MCMCEnv const&)
+  0.00    914.47     0.00     8127     0.00     0.00  std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true>::_Hashtable(std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true> const&)
+  0.00    914.47     0.00     3436     0.00     0.00  MCMCEnv::apDeath(std::pair<unsigned long long, unsigned long long> const&, long, double, double, double, MCMCEnv const&) const
+  0.00    914.47     0.00      293     0.00     0.00  void std::vector<std::pair<unsigned long long, unsigned long long>, std::allocator<std::pair<unsigned long long, unsigned long long> > >::_M_insert_aux<std::pair<unsigned long long, unsigned long long> >(__gnu_cxx::__normal_iterator<std::pair<unsigned long long, unsigned long long>*, std::vector<std::pair<unsigned long long, unsigned long long>, std::allocator<std::pair<unsigned long long, unsigned long long> > > >, std::pair<unsigned long long, unsigned long long>&&)
+  0.00    914.47     0.00       30     0.00     0.00  ClusterFlags::setFlag(long, long, long)
+  0.00    914.47     0.00        4     0.00     0.00  std::vector<long, std::allocator<long> >::_M_fill_insert(__gnu_cxx::__normal_iterator<long*, std::vector<long, std::allocator<long> > >, unsigned long, long const&)
+  0.00    914.47     0.00        4     0.00     0.00  std::_Rb_tree<unsigned long, std::pair<unsigned long const, unsigned long>, std::_Select1st<std::pair<unsigned long const, unsigned long> >, std::less<unsigned long>, std::allocator<std::pair<unsigned long const, unsigned long> > >::_M_erase(std::_Rb_tree_node<std::pair<unsigned long const, unsigned long> >*)
+  0.00    914.47     0.00        2     0.00     0.00  matrix::matrix(long, double, bool)
+  0.00    914.47     0.00        2     0.00     0.00  unsigned long* std::__uninitialized_move_a<unsigned long*, unsigned long*, std::allocator<unsigned long> >(unsigned long*, unsigned long*, unsigned long*, std::allocator<unsigned long>&)
+  0.00    914.47     0.00        1     0.00     0.00  global constructors keyed to initializeParameters(matrix const&)
+  0.00    914.47     0.00        1     0.00     0.00  global constructors keyed to ClusterFlags::ClusterFlags()
+  0.00    914.47     0.00        1     0.00     0.00  global constructors keyed to mcmc::mcmc(MCMCEnv const&)
+  0.00    914.47     0.00        1     0.00     0.00  initializeParameters(matrix const&)
+  0.00    914.47     0.00        1     0.00     0.00  ClusterTree::fillWeights(double)
+  0.00    914.47     0.00        1     0.00     0.00  ClusterTree::ClusterTree(unsigned long long)
+  0.00    914.47     0.00        1     0.00     0.00  ClusterFlags::ClusterFlags(long, std::vector<unsigned long, std::allocator<unsigned long> > const&)
+  0.00    914.47     0.00        1     0.00     0.00  mcmc::mcmc(MCMCEnv const&)
+  0.00    914.47     0.00        1     0.00     0.00  mcmc::~mcmc()
+  0.00    914.47     0.00        1     0.00     0.00  matrix::matrix(long, long, double const*)
+  0.00    914.47     0.00        1     0.00     0.00  MCMCEnv::createTree()
+  0.00    914.47     0.00        1     0.00     0.00  MCMCEnv::initMCMCEnv(unsigned long, unsigned long, unsigned long, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<bool, std::allocator<bool> > const&, ClusterFlags const&, matrix const&)
+  0.00    914.47     0.00        1     0.00     0.00  MCMCEnv::initializeParameters(matrix const&, matrix const&, matrix const&, matrix const&, double, double, double, double, double, double, double)
+  0.00    914.47     0.00        1     0.00     0.00  MCMCEnv::MCMCEnv(std::vector<bool, std::allocator<bool> > const&, ClusterFlags const&, matrix const&)
+  0.00    914.47     0.00        1     0.00     0.00  __gnu_cxx::new_allocator<unsigned long>::allocate(unsigned long, void const*)
+  0.00    914.47     0.00        1     0.00     0.00  matrix::matrix_mean() const
+  0.00    914.47     0.00        1     0.00     0.00  std::vector<double, std::allocator<double> >::_M_fill_assign(unsigned long, double const&)
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+ 
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this 
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.00% of 914.47 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     92.8    0.04  848.17                 main [1]
+                0.14  813.81  100000/100000      MCMCEnv::sampleZ() [3]
+                0.02   19.25  100000/100000      mcmc::SplitMerge_move(double&) [29]
+                0.02    9.26  100000/100000      MCMCEnv::sampleTao() [40]
+                0.01    5.14  100000/100000      mcmc::BirthDeath_move(double&) [44]
+                0.13    0.23  300001/300001      MCMCEnv::writeStatus(std::ostream&) const [73]
+                0.01    0.15  100000/100000      MCMCEnv::sampleWeight() [85]
+                0.01    0.00       1/1           ClusterTree::setNumOfTimePoints(unsigned long) [130]
+                0.00    0.00  100000/100000      MCMCEnv::treeSummary() const [139]
+                0.00    0.00       1/1           MCMCEnv::initMCMCEnv(unsigned long, unsigned long, unsigned long, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<bool, std::allocator<bool> > const&, ClusterFlags const&, matrix const&) [143]
+                0.00    0.00       1/1           matrix::matrix(long, long, double const*) [145]
+                0.00    0.00       1/1           initializeParameters(matrix const&) [146]
+                0.00    0.00       1/200001      MCMCEnv::MCMCEnv(MCMCEnv const&) [102]
+                0.00    0.00       1/5992644831     std::vector<dvector, std::allocator<dvector> >::~vector() [19]
+                0.00    0.00       1/4170589725     matrix::~matrix() [61]
+                0.00    0.00      30/30          ClusterFlags::setFlag(long, long, long) [168]
+                0.00    0.00       2/200002      MCMCEnv::~MCMCEnv() [163]
+                0.00    0.00       1/1           ClusterFlags::ClusterFlags(long, std::vector<unsigned long, std::allocator<unsigned long> > const&) [177]
+                0.00    0.00       1/1           mcmc::mcmc(MCMCEnv const&) [178]
+                0.00    0.00       1/1           mcmc::~mcmc() [179]
+                0.00    0.00       1/200003      ClusterFlags::~ClusterFlags() [162]
+-----------------------------------------------
+                0.00    0.32    3464/9167368     MCMCEnv::apDeath(std::pair<unsigned long long, unsigned long long> const&, long, double, double, double, MCMCEnv const&) const [77]
+                0.02    4.60   50061/9167368     MCMCEnv::apBirth(std::pair<unsigned long, unsigned long long> const&, long, double, double, double, MCMCEnv const&) const [46]
+                0.04    9.17   99750/9167368     MCMCEnv::apMerge(std::pair<unsigned long long, unsigned long long> const&, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&, long, long, double, double, MCMCEnv const&) const [39]
+                0.04    9.18   99960/9167368     MCMCEnv::apSplit(std::pair<unsigned long, unsigned long long> const&, bool, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&, long, double, double, MCMCEnv const&) const [38]
+                0.04    9.19  100043/9167368     MCMCEnv::sampleTao() [40]
+                3.23  809.87 8814090/9167368     MCMCEnv::sampleZ() [3]
+[2]     92.5    3.36  842.33 9167368         MCMCEnv::calcLogDensity(std::vector<bool, std::allocator<bool> > const&) const [2]
+               18.44  768.49 36798458/36798458     MCMCEnv::datacov(long, bool, std::vector<bool, std::allocator<bool> > const&) const [4]
+                8.74   12.32 73596916/73596916     matrix::determinant() const [28]
+                3.22    7.60 73596916/73596916     matrix::getBlock(long, long, long, long) [36]
+                0.33    7.88 73596916/73596916     matrix::operator+(matrix const&) const [42]
+                6.40    0.00 146695224/146695224     gammaf(double) [43]
+                1.16    3.08 36798458/73596916     matrix::operator*(double) const [41]
+                0.12    1.66 73596916/1251601972     matrix::operator=(matrix const&) [21]
+                1.50    0.00 248292852/5992644831     std::vector<dvector, std::allocator<dvector> >::~vector() [19]
+                0.38    0.25 91673680/7741783318     matrix::operator()(long, long) [17]
+                0.35    0.00 36748497/36748497     ClusterTree::calcKcWeight() const [75]
+                0.17    0.00 37598031/38784811     ClusterTree::getSampleNum() const [84]
+                0.15    0.00 27502104/64754960     matrix::matrix() [74]
+                0.09    0.00 248292852/4170589725     matrix::~matrix() [61]
+-----------------------------------------------
+                0.14  813.81  100000/100000      main [1]
+[3]     89.0    0.14  813.81  100000         MCMCEnv::sampleZ() [3]
+                3.23  809.87 8814090/9167368     MCMCEnv::calcLogDensity(std::vector<bool, std::allocator<bool> > const&) const [2]
+                0.23    0.15 2700000/2700000     ran_num_log(std::vector<double, std::allocator<double> > const&, std::vector<unsigned long long, std::allocator<unsigned long long> > const&) [72]
+                0.27    0.00 23028180/23541521     MCMCEnv::getTreeFromID(unsigned long long) [79]
+                0.04    0.00 17214090/19657645     ClusterFlags::operator()(long, long) [107]
+                0.01    0.00  307794/307794      void std::vector<unsigned long long, std::allocator<unsigned long long> >::_M_insert_aux<unsigned long long const&>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, unsigned long long const&&&) [124]
+                0.01    0.00 3400000/14019106     ClusterFlags::cols(int) const [108]
+                0.01    0.00  400000/400000      ClusterFlags::rows() const [136]
+                0.00    0.00  307794/307794      void std::vector<double, std::allocator<double> >::_M_insert_aux<double>(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, double&&) [160]
+-----------------------------------------------
+               18.44  768.49 36798458/36798458     MCMCEnv::calcLogDensity(std::vector<bool, std::allocator<bool> > const&) const [2]
+[4]     86.1   18.44  768.49 36798458         MCMCEnv::datacov(long, bool, std::vector<bool, std::allocator<bool> > const&) const [4]
+               97.24   73.06 1140752198/1140752198     matrix::operator*(matrix const&) const [5]
+                3.41  110.36 1103953740/1105774607     matrix::getRow(long) const [8]
+               18.37   83.97 1140752198/1140752198     matrix::transpose() const [12]
+                5.93   93.92 36798458/36798458     matrix::datasum() [13]
+               31.25   59.35 36798458/36798458     MCMCEnv::reData(long, bool, std::vector<bool, std::allocator<bool> > const&) const [14]
+               32.87   32.95 1103953740/2283325263     matrix::operator+=(matrix const&) [6]
+                2.58   32.67 313318328/313318328     matrix::operator-(matrix const&) const [20]
+                1.91   26.52 1177550656/1251601972     matrix::operator=(matrix const&) [21]
+               23.72    0.00 3919567212/5992644831     std::vector<dvector, std::allocator<dvector> >::~vector() [19]
+                5.69    8.13 36798458/36798458     matrix::rbind(matrix const&) const [33]
+                0.68    8.88 73596916/74051312     matrix::matrix(long, long, double) [37]
+                1.16    3.08 36798458/73596916     matrix::operator*(double) const [41]
+                3.74    0.00 36748497/36748497     ClusterFlags::flagnum(long) const [47]
+                2.75    0.00 1103953740/1103953740     ClusterFlags::getFlag(long, long) const [52]
+                1.48    0.00 1140752198/1140752198     matrix::rows() const [60]
+                1.36    0.00 3919567212/4170589725     matrix::~matrix() [61]
+                0.60    0.40 146944528/7741783318     matrix::operator()(long, long) [17]
+                0.26    0.00 73596916/22126061725     matrix::cols() const [15]
+                0.20    0.00 36798458/64754960     matrix::matrix() [74]
+-----------------------------------------------
+               97.24   73.06 1140752198/1140752198     MCMCEnv::datacov(long, bool, std::vector<bool, std::allocator<bool> > const&) const [4]
+[5]     18.6   97.24   73.06 1140752198         matrix::operator*(matrix const&) const [5]
+               18.12   34.15 1140752198/2428698229     matrix::matrix(long, long, double) [10]
+               18.96    0.00 5367133280/22126061725     matrix::cols() const [15]
+                1.10    0.73 268041496/7741783318     matrix::operator()(long, long) [17]
+-----------------------------------------------
+                0.05    0.05 1820867/2283325263     MCMCEnv::calcClusterMean(unsigned long, ClusterTree const&) const [71]
+                2.19    2.20 73596916/2283325263     matrix::operator+(matrix const&) const [42]
+               32.87   32.95 1103953740/2283325263     MCMCEnv::datacov(long, bool, std::vector<bool, std::allocator<bool> > const&) const [4]
+               32.87   32.95 1103953740/2283325263     matrix::datasum() [13]
+[6]     14.9   67.98   68.14 2283325263         matrix::operator+=(matrix const&) [6]
+                9.83   16.13 2283325263/2596643591     matrix::assertEqualDim(matrix const&, bool) const [22]
+               10.78    7.17 2626784542/7741783318     matrix::operator()(long, long) [17]
+               17.90    0.00 2626784542/2626784542     std::vector<dvector, std::allocator<dvector> >::at(unsigned long) const [31]
+                6.33    0.00 1792693165/22126061725     matrix::cols() const [15]
+-----------------------------------------------
+                0.00    0.00       4/1815852030     matrix::matrix(long, double, bool) [148]
+                0.00    0.00      30/1815852030     matrix::matrix(long, long, double const*) [145]
+                1.18    6.86 110849770/1815852030     matrix::matrix(long, long, double) [37]
+                6.37   37.10 599227619/1815852030     matrix::matrix(long, long, double) [10]
+               11.75   68.46 1105774607/1815852030     matrix::matrix(long, long, dvector const&) [11]
+[7]     14.4   19.29  112.42 1815852030         std::vector<double, std::allocator<double> >::resize(unsigned long, double) [7]
+              112.42    0.00 1815852030/1815852030     std::vector<double, std::allocator<double> >::_M_fill_insert(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, unsigned long, double const&) [9]
+-----------------------------------------------
+                0.01    0.18 1820867/1105774607     MCMCEnv::calcClusterMean(unsigned long, ClusterTree const&) const [71]
+                3.41  110.36 1103953740/1105774607     MCMCEnv::datacov(long, bool, std::vector<bool, std::allocator<bool> > const&) const [4]
+[8]     12.5    3.42  110.54 1105774607         matrix::getRow(long) const [8]
+               17.02   93.52 1105774607/1105774607     matrix::matrix(long, long, dvector const&) [11]
+-----------------------------------------------
+              112.42    0.00 1815852030/1815852030     std::vector<double, std::allocator<double> >::resize(unsigned long, double) [7]
+[9]     12.3  112.42    0.00 1815852030         std::vector<double, std::allocator<double> >::_M_fill_insert(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, unsigned long, double const&) [9]
+-----------------------------------------------
+                0.00    0.00       1/2428698229     matrix::matrix_mean() const [147]
+                0.58    1.10 36798458/2428698229     matrix::rbind(matrix const&) const [33]
+                0.58    1.10 36798458/2428698229     matrix::datasum() [13]
+                1.17    2.20 73596916/2428698229     matrix::getBlock(long, long, long, long) [36]
+               18.12   34.15 1140752198/2428698229     matrix::transpose() const [12]
+               18.12   34.15 1140752198/2428698229     matrix::operator*(matrix const&) const [5]
+[10]    12.2   38.57   72.71 2428698229         matrix::matrix(long, long, double) [10]
+                6.37   37.10 599227619/1815852030     std::vector<double, std::allocator<double> >::resize(unsigned long, double) [7]
+               29.25    0.00 2428698229/4712477891     std::vector<dvector, std::allocator<dvector> >::vector(unsigned long, dvector const&, std::allocator<dvector> const&) [16]
+-----------------------------------------------
+               17.02   93.52 1105774607/1105774607     matrix::getRow(long) const [8]
+[11]    12.1   17.02   93.52 1105774607         matrix::matrix(long, long, dvector const&) [11]
+               11.75   68.46 1105774607/1815852030     std::vector<double, std::allocator<double> >::resize(unsigned long, double) [7]
+               13.32    0.00 1105774607/4712477891     std::vector<dvector, std::allocator<dvector> >::vector(unsigned long, dvector const&, std::allocator<dvector> const&) [16]
+-----------------------------------------------
+               18.37   83.97 1140752198/1140752198     MCMCEnv::datacov(long, bool, std::vector<bool, std::allocator<bool> > const&) const [4]
+[12]    11.2   18.37   83.97 1140752198         matrix::transpose() const [12]
+               18.12   34.15 1140752198/2428698229     matrix::matrix(long, long, double) [10]
+               16.12    0.00 4563008792/22126061725     matrix::cols() const [15]
+                9.36    6.23 2281504396/7741783318     matrix::operator()(long, long) [17]
+-----------------------------------------------
+                5.93   93.92 36798458/36798458     MCMCEnv::datacov(long, bool, std::vector<bool, std::allocator<bool> > const&) const [4]
+[13]    10.9    5.93   93.92 36798458         matrix::datasum() [13]
+               32.87   32.95 1103953740/2283325263     matrix::operator+=(matrix const&) [6]
+               13.30    0.00 1103953740/4712477891     std::vector<dvector, std::allocator<dvector> >::vector(unsigned long, dvector const&, std::allocator<dvector> const&) [16]
+                6.68    0.00 1103953740/5992644831     std::vector<dvector, std::allocator<dvector> >::~vector() [19]
+                6.22    0.00 1103953740/2373594100     std::vector<double, std::allocator<double> >::operator=(std::vector<double, std::allocator<double> > const&) [34]
+                0.58    1.10 36798458/2428698229     matrix::matrix(long, long, double) [10]
+                0.23    0.00 36798458/6353894204     std::vector<dvector, std::allocator<dvector> >::at(unsigned long) [18]
+-----------------------------------------------
+               31.25   59.35 36798458/36798458     MCMCEnv::datacov(long, bool, std::vector<bool, std::allocator<bool> > const&) const [4]
+[14]     9.9   31.25   59.35 36798458         MCMCEnv::reData(long, bool, std::vector<bool, std::allocator<bool> > const&) const [14]
+                7.72   15.61 36798458/36798458     ClusterFlags::onezerocluster(long) const [26]
+                4.47   13.54 2207907480/2207907480     matrix::setValue(long, long, double) [30]
+               11.70    0.00 3311861220/22126061725     matrix::cols() const [15]
+                4.98    0.00 2207907480/2207907480     matrix::getValue(long, long) const [45]
+                0.76    0.00 36798458/1215411984     std::vector<dvector, std::allocator<dvector> >::vector(std::vector<dvector, std::allocator<dvector> > const&) [24]
+                0.58    0.00 36798458/36798458     std::vector<std::vector<long, std::allocator<long> >, std::allocator<std::vector<long, std::allocator<long> > > >::~vector() [68]
+                0.00    0.00 36798458/36798458     matrix::matrix(matrix const&) [154]
+-----------------------------------------------
+                0.00    0.00 1363194/22126061725     matrix::operator*=(double) [120]
+                0.26    0.00 73596916/22126061725     MCMCEnv::datacov(long, bool, std::vector<bool, std::allocator<bool> > const&) const [4]
+                0.26    0.00 73596916/22126061725     matrix::determinant() const [28]
+                1.17    0.00 331186122/22126061725     matrix::operator*(double) const [41]
+                1.69    0.00 478379954/22126061725     matrix::rbind(matrix const&) const [33]
+                3.32    0.00 939954984/22126061725     matrix::operator-=(matrix const&) [32]
+                6.33    0.00 1792693165/22126061725     matrix::operator+=(matrix const&) [6]
+               11.70    0.00 3311861220/22126061725     MCMCEnv::reData(long, bool, std::vector<bool, std::allocator<bool> > const&) const [14]
+               16.12    0.00 4563008792/22126061725     matrix::transpose() const [12]
+               18.34    0.00 5193287182/22126061725     matrix::assertEqualDim(matrix const&, bool) const [22]
+               18.96    0.00 5367133280/22126061725     matrix::operator*(matrix const&) const [5]
+[15]     8.5   78.14    0.00 22126061725         matrix::cols() const [15]
+-----------------------------------------------
+                0.00    0.00       1/4712477891     matrix::matrix(long, long, double const*) [145]
+                0.00    0.00       2/4712477891     matrix::matrix(long, double, bool) [148]
+                0.89    0.00 74051312/4712477891     matrix::matrix(long, long, double) [37]
+               13.30    0.00 1103953740/4712477891     matrix::datasum() [13]
+               13.32    0.00 1105774607/4712477891     matrix::matrix(long, long, dvector const&) [11]
+               29.25    0.00 2428698229/4712477891     matrix::matrix(long, long, double) [10]
+[16]     6.2   56.75    0.00 4712477891         std::vector<dvector, std::allocator<dvector> >::vector(unsigned long, dvector const&, std::allocator<dvector> const&) [16]
+-----------------------------------------------
+                0.00    0.00      64/7741783318     matrix::matrix_mean() const [147]
+                0.00    0.00  908788/7741783318     MCMCEnv::calcClusterDist(unsigned long, ClusterTree const&, long, ClusterTree const&) const [70]
+                0.00    0.00  908796/7741783318     matrix::operator*=(double) [120]
+                0.38    0.25 91673680/7741783318     MCMCEnv::calcLogDensity(std::vector<bool, std::allocator<bool> > const&) const [2]
+                0.60    0.40 146944528/7741783318     MCMCEnv::datacov(long, bool, std::vector<bool, std::allocator<bool> > const&) const [4]
+                0.91    0.60 220790748/7741783318     matrix::operator*(double) const [41]
+                1.10    0.73 268041496/7741783318     matrix::operator*(matrix const&) const [5]
+                2.57    1.71 626636656/7741783318     matrix::operator-=(matrix const&) [32]
+                6.06    4.03 1477589624/7741783318     matrix::determinant() const [28]
+                9.36    6.23 2281504396/7741783318     matrix::transpose() const [12]
+               10.78    7.17 2626784542/7741783318     matrix::operator+=(matrix const&) [6]
+[17]     5.8   31.76   21.14 7741783318         matrix::operator()(long, long) [17]
+               21.14    0.00 3446816022/6353894204     std::vector<dvector, std::allocator<dvector> >::at(unsigned long) [18]
+-----------------------------------------------
+                0.23    0.00 36798458/6353894204     matrix::datasum() [13]
+                1.81    0.00 294387664/6353894204     matrix::rbind(matrix const&) const [33]
+                2.26    0.00 367984580/6353894204     matrix::getBlock(long, long, long, long) [36]
+               13.54    0.00 2207907480/6353894204     matrix::setValue(long, long, double) [30]
+               21.14    0.00 3446816022/6353894204     matrix::operator()(long, long) [17]
+[18]     4.3   38.96    0.00 6353894204         std::vector<dvector, std::allocator<dvector> >::at(unsigned long) [18]
+-----------------------------------------------
+                0.00    0.00       1/5992644831     main [1]
+                0.00    0.00       5/5992644831     initializeParameters(matrix const&) [146]
+                0.01    0.00  908788/5992644831     MCMCEnv::calcClusterDist(unsigned long, ClusterTree const&, long, ClusterTree const&) const [70]
+                0.01    0.00 1820867/5992644831     MCMCEnv::calcClusterMean(unsigned long, ClusterTree const&) const [71]
+                0.45    0.00 73596916/5992644831     matrix::operator+(matrix const&) const [42]
+                0.45    0.00 73596916/5992644831     matrix::determinant() const [28]
+                0.45    0.00 73596916/5992644831     matrix::operator*(double) const [41]
+                0.45    0.00 73596916/5992644831     matrix::getBlock(long, long, long, long) [36]
+                0.67    0.00 110395374/5992644831     matrix::rbind(matrix const&) const [33]
+                1.50    0.00 248292852/5992644831     MCMCEnv::calcLogDensity(std::vector<bool, std::allocator<bool> > const&) const [2]
+                1.90    0.00 313318328/5992644831     matrix::operator-(matrix const&) const [20]
+                6.68    0.00 1103953740/5992644831     matrix::datasum() [13]
+               23.72    0.00 3919567212/5992644831     MCMCEnv::datacov(long, bool, std::vector<bool, std::allocator<bool> > const&) const [4]
+[19]     4.0   36.26    0.00 5992644831         std::vector<dvector, std::allocator<dvector> >::~vector() [19]
+-----------------------------------------------
+                2.58   32.67 313318328/313318328     MCMCEnv::datacov(long, bool, std::vector<bool, std::allocator<bool> > const&) const [4]
+[20]     3.9    2.58   32.67 313318328         matrix::operator-(matrix const&) const [20]
+                6.65   11.16 313318328/313318328     matrix::operator-=(matrix const&) [32]
+               12.96    0.00 626636656/1215411984     std::vector<dvector, std::allocator<dvector> >::vector(std::vector<dvector, std::allocator<dvector> > const&) [24]
+                1.90    0.00 313318328/5992644831     std::vector<dvector, std::allocator<dvector> >::~vector() [19]
+-----------------------------------------------
+                0.00    0.00       2/1251601972     initializeParameters(matrix const&) [146]
+                0.00    0.00       4/1251601972     MCMCEnv::initializeParameters(matrix const&, matrix const&, matrix const&, matrix const&, double, double, double, double, double, double, double) [149]
+                0.00    0.01  454394/1251601972     MCMCEnv::calcClusterDist(unsigned long, ClusterTree const&, long, ClusterTree const&) const [70]
+                0.12    1.66 73596916/1251601972     MCMCEnv::calcLogDensity(std::vector<bool, std::allocator<bool> > const&) const [2]
+                1.91   26.52 1177550656/1251601972     MCMCEnv::datacov(long, bool, std::vector<bool, std::allocator<bool> > const&) const [4]
+[21]     3.3    2.03   28.18 1251601972         matrix::operator=(matrix const&) [21]
+               17.93   10.25 1251601972/1251601972     std::vector<dvector, std::allocator<dvector> >::operator=(std::vector<dvector, std::allocator<dvector> > const&) [23]
+-----------------------------------------------
+                1.35    2.21 313318328/2596643591     matrix::operator-=(matrix const&) [32]
+                9.83   16.13 2283325263/2596643591     matrix::operator+=(matrix const&) [6]
+[22]     3.2   11.18   18.34 2596643591         matrix::assertEqualDim(matrix const&, bool) const [22]
+               18.34    0.00 5193287182/22126061725     matrix::cols() const [15]
+-----------------------------------------------
+               17.93   10.25 1251601972/1251601972     matrix::operator=(matrix const&) [21]
+[23]     3.1   17.93   10.25 1251601972         std::vector<dvector, std::allocator<dvector> >::operator=(std::vector<dvector, std::allocator<dvector> > const&) [23]
+                7.15    0.00 1269640360/2373594100     std::vector<double, std::allocator<double> >::operator=(std::vector<double, std::allocator<double> > const&) [34]
+                3.10    0.00 92436011/92436011     dvector* std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<dvector const*, std::vector<dvector, std::allocator<dvector> > >, dvector*, dvector>(__gnu_cxx::__normal_iterator<dvector const*, std::vector<dvector, std::allocator<dvector> > >, __gnu_cxx::__normal_iterator<dvector const*, std::vector<dvector, std::allocator<dvector> > >, dvector*, std::allocator<dvector>&) [49]
+-----------------------------------------------
+                0.76    0.00 36798458/1215411984     MCMCEnv::reData(long, bool, std::vector<bool, std::allocator<bool> > const&) const [14]
+                1.52    0.00 73596916/1215411984     matrix::determinant() const [28]
+                1.52    0.00 73596916/1215411984     matrix::getBlock(long, long, long, long) [36]
+                2.28    0.00 110395374/1215411984     matrix::rbind(matrix const&) const [33]
+                3.04    0.00 147193832/1215411984     matrix::operator+(matrix const&) const [42]
+                3.04    0.00 147193832/1215411984     matrix::operator*(double) const [41]
+               12.96    0.00 626636656/1215411984     matrix::operator-(matrix const&) const [20]
+[24]     2.7   25.14    0.00 1215411984         std::vector<dvector, std::allocator<dvector> >::vector(std::vector<dvector, std::allocator<dvector> > const&) [24]
+-----------------------------------------------
+                                                 <spontaneous>
+[25]     2.7   24.52    0.00                 matrixl::setValue(long, long, long) [25]
+-----------------------------------------------
+                7.72   15.61 36798458/36798458     MCMCEnv::reData(long, bool, std::vector<bool, std::allocator<bool> > const&) const [14]
+[26]     2.6    7.72   15.61 36798458         ClusterFlags::onezerocluster(long) const [26]
+                6.76    6.02 625573786/625573786     void std::vector<long, std::allocator<long> >::_M_insert_aux<long>(__gnu_cxx::__normal_iterator<long*, std::vector<long, std::allocator<long> > >, long&&) [35]
+                2.84    0.00 110395374/110395374     void std::vector<std::vector<long, std::allocator<long> >, std::allocator<std::vector<long, std::allocator<long> > > >::_M_insert_aux<std::vector<long, std::allocator<long> > const&>(__gnu_cxx::__normal_iterator<std::vector<long, std::allocator<long> >*, std::vector<std::vector<long, std::allocator<long> >, std::allocator<std::vector<long, std::allocator<long> > > > >, std::vector<long, std::allocator<long> > const&&&) [51]
+-----------------------------------------------
+                                                 <spontaneous>
+[27]     2.4   21.82    0.00                 matrixl::~matrixl() [27]
+-----------------------------------------------
+                8.74   12.32 73596916/73596916     MCMCEnv::calcLogDensity(std::vector<bool, std::allocator<bool> > const&) const [2]
+[28]     2.3    8.74   12.32 73596916         matrix::determinant() const [28]
+                6.06    4.03 1477589624/7741783318     matrix::operator()(long, long) [17]
+                1.52    0.00 73596916/1215411984     std::vector<dvector, std::allocator<dvector> >::vector(std::vector<dvector, std::allocator<dvector> > const&) [24]
+                0.45    0.00 73596916/5992644831     std::vector<dvector, std::allocator<dvector> >::~vector() [19]
+                0.26    0.00 73596916/22126061725     matrix::cols() const [15]
+-----------------------------------------------
+                0.02   19.25  100000/100000      main [1]
+[29]     2.1    0.02   19.25  100000         mcmc::SplitMerge_move(double&) [29]
+                0.01    9.50   50046/50046       MCMCEnv::apSplit(std::pair<unsigned long, unsigned long long> const&, bool, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&, long, double, double, MCMCEnv const&) const [38]
+                0.01    9.48   49875/49875       MCMCEnv::apMerge(std::pair<unsigned long long, unsigned long long> const&, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&, long, long, double, double, MCMCEnv const&) const [39]
+                0.01    0.07   50046/50046       MCMCEnv::flagSplit(double&, bool&, double&, std::pair<unsigned long, unsigned long long> const&) [95]
+                0.00    0.06   49875/49875       MCMCEnv::flagMerge(double&, double&, std::pair<unsigned long long, unsigned long long> const&) [99]
+                0.04    0.00   49952/49952       MCMCEnv::getMergeSet() const [106]
+                0.00    0.03  100000/200001      MCMCEnv::MCMCEnv(MCMCEnv const&) [102]
+                0.01    0.01  299842/1058727     ran_unif(double, double) [94]
+                0.00    0.01    1505/8127        MCMCEnv::operator=(MCMCEnv const&) [91]
+                0.01    0.00  149969/199957      MCMCEnv::getSplitSet() const [126]
+                0.00    0.00  100000/200002      MCMCEnv::~MCMCEnv() [163]
+                0.00    0.00   49875/253277      f_fmin(double, double) [161]
+-----------------------------------------------
+                4.47   13.54 2207907480/2207907480     MCMCEnv::reData(long, bool, std::vector<bool, std::allocator<bool> > const&) const [14]
+[30]     2.0    4.47   13.54 2207907480         matrix::setValue(long, long, double) [30]
+               13.54    0.00 2207907480/6353894204     std::vector<dvector, std::allocator<dvector> >::at(unsigned long) [18]
+-----------------------------------------------
+               17.90    0.00 2626784542/2626784542     matrix::operator+=(matrix const&) [6]
+[31]     2.0   17.90    0.00 2626784542         std::vector<dvector, std::allocator<dvector> >::at(unsigned long) const [31]
+-----------------------------------------------
+                6.65   11.16 313318328/313318328     matrix::operator-(matrix const&) const [20]
+[32]     1.9    6.65   11.16 313318328         matrix::operator-=(matrix const&) [32]
+                2.57    1.71 626636656/7741783318     matrix::operator()(long, long) [17]
+                1.35    2.21 313318328/2596643591     matrix::assertEqualDim(matrix const&, bool) const [22]
+                3.32    0.00 939954984/22126061725     matrix::cols() const [15]
+-----------------------------------------------
+                5.69    8.13 36798458/36798458     MCMCEnv::datacov(long, bool, std::vector<bool, std::allocator<bool> > const&) const [4]
+[33]     1.5    5.69    8.13 36798458         matrix::rbind(matrix const&) const [33]
+                2.28    0.00 110395374/1215411984     std::vector<dvector, std::allocator<dvector> >::vector(std::vector<dvector, std::allocator<dvector> > const&) [24]
+                1.81    0.00 294387664/6353894204     std::vector<dvector, std::allocator<dvector> >::at(unsigned long) [18]
+                1.69    0.00 478379954/22126061725     matrix::cols() const [15]
+                0.58    1.10 36798458/2428698229     matrix::matrix(long, long, double) [10]
+                0.67    0.00 110395374/5992644831     std::vector<dvector, std::allocator<dvector> >::~vector() [19]
+-----------------------------------------------
+                6.22    0.00 1103953740/2373594100     matrix::datasum() [13]
+                7.15    0.00 1269640360/2373594100     std::vector<dvector, std::allocator<dvector> >::operator=(std::vector<dvector, std::allocator<dvector> > const&) [23]
+[34]     1.5   13.37    0.00 2373594100         std::vector<double, std::allocator<double> >::operator=(std::vector<double, std::allocator<double> > const&) [34]
+-----------------------------------------------
+                6.76    6.02 625573786/625573786     ClusterFlags::onezerocluster(long) const [26]
+[35]     1.4    6.76    6.02 625573786         void std::vector<long, std::allocator<long> >::_M_insert_aux<long>(__gnu_cxx::__normal_iterator<long*, std::vector<long, std::allocator<long> > >, long&&) [35]
+                3.47    0.00 1251147572/1251147572     long* std::__uninitialized_move_a<long*, long*, std::allocator<long> >(long*, long*, long*, std::allocator<long>&) [48]
+                1.91    0.00 625573786/625573786     std::vector<long, std::allocator<long> >::_M_check_len(unsigned long, char const*) const [57]
+                0.64    0.00 625573786/625573786     std::_Vector_base<long, std::allocator<long> >::_M_allocate(unsigned long) [67]
+-----------------------------------------------
+                3.22    7.60 73596916/73596916     MCMCEnv::calcLogDensity(std::vector<bool, std::allocator<bool> > const&) const [2]
+[36]     1.2    3.22    7.60 73596916         matrix::getBlock(long, long, long, long) [36]
+                1.17    2.20 73596916/2428698229     matrix::matrix(long, long, double) [10]
+                2.26    0.00 367984580/6353894204     std::vector<dvector, std::allocator<dvector> >::at(unsigned long) [18]
+                1.52    0.00 73596916/1215411984     std::vector<dvector, std::allocator<dvector> >::vector(std::vector<dvector, std::allocator<dvector> > const&) [24]
+                0.45    0.00 73596916/5992644831     std::vector<dvector, std::allocator<dvector> >::~vector() [19]
+-----------------------------------------------
+                0.00    0.00       2/74051312     initializeParameters(matrix const&) [146]
+                0.00    0.05  454394/74051312     MCMCEnv::calcClusterMean(unsigned long, ClusterTree const&) const [71]
+                0.68    8.88 73596916/74051312     MCMCEnv::datacov(long, bool, std::vector<bool, std::allocator<bool> > const&) const [4]
+[37]     1.1    0.68    8.93 74051312         matrix::matrix(long, long, double) [37]
+                1.18    6.86 110849770/1815852030     std::vector<double, std::allocator<double> >::resize(unsigned long, double) [7]
+                0.89    0.00 74051312/4712477891     std::vector<dvector, std::allocator<dvector> >::vector(unsigned long, dvector const&, std::allocator<dvector> const&) [16]
+-----------------------------------------------
+                0.01    9.50   50046/50046       mcmc::SplitMerge_move(double&) [29]
+[38]     1.0    0.01    9.50   50046         MCMCEnv::apSplit(std::pair<unsigned long, unsigned long long> const&, bool, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&, long, double, double, MCMCEnv const&) const [38]
+                0.04    9.18   99960/9167368     MCMCEnv::calcLogDensity(std::vector<bool, std::allocator<bool> > const&) const [2]
+                0.00    0.27   49980/99856       MCMCEnv::calcPChos(std::pair<unsigned long long, unsigned long long> const&, bool, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&) const [69]
+                0.01    0.00  149940/1956699     MCMCEnv::getTreeFromID(unsigned long long) const [89]
+                0.00    0.00   66722/234954      betaf(double, double) [125]
+                0.00    0.00   49980/3703599     ClusterTree::getChildID(unsigned long) const [122]
+                0.00    0.00   49980/253277      f_fmin(double, double) [161]
+-----------------------------------------------
+                0.01    9.48   49875/49875       mcmc::SplitMerge_move(double&) [29]
+[39]     1.0    0.01    9.48   49875         MCMCEnv::apMerge(std::pair<unsigned long long, unsigned long long> const&, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&, long, long, double, double, MCMCEnv const&) const [39]
+                0.04    9.17   99750/9167368     MCMCEnv::calcLogDensity(std::vector<bool, std::allocator<bool> > const&) const [2]
+                0.00    0.26   49875/99856       MCMCEnv::calcPChos(std::pair<unsigned long long, unsigned long long> const&, bool, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&) const [69]
+                0.01    0.00  149625/1956699     MCMCEnv::getTreeFromID(unsigned long long) const [89]
+                0.00    0.00   97597/234954      betaf(double, double) [125]
+-----------------------------------------------
+                0.02    9.26  100000/100000      main [1]
+[40]     1.0    0.02    9.26  100000         MCMCEnv::sampleTao() [40]
+                0.04    9.19  100043/9167368     MCMCEnv::calcLogDensity(std::vector<bool, std::allocator<bool> > const&) const [2]
+                0.01    0.02  350039/1058727     ran_unif(double, double) [94]
+                0.00    0.00  100000/253277      f_fmin(double, double) [161]
+-----------------------------------------------
+                1.16    3.08 36798458/73596916     MCMCEnv::datacov(long, bool, std::vector<bool, std::allocator<bool> > const&) const [4]
+                1.16    3.08 36798458/73596916     MCMCEnv::calcLogDensity(std::vector<bool, std::allocator<bool> > const&) const [2]
+[41]     0.9    2.32    6.17 73596916         matrix::operator*(double) const [41]
+                3.04    0.00 147193832/1215411984     std::vector<dvector, std::allocator<dvector> >::vector(std::vector<dvector, std::allocator<dvector> > const&) [24]
+                0.91    0.60 220790748/7741783318     matrix::operator()(long, long) [17]
+                1.17    0.00 331186122/22126061725     matrix::cols() const [15]
+                0.45    0.00 73596916/5992644831     std::vector<dvector, std::allocator<dvector> >::~vector() [19]
+-----------------------------------------------
+                0.33    7.88 73596916/73596916     MCMCEnv::calcLogDensity(std::vector<bool, std::allocator<bool> > const&) const [2]
+[42]     0.9    0.33    7.88 73596916         matrix::operator+(matrix const&) const [42]
+                2.19    2.20 73596916/2283325263     matrix::operator+=(matrix const&) [6]
+                3.04    0.00 147193832/1215411984     std::vector<dvector, std::allocator<dvector> >::vector(std::vector<dvector, std::allocator<dvector> > const&) [24]
+                0.45    0.00 73596916/5992644831     std::vector<dvector, std::allocator<dvector> >::~vector() [19]
+-----------------------------------------------
+                6.40    0.00 146695224/146695224     MCMCEnv::calcLogDensity(std::vector<bool, std::allocator<bool> > const&) const [2]
+[43]     0.7    6.40    0.00 146695224         gammaf(double) [43]
+-----------------------------------------------
+                0.01    5.14  100000/100000      main [1]
+[44]     0.6    0.01    5.14  100000         mcmc::BirthDeath_move(double&) [44]
+                0.00    4.62   49986/49986       MCMCEnv::apBirth(std::pair<unsigned long, unsigned long long> const&, long, double, double, double, MCMCEnv const&) const [46]
+                0.00    0.32    3436/3436        MCMCEnv::apDeath(std::pair<unsigned long long, unsigned long long> const&, long, double, double, double, MCMCEnv const&) const [77]
+                0.02    0.05   49986/49986       MCMCEnv::flagBirth(std::pair<unsigned long, unsigned long long> const&, double&, double&, double&) [96]
+                0.00    0.07    6622/8127        MCMCEnv::operator=(MCMCEnv const&) [91]
+                0.00    0.03  100000/200001      MCMCEnv::MCMCEnv(MCMCEnv const&) [102]
+                0.01    0.01  206844/1058727     ran_unif(double, double) [94]
+                0.01    0.00    3436/3436        MCMCEnv::flagDeath(std::pair<unsigned long long, unsigned long long> const&, double&, double&, double&) [121]
+                0.00    0.01   99998/99998       MCMCEnv::getDeathSet() const [134]
+                0.00    0.00   49988/199957      MCMCEnv::getSplitSet() const [126]
+                0.00    0.00  100000/200002      MCMCEnv::~MCMCEnv() [163]
+                0.00    0.00   53422/253277      f_fmin(double, double) [161]
+-----------------------------------------------
+                4.98    0.00 2207907480/2207907480     MCMCEnv::reData(long, bool, std::vector<bool, std::allocator<bool> > const&) const [14]
+[45]     0.5    4.98    0.00 2207907480         matrix::getValue(long, long) const [45]
+-----------------------------------------------
+                0.00    4.62   49986/49986       mcmc::BirthDeath_move(double&) [44]
+[46]     0.5    0.00    4.62   49986         MCMCEnv::apBirth(std::pair<unsigned long, unsigned long long> const&, long, double, double, double, MCMCEnv const&) const [46]
+                0.02    4.60   50061/9167368     MCMCEnv::calcLogDensity(std::vector<bool, std::allocator<bool> > const&) const [2]
+-----------------------------------------------
+                3.74    0.00 36748497/36748497     MCMCEnv::datacov(long, bool, std::vector<bool, std::allocator<bool> > const&) const [4]
+[47]     0.4    3.74    0.00 36748497         ClusterFlags::flagnum(long) const [47]
+-----------------------------------------------
+                3.47    0.00 1251147572/1251147572     void std::vector<long, std::allocator<long> >::_M_insert_aux<long>(__gnu_cxx::__normal_iterator<long*, std::vector<long, std::allocator<long> > >, long&&) [35]
+[48]     0.4    3.47    0.00 1251147572         long* std::__uninitialized_move_a<long*, long*, std::allocator<long> >(long*, long*, long*, std::allocator<long>&) [48]
+-----------------------------------------------
+                3.10    0.00 92436011/92436011     std::vector<dvector, std::allocator<dvector> >::operator=(std::vector<dvector, std::allocator<dvector> > const&) [23]
+[49]     0.3    3.10    0.00 92436011         dvector* std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<dvector const*, std::vector<dvector, std::allocator<dvector> > >, dvector*, dvector>(__gnu_cxx::__normal_iterator<dvector const*, std::vector<dvector, std::allocator<dvector> > >, __gnu_cxx::__normal_iterator<dvector const*, std::vector<dvector, std::allocator<dvector> > >, dvector*, std::allocator<dvector>&) [49]
+-----------------------------------------------
+                                                 <spontaneous>
+[50]     0.3    2.85    0.00                 matrix::getEarliestTime(long) const [50]
+-----------------------------------------------
+                2.84    0.00 110395374/110395374     ClusterFlags::onezerocluster(long) const [26]
+[51]     0.3    2.84    0.00 110395374         void std::vector<std::vector<long, std::allocator<long> >, std::allocator<std::vector<long, std::allocator<long> > > >::_M_insert_aux<std::vector<long, std::allocator<long> > const&>(__gnu_cxx::__normal_iterator<std::vector<long, std::allocator<long> >*, std::vector<std::vector<long, std::allocator<long> >, std::allocator<std::vector<long, std::allocator<long> > > > >, std::vector<long, std::allocator<long> > const&&&) [51]
+-----------------------------------------------
+                2.75    0.00 1103953740/1103953740     MCMCEnv::datacov(long, bool, std::vector<bool, std::allocator<bool> > const&) const [4]
+[52]     0.3    2.75    0.00 1103953740         ClusterFlags::getFlag(long, long) const [52]
+-----------------------------------------------
+                                                 <spontaneous>
+[53]     0.3    2.52    0.00                 std::vector<long, std::allocator<long> >::at(unsigned long) [53]
+-----------------------------------------------
+                                                 <spontaneous>
+[54]     0.3    0.00    2.40                 __do_global_ctors_aux [54]
+                2.35    0.00       1/1           global constructors keyed to matrix::matrix() [55]
+                0.02    0.00       1/1           global constructors keyed to MCMCEnv::NumOfTP [114]
+                0.02    0.00       1/1           global constructors keyed to ran2(long*) [116]
+                0.01    0.00       1/1           global constructors keyed to ClusterTree::numTimePoints [129]
+                0.00    0.00       1/1           global constructors keyed to mcmc::mcmc(MCMCEnv const&) [174]
+                0.00    0.00       1/1           global constructors keyed to ClusterFlags::ClusterFlags() [173]
+                0.00    0.00       1/1           global constructors keyed to initializeParameters(matrix const&) [172]
+-----------------------------------------------
+                2.35    0.00       1/1           __do_global_ctors_aux [54]
+[55]     0.3    2.35    0.00       1         global constructors keyed to matrix::matrix() [55]
+-----------------------------------------------
+                                                 <spontaneous>
+[56]     0.2    2.15    0.00                 double* std::__uninitialized_move_a<double*, double*, std::allocator<double> >(double*, double*, double*, std::allocator<double>&) [56]
+-----------------------------------------------
+                1.91    0.00 625573786/625573786     void std::vector<long, std::allocator<long> >::_M_insert_aux<long>(__gnu_cxx::__normal_iterator<long*, std::vector<long, std::allocator<long> > >, long&&) [35]
+[57]     0.2    1.91    0.00 625573786         std::vector<long, std::allocator<long> >::_M_check_len(unsigned long, char const*) const [57]
+-----------------------------------------------
+                                                 <spontaneous>
+[58]     0.2    1.88    0.00                 std::vector<long, std::allocator<long> >::resize(unsigned long, long) [58]
+-----------------------------------------------
+                                                 <spontaneous>
+[59]     0.2    1.64    0.00                 matrixl::operator=(matrixl const&) [59]
+-----------------------------------------------
+                1.48    0.00 1140752198/1140752198     MCMCEnv::datacov(long, bool, std::vector<bool, std::allocator<bool> > const&) const [4]
+[60]     0.2    1.48    0.00 1140752198         matrix::rows() const [60]
+-----------------------------------------------
+                0.00    0.00       1/4170589725     main [1]
+                0.00    0.00       5/4170589725     initializeParameters(matrix const&) [146]
+                0.00    0.00  908788/4170589725     MCMCEnv::calcClusterDist(unsigned long, ClusterTree const&, long, ClusterTree const&) const [70]
+                0.00    0.00 1820867/4170589725     MCMCEnv::calcClusterMean(unsigned long, ClusterTree const&) const [71]
+                0.09    0.00 248292852/4170589725     MCMCEnv::calcLogDensity(std::vector<bool, std::allocator<bool> > const&) const [2]
+                1.36    0.00 3919567212/4170589725     MCMCEnv::datacov(long, bool, std::vector<bool, std::allocator<bool> > const&) const [4]
+[61]     0.2    1.45    0.00 4170589725         matrix::~matrix() [61]
+-----------------------------------------------
+                                                 <spontaneous>
+[62]     0.2    1.44    0.00                 matrix::getCol(long) const [62]
+-----------------------------------------------
+                                                 <spontaneous>
+[63]     0.1    0.90    0.00                 std::vector<lvector, std::allocator<lvector> >::operator=(std::vector<lvector, std::allocator<lvector> > const&) [63]
+-----------------------------------------------
+                                                 <spontaneous>
+[64]     0.1    0.88    0.00                 lvector* std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<lvector const*, std::vector<lvector, std::allocator<lvector> > >, lvector*, lvector>(__gnu_cxx::__normal_iterator<lvector const*, std::vector<lvector, std::allocator<lvector> > >, __gnu_cxx::__normal_iterator<lvector const*, std::vector<lvector, std::allocator<lvector> > >, lvector*, std::allocator<lvector>&) [64]
+-----------------------------------------------
+                                                 <spontaneous>
+[65]     0.1    0.79    0.00                 matrix::dim() const [65]
+-----------------------------------------------
+                                                 <spontaneous>
+[66]     0.1    0.68    0.00                 matrixl::datasum() [66]
+-----------------------------------------------
+                0.64    0.00 625573786/625573786     void std::vector<long, std::allocator<long> >::_M_insert_aux<long>(__gnu_cxx::__normal_iterator<long*, std::vector<long, std::allocator<long> > >, long&&) [35]
+[67]     0.1    0.64    0.00 625573786         std::_Vector_base<long, std::allocator<long> >::_M_allocate(unsigned long) [67]
+-----------------------------------------------
+                0.58    0.00 36798458/36798458     MCMCEnv::reData(long, bool, std::vector<bool, std::allocator<bool> > const&) const [14]
+[68]     0.1    0.58    0.00 36798458         std::vector<std::vector<long, std::allocator<long> >, std::allocator<std::vector<long, std::allocator<long> > > >::~vector() [68]
+-----------------------------------------------
+                0.00    0.00       1/99856       MCMCEnv::MCMCEnv(std::vector<bool, std::allocator<bool> > const&, ClusterFlags const&, matrix const&) [144]
+                0.00    0.26   49875/99856       MCMCEnv::apMerge(std::pair<unsigned long long, unsigned long long> const&, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&, long, long, double, double, MCMCEnv const&) const [39]
+                0.00    0.27   49980/99856       MCMCEnv::apSplit(std::pair<unsigned long, unsigned long long> const&, bool, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&, long, double, double, MCMCEnv const&) const [38]
+[69]     0.1    0.00    0.53   99856         MCMCEnv::calcPChos(std::pair<unsigned long long, unsigned long long> const&, bool, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&) const [69]
+                0.00    0.51  227197/227197      MCMCEnv::calcClusterDist(unsigned long, ClusterTree const&, long, ClusterTree const&) const [70]
+                0.02    0.00  434047/1956699     MCMCEnv::getTreeFromID(unsigned long long) const [89]
+                0.00    0.00  457102/38784811     ClusterTree::getSampleNum() const [84]
+-----------------------------------------------
+                0.00    0.51  227197/227197      MCMCEnv::calcPChos(std::pair<unsigned long long, unsigned long long> const&, bool, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&) const [69]
+[70]     0.1    0.00    0.51  227197         MCMCEnv::calcClusterDist(unsigned long, ClusterTree const&, long, ClusterTree const&) const [70]
+                0.04    0.44  454394/454394      MCMCEnv::calcClusterMean(unsigned long, ClusterTree const&) const [71]
+                0.00    0.01  454394/1251601972     matrix::operator=(matrix const&) [21]
+                0.00    0.00  908788/7741783318     matrix::operator()(long, long) [17]
+                0.01    0.00  908788/5992644831     std::vector<dvector, std::allocator<dvector> >::~vector() [19]
+                0.00    0.00  454394/64754960     matrix::matrix() [74]
+                0.00    0.00  908788/4170589725     matrix::~matrix() [61]
+-----------------------------------------------
+                0.04    0.44  454394/454394      MCMCEnv::calcClusterDist(unsigned long, ClusterTree const&, long, ClusterTree const&) const [70]
+[71]     0.1    0.04    0.44  454394         MCMCEnv::calcClusterMean(unsigned long, ClusterTree const&) const [71]
+                0.01    0.18 1820867/1105774607     matrix::getRow(long) const [8]
+                0.05    0.05 1820867/2283325263     matrix::operator+=(matrix const&) [6]
+                0.00    0.05  454394/74051312     matrix::matrix(long, long, double) [37]
+                0.04    0.00 7958922/7958922     ClusterFlags::operator()(long, long) const [109]
+                0.02    0.00 8704927/14019106     ClusterFlags::cols(int) const [108]
+                0.00    0.01  454394/454396      matrix::operator*=(double) [120]
+                0.01    0.00 1820867/5992644831     std::vector<dvector, std::allocator<dvector> >::~vector() [19]
+                0.00    0.00 1820867/4170589725     matrix::~matrix() [61]
+-----------------------------------------------
+                0.23    0.15 2700000/2700000     MCMCEnv::sampleZ() [3]
+[72]     0.0    0.23    0.15 2700000         ran_num_log(std::vector<double, std::allocator<double> > const&, std::vector<unsigned long long, std::allocator<unsigned long long> > const&) [72]
+                0.13    0.00 5397253/10506750     ran2(long*) [80]
+                0.02    0.00 2700000/2700000     std::_Rb_tree<double, std::pair<double const, unsigned long long>, std::_Select1st<std::pair<double const, unsigned long long> >, std::less<double>, std::allocator<std::pair<double const, unsigned long long> > >::_M_erase(std::_Rb_tree_node<std::pair<double const, unsigned long long> >*) [115]
+-----------------------------------------------
+                0.13    0.23  300001/300001      main [1]
+[73]     0.0    0.13    0.23  300001         MCMCEnv::writeStatus(std::ostream&) const [73]
+                0.11    0.00  300001/300001      operator<<(std::ostream&, ClusterFlags const&) [87]
+                0.02    0.07  300001/300001      MCMCEnv::writeTree(std::ostream&) const [90]
+                0.04    0.00 1223087/1223087     ClusterTree::writeWeights(std::ostream&) const [110]
+-----------------------------------------------
+                0.00    0.00       4/64754960     global constructors keyed to MCMCEnv::NumOfTP [114]
+                0.00    0.00  454394/64754960     MCMCEnv::calcClusterDist(unsigned long, ClusterTree const&, long, ClusterTree const&) const [70]
+                0.15    0.00 27502104/64754960     MCMCEnv::calcLogDensity(std::vector<bool, std::allocator<bool> > const&) const [2]
+                0.20    0.00 36798458/64754960     MCMCEnv::datacov(long, bool, std::vector<bool, std::allocator<bool> > const&) const [4]
+[74]     0.0    0.36    0.00 64754960         matrix::matrix() [74]
+-----------------------------------------------
+                0.35    0.00 36748497/36748497     MCMCEnv::calcLogDensity(std::vector<bool, std::allocator<bool> > const&) const [2]
+[75]     0.0    0.35    0.00 36748497         ClusterTree::calcKcWeight() const [75]
+-----------------------------------------------
+                                                 <spontaneous>
+[76]     0.0    0.34    0.00                 ClusterFlags::ClusterFlags(long, std::vector<unsigned long, std::allocator<unsigned long> > const&) [76]
+-----------------------------------------------
+                0.00    0.32    3436/3436        mcmc::BirthDeath_move(double&) [44]
+[77]     0.0    0.00    0.32    3436         MCMCEnv::apDeath(std::pair<unsigned long long, unsigned long long> const&, long, double, double, double, MCMCEnv const&) const [77]
+                0.00    0.32    3464/9167368     MCMCEnv::calcLogDensity(std::vector<bool, std::allocator<bool> > const&) const [2]
+-----------------------------------------------
+                                                 <spontaneous>
+[78]     0.0    0.31    0.00                 matrix::matrix(long, long, double const**) [78]
+-----------------------------------------------
+                0.00    0.00       1/23541521     MCMCEnv::createTree() [150]
+                0.00    0.00   10308/23541521     MCMCEnv::flagDeath(std::pair<unsigned long long, unsigned long long> const&, double&, double&, double&) [121]
+                0.00    0.00   49986/23541521     MCMCEnv::flagBirth(std::pair<unsigned long, unsigned long long> const&, double&, double&, double&) [96]
+                0.00    0.00   50046/23541521     MCMCEnv::flagSplit(double&, bool&, double&, std::pair<unsigned long, unsigned long long> const&) [95]
+                0.00    0.00   53311/23541521     MCMCEnv::removeTree(unsigned long long) [141]
+                0.00    0.00  149625/23541521     MCMCEnv::flagMerge(double&, double&, std::pair<unsigned long long, unsigned long long> const&) [99]
+                0.00    0.00  200064/23541521     MCMCEnv::createTree(unsigned long long, unsigned long) [119]
+                0.27    0.00 23028180/23541521     MCMCEnv::sampleZ() [3]
+[79]     0.0    0.28    0.00 23541521         MCMCEnv::getTreeFromID(unsigned long long) [79]
+-----------------------------------------------
+                0.02    0.00  631773/10506750     ran_beta(double, double) [98]
+                0.05    0.00 2007598/10506750     ran_unif(double, double) [94]
+                0.06    0.00 2470126/10506750     ran_gamma(double, double) [86]
+                0.13    0.00 5397253/10506750     ran_num_log(std::vector<double, std::allocator<double> > const&, std::vector<unsigned long long, std::allocator<unsigned long long> > const&) [72]
+[80]     0.0    0.26    0.00 10506750         ran2(long*) [80]
+-----------------------------------------------
+                                                 <spontaneous>
+[81]     0.0    0.24    0.00                 ClusterFlags::nonemptynum() const [81]
+-----------------------------------------------
+                                                 <spontaneous>
+[82]     0.0    0.20    0.00                 matrix::operator+(double) const [82]
+-----------------------------------------------
+                                                 <spontaneous>
+[83]     0.0    0.20    0.00                 void std::vector<long, std::allocator<long> >::_M_insert_aux<long const&>(__gnu_cxx::__normal_iterator<long*, std::vector<long, std::allocator<long> > >, long const&&&) [83]
+-----------------------------------------------
+                0.00    0.00   53311/38784811     MCMCEnv::removeTree(unsigned long long) [141]
+                0.00    0.00  268754/38784811     MCMCEnv::getDeathSet() const [134]
+                0.00    0.00  407613/38784811     MCMCEnv::treeSummary() const [139]
+                0.00    0.00  457102/38784811     MCMCEnv::calcPChos(std::pair<unsigned long long, unsigned long long> const&, bool, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&) const [69]
+                0.17    0.00 37598031/38784811     MCMCEnv::calcLogDensity(std::vector<bool, std::allocator<bool> > const&) const [2]
+[84]     0.0    0.18    0.00 38784811         ClusterTree::getSampleNum() const [84]
+-----------------------------------------------
+                0.01    0.15  100000/100000      main [1]
+[85]     0.0    0.01    0.15  100000         MCMCEnv::sampleWeight() [85]
+                0.09    0.06 1010085/1010085     ran_gamma(double, double) [86]
+                0.00    0.00 1010085/1060071     ClusterTree::getSampleNum(unsigned long) const [156]
+-----------------------------------------------
+                0.09    0.06 1010085/1010085     MCMCEnv::sampleWeight() [85]
+[86]     0.0    0.09    0.06 1010085         ran_gamma(double, double) [86]
+                0.06    0.00 2470126/10506750     ran2(long*) [80]
+-----------------------------------------------
+                0.11    0.00  300001/300001      MCMCEnv::writeStatus(std::ostream&) const [73]
+[87]     0.0    0.11    0.00  300001         operator<<(std::ostream&, ClusterFlags const&) [87]
+-----------------------------------------------
+                                                 <spontaneous>
+[88]     0.0    0.10    0.00                 ClusterTree::fillWeights(std::vector<double, std::allocator<double> >) [88]
+-----------------------------------------------
+                0.01    0.00  149625/1956699     MCMCEnv::apMerge(std::pair<unsigned long long, unsigned long long> const&, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&, long, long, double, double, MCMCEnv const&) const [39]
+                0.01    0.00  149940/1956699     MCMCEnv::apSplit(std::pair<unsigned long, unsigned long long> const&, bool, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&, long, double, double, MCMCEnv const&) const [38]
+                0.02    0.00  434047/1956699     MCMCEnv::calcPChos(std::pair<unsigned long long, unsigned long long> const&, bool, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&) const [69]
+                0.06    0.00 1223087/1956699     MCMCEnv::writeTree(std::ostream&) const [90]
+[89]     0.0    0.09    0.00 1956699         MCMCEnv::getTreeFromID(unsigned long long) const [89]
+-----------------------------------------------
+                0.02    0.07  300001/300001      MCMCEnv::writeStatus(std::ostream&) const [73]
+[90]     0.0    0.02    0.07  300001         MCMCEnv::writeTree(std::ostream&) const [90]
+                0.06    0.00 1223087/1956699     MCMCEnv::getTreeFromID(unsigned long long) const [89]
+                0.01    0.00 3653619/3703599     ClusterTree::getChildID(unsigned long) const [122]
+-----------------------------------------------
+                0.00    0.01    1505/8127        mcmc::SplitMerge_move(double&) [29]
+                0.00    0.07    6622/8127        mcmc::BirthDeath_move(double&) [44]
+[91]     0.0    0.00    0.08    8127         MCMCEnv::operator=(MCMCEnv const&) [91]
+                0.00    0.08    8127/8127        ClusterFlags::operator=(ClusterFlags const&) [92]
+                0.00    0.00    8127/8127        std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true>::_Hashtable(std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true> const&) [142]
+                0.00    0.00   36974/1152550     ClusterTree::~ClusterTree() [155]
+-----------------------------------------------
+                0.00    0.08    8127/8127        MCMCEnv::operator=(MCMCEnv const&) [91]
+[92]     0.0    0.00    0.08    8127         ClusterFlags::operator=(ClusterFlags const&) [92]
+                0.08    0.00    8127/8127        std::vector<std::vector<long, std::allocator<long> >, std::allocator<std::vector<long, std::allocator<long> > > >::operator=(std::vector<std::vector<long, std::allocator<long> >, std::allocator<std::vector<long, std::allocator<long> > > > const&) [93]
+-----------------------------------------------
+                0.08    0.00    8127/8127        ClusterFlags::operator=(ClusterFlags const&) [92]
+[93]     0.0    0.08    0.00    8127         std::vector<std::vector<long, std::allocator<long> >, std::allocator<std::vector<long, std::allocator<long> > > >::operator=(std::vector<std::vector<long, std::allocator<long> >, std::allocator<std::vector<long, std::allocator<long> > > > const&) [93]
+                0.00    0.00   32508/32508       std::vector<long, std::allocator<long> >::operator=(std::vector<long, std::allocator<long> > const&) [166]
+-----------------------------------------------
+                0.01    0.01  202002/1058727     MCMCEnv::flagSplit(double&, bool&, double&, std::pair<unsigned long, unsigned long long> const&) [95]
+                0.01    0.01  206844/1058727     mcmc::BirthDeath_move(double&) [44]
+                0.01    0.01  299842/1058727     mcmc::SplitMerge_move(double&) [29]
+                0.01    0.02  350039/1058727     MCMCEnv::sampleTao() [40]
+[94]     0.0    0.03    0.05 1058727         ran_unif(double, double) [94]
+                0.05    0.00 2007598/10506750     ran2(long*) [80]
+-----------------------------------------------
+                0.01    0.07   50046/50046       mcmc::SplitMerge_move(double&) [29]
+[95]     0.0    0.01    0.07   50046         MCMCEnv::flagSplit(double&, bool&, double&, std::pair<unsigned long, unsigned long long> const&) [95]
+                0.03    0.01   66810/133508      ran_beta(double, double) [98]
+                0.01    0.01  202002/1058727     ran_unif(double, double) [94]
+                0.01    0.00   66810/235042      betad(double, double, double) [113]
+                0.00    0.01   50046/100032      MCMCEnv::createTree(unsigned long long, unsigned long) [119]
+                0.00    0.00 1155240/19657645     ClusterFlags::operator()(long, long) [107]
+                0.00    0.00  818038/14019106     ClusterFlags::cols(int) const [108]
+                0.00    0.00   50046/23541521     MCMCEnv::getTreeFromID(unsigned long long) [79]
+-----------------------------------------------
+                0.02    0.05   49986/49986       mcmc::BirthDeath_move(double&) [44]
+[96]     0.0    0.02    0.05   49986         MCMCEnv::flagBirth(std::pair<unsigned long, unsigned long long> const&, double&, double&, double&) [96]
+                0.02    0.01   66698/133508      ran_beta(double, double) [98]
+                0.01    0.00   66698/235042      betad(double, double, double) [113]
+                0.00    0.01   49986/100032      MCMCEnv::createTree(unsigned long long, unsigned long) [119]
+                0.00    0.00   66698/234954      betaf(double, double) [125]
+                0.00    0.00   49986/23541521     MCMCEnv::getTreeFromID(unsigned long long) [79]
+                0.00    0.00   49986/1060071     ClusterTree::getSampleNum(unsigned long) const [156]
+-----------------------------------------------
+                                                 <spontaneous>
+[97]     0.0    0.07    0.00                 std::vector<long, std::allocator<long> >::~vector() [97]
+-----------------------------------------------
+                0.02    0.01   66698/133508      MCMCEnv::flagBirth(std::pair<unsigned long, unsigned long long> const&, double&, double&, double&) [96]
+                0.03    0.01   66810/133508      MCMCEnv::flagSplit(double&, bool&, double&, std::pair<unsigned long, unsigned long long> const&) [95]
+[98]     0.0    0.05    0.02  133508         ran_beta(double, double) [98]
+                0.02    0.00  631773/10506750     ran2(long*) [80]
+-----------------------------------------------
+                0.00    0.06   49875/49875       mcmc::SplitMerge_move(double&) [29]
+[99]     0.0    0.00    0.06   49875         MCMCEnv::flagMerge(double&, double&, std::pair<unsigned long long, unsigned long long> const&) [99]
+                0.04    0.00  195194/195194      ClusterFlags::tflagnum(long, long) const [111]
+                0.01    0.00   97597/235042      betad(double, double, double) [113]
+                0.00    0.00 1096141/14019106     ClusterFlags::cols(int) const [108]
+                0.00    0.00 1288315/19657645     ClusterFlags::operator()(long, long) [107]
+                0.00    0.00  149625/23541521     MCMCEnv::getTreeFromID(unsigned long long) [79]
+                0.00    0.00   49875/53311       MCMCEnv::removeTree(unsigned long long) [141]
+                0.00    0.00   49875/53311       ClusterTree::removeChild(unsigned long) [165]
+-----------------------------------------------
+                                                 <spontaneous>
+[100]    0.0    0.06    0.00                 matrix::matrix() [100]
+-----------------------------------------------
+                                                 <spontaneous>
+[101]    0.0    0.06    0.00                 std::vector<lvector, std::allocator<lvector> >::vector(unsigned long, lvector const&, std::allocator<lvector> const&) [101]
+-----------------------------------------------
+                0.00    0.00       1/200001      main [1]
+                0.00    0.03  100000/200001      mcmc::BirthDeath_move(double&) [44]
+                0.00    0.03  100000/200001      mcmc::SplitMerge_move(double&) [29]
+[102]    0.0    0.00    0.06  200001         MCMCEnv::MCMCEnv(MCMCEnv const&) [102]
+                0.05    0.01  200001/200001      std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true>::_Hashtable(std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true> const&) [103]
+-----------------------------------------------
+                0.05    0.01  200001/200001      MCMCEnv::MCMCEnv(MCMCEnv const&) [102]
+[103]    0.0    0.05    0.01  200001         std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true>::_Hashtable(std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true> const&) [103]
+                0.01    0.00  815474/952484      std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true>::_M_allocate_node(std::pair<unsigned long long const, ClusterTree> const&) [123]
+-----------------------------------------------
+                                                 <spontaneous>
+[104]    0.0    0.06    0.00                 ClusterFlags::getTimeSampleByCluster(long) const [104]
+-----------------------------------------------
+                                                 <spontaneous>
+[105]    0.0    0.05    0.00                 matrix::operator==(matrix const&) const [105]
+-----------------------------------------------
+                0.04    0.00   49952/49952       mcmc::SplitMerge_move(double&) [29]
+[106]    0.0    0.04    0.00   49952         MCMCEnv::getMergeSet() const [106]
+                0.00    0.00   49952/149950      std::vector<std::pair<unsigned long long, unsigned long long>, std::allocator<std::pair<unsigned long long, unsigned long long> > >::reserve(unsigned long) [127]
+                0.00    0.00  203534/661369      ClusterTree::getNumOfChildren() const [158]
+                0.00    0.00     161/293         void std::vector<std::pair<unsigned long long, unsigned long long>, std::allocator<std::pair<unsigned long long, unsigned long long> > >::_M_insert_aux<std::pair<unsigned long long, unsigned long long> >(__gnu_cxx::__normal_iterator<std::pair<unsigned long long, unsigned long long>*, std::vector<std::pair<unsigned long long, unsigned long long>, std::allocator<std::pair<unsigned long long, unsigned long long> > > >, std::pair<unsigned long long, unsigned long long>&&) [167]
+-----------------------------------------------
+                0.00    0.00 1155240/19657645     MCMCEnv::flagSplit(double&, bool&, double&, std::pair<unsigned long, unsigned long long> const&) [95]
+                0.00    0.00 1288315/19657645     MCMCEnv::flagMerge(double&, double&, std::pair<unsigned long long, unsigned long long> const&) [99]
+                0.04    0.00 17214090/19657645     MCMCEnv::sampleZ() [3]
+[107]    0.0    0.04    0.00 19657645         ClusterFlags::operator()(long, long) [107]
+-----------------------------------------------
+                0.00    0.00  818038/14019106     MCMCEnv::flagSplit(double&, bool&, double&, std::pair<unsigned long, unsigned long long> const&) [95]
+                0.00    0.00 1096141/14019106     MCMCEnv::flagMerge(double&, double&, std::pair<unsigned long long, unsigned long long> const&) [99]
+                0.01    0.00 3400000/14019106     MCMCEnv::sampleZ() [3]
+                0.02    0.00 8704927/14019106     MCMCEnv::calcClusterMean(unsigned long, ClusterTree const&) const [71]
+[108]    0.0    0.04    0.00 14019106         ClusterFlags::cols(int) const [108]
+-----------------------------------------------
+                0.04    0.00 7958922/7958922     MCMCEnv::calcClusterMean(unsigned long, ClusterTree const&) const [71]
+[109]    0.0    0.04    0.00 7958922         ClusterFlags::operator()(long, long) const [109]
+-----------------------------------------------
+                0.04    0.00 1223087/1223087     MCMCEnv::writeStatus(std::ostream&) const [73]
+[110]    0.0    0.04    0.00 1223087         ClusterTree::writeWeights(std::ostream&) const [110]
+-----------------------------------------------
+                0.04    0.00  195194/195194      MCMCEnv::flagMerge(double&, double&, std::pair<unsigned long long, unsigned long long> const&) [99]
+[111]    0.0    0.04    0.00  195194         ClusterFlags::tflagnum(long, long) const [111]
+-----------------------------------------------
+                                                 <spontaneous>
+[112]    0.0    0.03    0.00                 matrix::getData() const [112]
+-----------------------------------------------
+                0.00    0.00    3937/235042      MCMCEnv::flagDeath(std::pair<unsigned long long, unsigned long long> const&, double&, double&, double&) [121]
+                0.01    0.00   66698/235042      MCMCEnv::flagBirth(std::pair<unsigned long, unsigned long long> const&, double&, double&, double&) [96]
+                0.01    0.00   66810/235042      MCMCEnv::flagSplit(double&, bool&, double&, std::pair<unsigned long, unsigned long long> const&) [95]
+                0.01    0.00   97597/235042      MCMCEnv::flagMerge(double&, double&, std::pair<unsigned long long, unsigned long long> const&) [99]
+[113]    0.0    0.03    0.00  235042         betad(double, double, double) [113]
+-----------------------------------------------
+                0.02    0.00       1/1           __do_global_ctors_aux [54]
+[114]    0.0    0.02    0.00       1         global constructors keyed to MCMCEnv::NumOfTP [114]
+                0.00    0.00       4/64754960     matrix::matrix() [74]
+-----------------------------------------------
+                0.02    0.00 2700000/2700000     ran_num_log(std::vector<double, std::allocator<double> > const&, std::vector<unsigned long long, std::allocator<unsigned long long> > const&) [72]
+[115]    0.0    0.02    0.00 2700000         std::_Rb_tree<double, std::pair<double const, unsigned long long>, std::_Select1st<std::pair<double const, unsigned long long> >, std::less<double>, std::allocator<std::pair<double const, unsigned long long> > >::_M_erase(std::_Rb_tree_node<std::pair<double const, unsigned long long> >*) [115]
+-----------------------------------------------
+                0.02    0.00       1/1           __do_global_ctors_aux [54]
+[116]    0.0    0.02    0.00       1         global constructors keyed to ran2(long*) [116]
+-----------------------------------------------
+                                                 <spontaneous>
+[117]    0.0    0.02    0.00                 matrix::operator-(double) const [117]
+-----------------------------------------------
+                                                 <spontaneous>
+[118]    0.0    0.02    0.00                 MCMCEnv::IndexToCoor(unsigned long) const [118]
+-----------------------------------------------
+                0.00    0.01   49986/100032      MCMCEnv::flagBirth(std::pair<unsigned long, unsigned long long> const&, double&, double&, double&) [96]
+                0.00    0.01   50046/100032      MCMCEnv::flagSplit(double&, bool&, double&, std::pair<unsigned long, unsigned long long> const&) [95]
+[119]    0.0    0.00    0.01  100032         MCMCEnv::createTree(unsigned long long, unsigned long) [119]
+                0.01    0.00  100032/100032      ClusterTree::ClusterTree(ClusterTree&, unsigned long long, unsigned long) [128]
+                0.00    0.00  200064/23541521     MCMCEnv::getTreeFromID(unsigned long long) [79]
+                0.00    0.00  100032/100033      std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true>::_M_insert_bucket(std::pair<unsigned long long const, ClusterTree> const&, unsigned long, unsigned long) [140]
+                0.00    0.00  200064/1152550     ClusterTree::~ClusterTree() [155]
+                0.00    0.00  100032/100032      ClusterTree::setChild(unsigned long long, unsigned long) [164]
+                0.00    0.00  100032/1052517     ClusterTree::ClusterTree(ClusterTree const&) [157]
+-----------------------------------------------
+                0.00    0.00       2/454396      initializeParameters(matrix const&) [146]
+                0.00    0.01  454394/454396      MCMCEnv::calcClusterMean(unsigned long, ClusterTree const&) const [71]
+[120]    0.0    0.00    0.01  454396         matrix::operator*=(double) [120]
+                0.00    0.00  908796/7741783318     matrix::operator()(long, long) [17]
+                0.00    0.00 1363194/22126061725     matrix::cols() const [15]
+-----------------------------------------------
+                0.01    0.00    3436/3436        mcmc::BirthDeath_move(double&) [44]
+[121]    0.0    0.01    0.00    3436         MCMCEnv::flagDeath(std::pair<unsigned long long, unsigned long long> const&, double&, double&, double&) [121]
+                0.00    0.00    3937/235042      betad(double, double, double) [113]
+                0.00    0.00    3937/234954      betaf(double, double) [125]
+                0.00    0.00   10308/23541521     MCMCEnv::getTreeFromID(unsigned long long) [79]
+                0.00    0.00    3436/53311       MCMCEnv::removeTree(unsigned long long) [141]
+                0.00    0.00    3436/53311       ClusterTree::removeChild(unsigned long) [165]
+-----------------------------------------------
+                0.00    0.00   49980/3703599     MCMCEnv::apSplit(std::pair<unsigned long, unsigned long long> const&, bool, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&, long, double, double, MCMCEnv const&) const [38]
+                0.01    0.00 3653619/3703599     MCMCEnv::writeTree(std::ostream&) const [90]
+[122]    0.0    0.01    0.00 3703599         ClusterTree::getChildID(unsigned long) const [122]
+-----------------------------------------------
+                0.00    0.00   36977/952484      std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true>::_Hashtable(std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true> const&) [142]
+                0.00    0.00  100033/952484      std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true>::_M_insert_bucket(std::pair<unsigned long long const, ClusterTree> const&, unsigned long, unsigned long) [140]
+                0.01    0.00  815474/952484      std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true>::_Hashtable(std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true> const&) [103]
+[123]    0.0    0.01    0.00  952484         std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true>::_M_allocate_node(std::pair<unsigned long long const, ClusterTree> const&) [123]
+                0.00    0.00  952484/1052517     ClusterTree::ClusterTree(ClusterTree const&) [157]
+-----------------------------------------------
+                0.01    0.00  307794/307794      MCMCEnv::sampleZ() [3]
+[124]    0.0    0.01    0.00  307794         void std::vector<unsigned long long, std::allocator<unsigned long long> >::_M_insert_aux<unsigned long long const&>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, unsigned long long const&&&) [124]
+                0.00    0.00  307794/307794      __gnu_cxx::new_allocator<unsigned long long>::allocate(unsigned long, void const*) [159]
+-----------------------------------------------
+                0.00    0.00    3937/234954      MCMCEnv::flagDeath(std::pair<unsigned long long, unsigned long long> const&, double&, double&, double&) [121]
+                0.00    0.00   66698/234954      MCMCEnv::flagBirth(std::pair<unsigned long, unsigned long long> const&, double&, double&, double&) [96]
+                0.00    0.00   66722/234954      MCMCEnv::apSplit(std::pair<unsigned long, unsigned long long> const&, bool, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&, long, double, double, MCMCEnv const&) const [38]
+                0.00    0.00   97597/234954      MCMCEnv::apMerge(std::pair<unsigned long long, unsigned long long> const&, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&, long, long, double, double, MCMCEnv const&) const [39]
+[125]    0.0    0.01    0.00  234954         betaf(double, double) [125]
+-----------------------------------------------
+                0.00    0.00   49988/199957      mcmc::BirthDeath_move(double&) [44]
+                0.01    0.00  149969/199957      mcmc::SplitMerge_move(double&) [29]
+[126]    0.0    0.01    0.00  199957         MCMCEnv::getSplitSet() const [126]
+-----------------------------------------------
+                0.00    0.00   49952/149950      MCMCEnv::getMergeSet() const [106]
+                0.01    0.00   99998/149950      MCMCEnv::getDeathSet() const [134]
+[127]    0.0    0.01    0.00  149950         std::vector<std::pair<unsigned long long, unsigned long long>, std::allocator<std::pair<unsigned long long, unsigned long long> > >::reserve(unsigned long) [127]
+-----------------------------------------------
+                0.01    0.00  100032/100032      MCMCEnv::createTree(unsigned long long, unsigned long) [119]
+[128]    0.0    0.01    0.00  100032         ClusterTree::ClusterTree(ClusterTree&, unsigned long long, unsigned long) [128]
+-----------------------------------------------
+                0.01    0.00       1/1           __do_global_ctors_aux [54]
+[129]    0.0    0.01    0.00       1         global constructors keyed to ClusterTree::numTimePoints [129]
+-----------------------------------------------
+                0.01    0.00       1/1           main [1]
+[130]    0.0    0.01    0.00       1         ClusterTree::setNumOfTimePoints(unsigned long) [130]
+-----------------------------------------------
+                                                 <spontaneous>
+[131]    0.0    0.01    0.00                 MCMCEnv::reData(long, bool, std::vector<bool, std::allocator<bool> > const&, std::ostream&) const [131]
+-----------------------------------------------
+                                                 <spontaneous>
+[132]    0.0    0.01    0.00                 unsigned long* std::vector<unsigned long, std::allocator<unsigned long> >::_M_allocate_and_copy<__gnu_cxx::__normal_iterator<unsigned long const*, std::vector<unsigned long, std::allocator<unsigned long> > > >(unsigned long, __gnu_cxx::__normal_iterator<unsigned long const*, std::vector<unsigned long, std::allocator<unsigned long> > >, __gnu_cxx::__normal_iterator<unsigned long const*, std::vector<unsigned long, std::allocator<unsigned long> > >) [132]
+-----------------------------------------------
+                                                 <spontaneous>
+[133]    0.0    0.01    0.00                 operator<<(std::ostream&, matrix const&) [133]
+-----------------------------------------------
+                0.00    0.01   99998/99998       mcmc::BirthDeath_move(double&) [44]
+[134]    0.0    0.00    0.01   99998         MCMCEnv::getDeathSet() const [134]
+                0.01    0.00   99998/149950      std::vector<std::pair<unsigned long long, unsigned long long>, std::allocator<std::pair<unsigned long long, unsigned long long> > >::reserve(unsigned long) [127]
+                0.00    0.00  268754/38784811     ClusterTree::getSampleNum() const [84]
+                0.00    0.00  457835/661369      ClusterTree::getNumOfChildren() const [158]
+                0.00    0.00     132/293         void std::vector<std::pair<unsigned long long, unsigned long long>, std::allocator<std::pair<unsigned long long, unsigned long long> > >::_M_insert_aux<std::pair<unsigned long long, unsigned long long> >(__gnu_cxx::__normal_iterator<std::pair<unsigned long long, unsigned long long>*, std::vector<std::pair<unsigned long long, unsigned long long>, std::allocator<std::pair<unsigned long long, unsigned long long> > > >, std::pair<unsigned long long, unsigned long long>&&) [167]
+-----------------------------------------------
+                                                 <spontaneous>
+[135]    0.0    0.01    0.00                 frame_dummy [135]
+-----------------------------------------------
+                0.01    0.00  400000/400000      MCMCEnv::sampleZ() [3]
+[136]    0.0    0.01    0.00  400000         ClusterFlags::rows() const [136]
+-----------------------------------------------
+                                                 <spontaneous>
+[137]    0.0    0.01    0.00                 ran_exp(double) [137]
+-----------------------------------------------
+                                                 <spontaneous>
+[138]    0.0    0.01    0.00                 ClusterFlags::ClusterFlags() [138]
+-----------------------------------------------
+                0.00    0.00  100000/100000      main [1]
+[139]    0.0    0.00    0.00  100000         MCMCEnv::treeSummary() const [139]
+                0.00    0.00  407613/38784811     ClusterTree::getSampleNum() const [84]
+-----------------------------------------------
+                0.00    0.00       1/100033      MCMCEnv::createTree() [150]
+                0.00    0.00  100032/100033      MCMCEnv::createTree(unsigned long long, unsigned long) [119]
+[140]    0.0    0.00    0.00  100033         std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true>::_M_insert_bucket(std::pair<unsigned long long const, ClusterTree> const&, unsigned long, unsigned long) [140]
+                0.00    0.00  100033/952484      std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true>::_M_allocate_node(std::pair<unsigned long long const, ClusterTree> const&) [123]
+-----------------------------------------------
+                0.00    0.00    3436/53311       MCMCEnv::flagDeath(std::pair<unsigned long long, unsigned long long> const&, double&, double&, double&) [121]
+                0.00    0.00   49875/53311       MCMCEnv::flagMerge(double&, double&, std::pair<unsigned long long, unsigned long long> const&) [99]
+[141]    0.0    0.00    0.00   53311         MCMCEnv::removeTree(unsigned long long) [141]
+                0.00    0.00   53311/23541521     MCMCEnv::getTreeFromID(unsigned long long) [79]
+                0.00    0.00   53311/38784811     ClusterTree::getSampleNum() const [84]
+                0.00    0.00   53311/1152550     ClusterTree::~ClusterTree() [155]
+-----------------------------------------------
+                0.00    0.00    8127/8127        MCMCEnv::operator=(MCMCEnv const&) [91]
+[142]    0.0    0.00    0.00    8127         std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true>::_Hashtable(std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true> const&) [142]
+                0.00    0.00   36977/952484      std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true>::_M_allocate_node(std::pair<unsigned long long const, ClusterTree> const&) [123]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[143]    0.0    0.00    0.00       1         MCMCEnv::initMCMCEnv(unsigned long, unsigned long, unsigned long, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<bool, std::allocator<bool> > const&, ClusterFlags const&, matrix const&) [143]
+                0.00    0.00       1/1           MCMCEnv::MCMCEnv(std::vector<bool, std::allocator<bool> > const&, ClusterFlags const&, matrix const&) [144]
+                0.00    0.00       2/4           std::_Rb_tree<unsigned long, std::pair<unsigned long const, unsigned long>, std::_Select1st<std::pair<unsigned long const, unsigned long> >, std::less<unsigned long>, std::allocator<std::pair<unsigned long const, unsigned long> > >::_M_erase(std::_Rb_tree_node<std::pair<unsigned long const, unsigned long> >*) [170]
+                0.00    0.00       2/2           unsigned long* std::__uninitialized_move_a<unsigned long*, unsigned long*, std::allocator<unsigned long> >(unsigned long*, unsigned long*, unsigned long*, std::allocator<unsigned long>&) [171]
+                0.00    0.00       1/1           __gnu_cxx::new_allocator<unsigned long>::allocate(unsigned long, void const*) [180]
+-----------------------------------------------
+                0.00    0.00       1/1           MCMCEnv::initMCMCEnv(unsigned long, unsigned long, unsigned long, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<bool, std::allocator<bool> > const&, ClusterFlags const&, matrix const&) [143]
+[144]    0.0    0.00    0.00       1         MCMCEnv::MCMCEnv(std::vector<bool, std::allocator<bool> > const&, ClusterFlags const&, matrix const&) [144]
+                0.00    0.00       1/99856       MCMCEnv::calcPChos(std::pair<unsigned long long, unsigned long long> const&, bool, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&) const [69]
+                0.00    0.00       1/1           MCMCEnv::createTree() [150]
+                0.00    0.00       1/1           ClusterTree::fillWeights(double) [175]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[145]    0.0    0.00    0.00       1         matrix::matrix(long, long, double const*) [145]
+                0.00    0.00      30/1815852030     std::vector<double, std::allocator<double> >::resize(unsigned long, double) [7]
+                0.00    0.00       1/4712477891     std::vector<dvector, std::allocator<dvector> >::vector(unsigned long, dvector const&, std::allocator<dvector> const&) [16]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[146]    0.0    0.00    0.00       1         initializeParameters(matrix const&) [146]
+                0.00    0.00       1/1           matrix::matrix_mean() const [147]
+                0.00    0.00       2/2           matrix::matrix(long, double, bool) [148]
+                0.00    0.00       2/74051312     matrix::matrix(long, long, double) [37]
+                0.00    0.00       1/1           MCMCEnv::initializeParameters(matrix const&, matrix const&, matrix const&, matrix const&, double, double, double, double, double, double, double) [149]
+                0.00    0.00       2/454396      matrix::operator*=(double) [120]
+                0.00    0.00       2/1251601972     matrix::operator=(matrix const&) [21]
+                0.00    0.00       5/5992644831     std::vector<dvector, std::allocator<dvector> >::~vector() [19]
+                0.00    0.00       5/4170589725     matrix::~matrix() [61]
+-----------------------------------------------
+                0.00    0.00       1/1           initializeParameters(matrix const&) [146]
+[147]    0.0    0.00    0.00       1         matrix::matrix_mean() const [147]
+                0.00    0.00      64/7741783318     matrix::operator()(long, long) [17]
+                0.00    0.00       1/2428698229     matrix::matrix(long, long, double) [10]
+-----------------------------------------------
+                0.00    0.00       2/2           initializeParameters(matrix const&) [146]
+[148]    0.0    0.00    0.00       2         matrix::matrix(long, double, bool) [148]
+                0.00    0.00       4/1815852030     std::vector<double, std::allocator<double> >::resize(unsigned long, double) [7]
+                0.00    0.00       2/4712477891     std::vector<dvector, std::allocator<dvector> >::vector(unsigned long, dvector const&, std::allocator<dvector> const&) [16]
+-----------------------------------------------
+                0.00    0.00       1/1           initializeParameters(matrix const&) [146]
+[149]    0.0    0.00    0.00       1         MCMCEnv::initializeParameters(matrix const&, matrix const&, matrix const&, matrix const&, double, double, double, double, double, double, double) [149]
+                0.00    0.00       4/1251601972     matrix::operator=(matrix const&) [21]
+-----------------------------------------------
+                0.00    0.00       1/1           MCMCEnv::MCMCEnv(std::vector<bool, std::allocator<bool> > const&, ClusterFlags const&, matrix const&) [144]
+[150]    0.0    0.00    0.00       1         MCMCEnv::createTree() [150]
+                0.00    0.00       1/23541521     MCMCEnv::getTreeFromID(unsigned long long) [79]
+                0.00    0.00       1/100033      std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true>::_M_insert_bucket(std::pair<unsigned long long const, ClusterTree> const&, unsigned long, unsigned long) [140]
+                0.00    0.00       2/1152550     ClusterTree::~ClusterTree() [155]
+                0.00    0.00       1/1           ClusterTree::ClusterTree(unsigned long long) [176]
+                0.00    0.00       1/1052517     ClusterTree::ClusterTree(ClusterTree const&) [157]
+-----------------------------------------------
+                0.00    0.00 36798458/36798458     MCMCEnv::reData(long, bool, std::vector<bool, std::allocator<bool> > const&) const [14]
+[154]    0.0    0.00    0.00 36798458         matrix::matrix(matrix const&) [154]
+-----------------------------------------------
+                0.00    0.00       2/1152550     MCMCEnv::createTree() [150]
+                0.00    0.00   36974/1152550     MCMCEnv::operator=(MCMCEnv const&) [91]
+                0.00    0.00   53311/1152550     MCMCEnv::removeTree(unsigned long long) [141]
+                0.00    0.00  200064/1152550     MCMCEnv::createTree(unsigned long long, unsigned long) [119]
+                0.00    0.00  862199/1152550     MCMCEnv::~MCMCEnv() [163]
+[155]    0.0    0.00    0.00 1152550         ClusterTree::~ClusterTree() [155]
+-----------------------------------------------
+                0.00    0.00   49986/1060071     MCMCEnv::flagBirth(std::pair<unsigned long, unsigned long long> const&, double&, double&, double&) [96]
+                0.00    0.00 1010085/1060071     MCMCEnv::sampleWeight() [85]
+[156]    0.0    0.00    0.00 1060071         ClusterTree::getSampleNum(unsigned long) const [156]
+-----------------------------------------------
+                0.00    0.00       1/1052517     MCMCEnv::createTree() [150]
+                0.00    0.00  100032/1052517     MCMCEnv::createTree(unsigned long long, unsigned long) [119]
+                0.00    0.00  952484/1052517     std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true>::_M_allocate_node(std::pair<unsigned long long const, ClusterTree> const&) [123]
+[157]    0.0    0.00    0.00 1052517         ClusterTree::ClusterTree(ClusterTree const&) [157]
+-----------------------------------------------
+                0.00    0.00  203534/661369      MCMCEnv::getMergeSet() const [106]
+                0.00    0.00  457835/661369      MCMCEnv::getDeathSet() const [134]
+[158]    0.0    0.00    0.00  661369         ClusterTree::getNumOfChildren() const [158]
+-----------------------------------------------
+                0.00    0.00  307794/307794      void std::vector<unsigned long long, std::allocator<unsigned long long> >::_M_insert_aux<unsigned long long const&>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, unsigned long long const&&&) [124]
+[159]    0.0    0.00    0.00  307794         __gnu_cxx::new_allocator<unsigned long long>::allocate(unsigned long, void const*) [159]
+-----------------------------------------------
+                0.00    0.00  307794/307794      MCMCEnv::sampleZ() [3]
+[160]    0.0    0.00    0.00  307794         void std::vector<double, std::allocator<double> >::_M_insert_aux<double>(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, double&&) [160]
+-----------------------------------------------
+                0.00    0.00   49875/253277      mcmc::SplitMerge_move(double&) [29]
+                0.00    0.00   49980/253277      MCMCEnv::apSplit(std::pair<unsigned long, unsigned long long> const&, bool, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&, long, double, double, MCMCEnv const&) const [38]
+                0.00    0.00   53422/253277      mcmc::BirthDeath_move(double&) [44]
+                0.00    0.00  100000/253277      MCMCEnv::sampleTao() [40]
+[161]    0.0    0.00    0.00  253277         f_fmin(double, double) [161]
+-----------------------------------------------
+                0.00    0.00       1/200003      main [1]
+                0.00    0.00  200002/200003      MCMCEnv::~MCMCEnv() [163]
+[162]    0.0    0.00    0.00  200003         ClusterFlags::~ClusterFlags() [162]
+-----------------------------------------------
+                0.00    0.00       2/200002      main [1]
+                0.00    0.00  100000/200002      mcmc::BirthDeath_move(double&) [44]
+                0.00    0.00  100000/200002      mcmc::SplitMerge_move(double&) [29]
+[163]    0.0    0.00    0.00  200002         MCMCEnv::~MCMCEnv() [163]
+                0.00    0.00  862199/1152550     ClusterTree::~ClusterTree() [155]
+                0.00    0.00  200002/200003      ClusterFlags::~ClusterFlags() [162]
+-----------------------------------------------
+                0.00    0.00  100032/100032      MCMCEnv::createTree(unsigned long long, unsigned long) [119]
+[164]    0.0    0.00    0.00  100032         ClusterTree::setChild(unsigned long long, unsigned long) [164]
+-----------------------------------------------
+                0.00    0.00    3436/53311       MCMCEnv::flagDeath(std::pair<unsigned long long, unsigned long long> const&, double&, double&, double&) [121]
+                0.00    0.00   49875/53311       MCMCEnv::flagMerge(double&, double&, std::pair<unsigned long long, unsigned long long> const&) [99]
+[165]    0.0    0.00    0.00   53311         ClusterTree::removeChild(unsigned long) [165]
+-----------------------------------------------
+                0.00    0.00   32508/32508       std::vector<std::vector<long, std::allocator<long> >, std::allocator<std::vector<long, std::allocator<long> > > >::operator=(std::vector<std::vector<long, std::allocator<long> >, std::allocator<std::vector<long, std::allocator<long> > > > const&) [93]
+[166]    0.0    0.00    0.00   32508         std::vector<long, std::allocator<long> >::operator=(std::vector<long, std::allocator<long> > const&) [166]
+-----------------------------------------------
+                0.00    0.00     132/293         MCMCEnv::getDeathSet() const [134]
+                0.00    0.00     161/293         MCMCEnv::getMergeSet() const [106]
+[167]    0.0    0.00    0.00     293         void std::vector<std::pair<unsigned long long, unsigned long long>, std::allocator<std::pair<unsigned long long, unsigned long long> > >::_M_insert_aux<std::pair<unsigned long long, unsigned long long> >(__gnu_cxx::__normal_iterator<std::pair<unsigned long long, unsigned long long>*, std::vector<std::pair<unsigned long long, unsigned long long>, std::allocator<std::pair<unsigned long long, unsigned long long> > > >, std::pair<unsigned long long, unsigned long long>&&) [167]
+-----------------------------------------------
+                0.00    0.00      30/30          main [1]
+[168]    0.0    0.00    0.00      30         ClusterFlags::setFlag(long, long, long) [168]
+-----------------------------------------------
+                0.00    0.00       4/4           ClusterFlags::ClusterFlags(long, std::vector<unsigned long, std::allocator<unsigned long> > const&) [177]
+[169]    0.0    0.00    0.00       4         std::vector<long, std::allocator<long> >::_M_fill_insert(__gnu_cxx::__normal_iterator<long*, std::vector<long, std::allocator<long> > >, unsigned long, long const&) [169]
+-----------------------------------------------
+                0.00    0.00       2/4           MCMCEnv::initMCMCEnv(unsigned long, unsigned long, unsigned long, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<bool, std::allocator<bool> > const&, ClusterFlags const&, matrix const&) [143]
+                0.00    0.00       2/4           std::map<unsigned long, unsigned long, std::less<unsigned long>, std::allocator<std::pair<unsigned long const, unsigned long> > >::~map() [306]
+[170]    0.0    0.00    0.00       4         std::_Rb_tree<unsigned long, std::pair<unsigned long const, unsigned long>, std::_Select1st<std::pair<unsigned long const, unsigned long> >, std::less<unsigned long>, std::allocator<std::pair<unsigned long const, unsigned long> > >::_M_erase(std::_Rb_tree_node<std::pair<unsigned long const, unsigned long> >*) [170]
+-----------------------------------------------
+                0.00    0.00       2/2           MCMCEnv::initMCMCEnv(unsigned long, unsigned long, unsigned long, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<bool, std::allocator<bool> > const&, ClusterFlags const&, matrix const&) [143]
+[171]    0.0    0.00    0.00       2         unsigned long* std::__uninitialized_move_a<unsigned long*, unsigned long*, std::allocator<unsigned long> >(unsigned long*, unsigned long*, unsigned long*, std::allocator<unsigned long>&) [171]
+-----------------------------------------------
+                0.00    0.00       1/1           __do_global_ctors_aux [54]
+[172]    0.0    0.00    0.00       1         global constructors keyed to initializeParameters(matrix const&) [172]
+-----------------------------------------------
+                0.00    0.00       1/1           __do_global_ctors_aux [54]
+[173]    0.0    0.00    0.00       1         global constructors keyed to ClusterFlags::ClusterFlags() [173]
+-----------------------------------------------
+                0.00    0.00       1/1           __do_global_ctors_aux [54]
+[174]    0.0    0.00    0.00       1         global constructors keyed to mcmc::mcmc(MCMCEnv const&) [174]
+-----------------------------------------------
+                0.00    0.00       1/1           MCMCEnv::MCMCEnv(std::vector<bool, std::allocator<bool> > const&, ClusterFlags const&, matrix const&) [144]
+[175]    0.0    0.00    0.00       1         ClusterTree::fillWeights(double) [175]
+                0.00    0.00       1/1           std::vector<double, std::allocator<double> >::_M_fill_assign(unsigned long, double const&) [181]
+-----------------------------------------------
+                0.00    0.00       1/1           MCMCEnv::createTree() [150]
+[176]    0.0    0.00    0.00       1         ClusterTree::ClusterTree(unsigned long long) [176]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[177]    0.0    0.00    0.00       1         ClusterFlags::ClusterFlags(long, std::vector<unsigned long, std::allocator<unsigned long> > const&) [177]
+                0.00    0.00       4/4           std::vector<long, std::allocator<long> >::_M_fill_insert(__gnu_cxx::__normal_iterator<long*, std::vector<long, std::allocator<long> > >, unsigned long, long const&) [169]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[178]    0.0    0.00    0.00       1         mcmc::mcmc(MCMCEnv const&) [178]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[179]    0.0    0.00    0.00       1         mcmc::~mcmc() [179]
+-----------------------------------------------
+                0.00    0.00       1/1           MCMCEnv::initMCMCEnv(unsigned long, unsigned long, unsigned long, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<bool, std::allocator<bool> > const&, ClusterFlags const&, matrix const&) [143]
+[180]    0.0    0.00    0.00       1         __gnu_cxx::new_allocator<unsigned long>::allocate(unsigned long, void const*) [180]
+-----------------------------------------------
+                0.00    0.00       1/1           ClusterTree::fillWeights(double) [175]
+[181]    0.0    0.00    0.00       1         std::vector<double, std::allocator<double> >::_M_fill_assign(unsigned long, double const&) [181]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+
+Index by function name
+
+ [172] global constructors keyed to initializeParameters(matrix const&) [143] MCMCEnv::initMCMCEnv(unsigned long, unsigned long, unsigned long, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<bool, std::allocator<bool> > const&, ClusterFlags const&, matrix const&) [139] MCMCEnv::treeSummary() const
+ [116] global constructors keyed to ran2(long*) [85] MCMCEnv::sampleWeight() [73] MCMCEnv::writeStatus(std::ostream&) const
+ [129] global constructors keyed to ClusterTree::numTimePoints [79] MCMCEnv::getTreeFromID(unsigned long long) [89] MCMCEnv::getTreeFromID(unsigned long long) const
+ [173] global constructors keyed to ClusterFlags::ClusterFlags() [149] MCMCEnv::initializeParameters(matrix const&, matrix const&, matrix const&, matrix const&, double, double, double, double, double, double, double) [2] MCMCEnv::calcLogDensity(std::vector<bool, std::allocator<bool> > const&) const
+ [174] global constructors keyed to mcmc::mcmc(MCMCEnv const&) [3] MCMCEnv::sampleZ() [70] MCMCEnv::calcClusterDist(unsigned long, ClusterTree const&, long, ClusterTree const&) const
+  [55] global constructors keyed to matrix::matrix() [96] MCMCEnv::flagBirth(std::pair<unsigned long, unsigned long long> const&, double&, double&, double&) [71] MCMCEnv::calcClusterMean(unsigned long, ClusterTree const&) const
+ [114] global constructors keyed to MCMCEnv::NumOfTP [121] MCMCEnv::flagDeath(std::pair<unsigned long long, unsigned long long> const&, double&, double&, double&) [14] MCMCEnv::reData(long, bool, std::vector<bool, std::allocator<bool> > const&) const
+  [72] ran_num_log(std::vector<double, std::allocator<double> > const&, std::vector<unsigned long long, std::allocator<unsigned long long> > const&) [99] MCMCEnv::flagMerge(double&, double&, std::pair<unsigned long long, unsigned long long> const&) [131] MCMCEnv::reData(long, bool, std::vector<bool, std::allocator<bool> > const&, std::ostream&) const
+ [146] initializeParameters(matrix const&) [95] MCMCEnv::flagSplit(double&, bool&, double&, std::pair<unsigned long, unsigned long long> const&) [46] MCMCEnv::apBirth(std::pair<unsigned long, unsigned long long> const&, long, double, double, double, MCMCEnv const&) const
+  [80] ran2(long*)            [40] MCMCEnv::sampleTao()   [77] MCMCEnv::apDeath(std::pair<unsigned long long, unsigned long long> const&, long, double, double, double, MCMCEnv const&) const
+ [113] betad(double, double, double) [102] MCMCEnv::MCMCEnv(MCMCEnv const&) [39] MCMCEnv::apMerge(std::pair<unsigned long long, unsigned long long> const&, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&, long, long, double, double, MCMCEnv const&) const
+ [125] betaf(double, double) [144] MCMCEnv::MCMCEnv(std::vector<bool, std::allocator<bool> > const&, ClusterFlags const&, matrix const&) [38] MCMCEnv::apSplit(std::pair<unsigned long, unsigned long long> const&, bool, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&, long, double, double, MCMCEnv const&) const
+ [161] f_fmin(double, double) [163] MCMCEnv::~MCMCEnv()    [4] MCMCEnv::datacov(long, bool, std::vector<bool, std::allocator<bool> > const&) const
+  [43] gammaf(double)         [91] MCMCEnv::operator=(MCMCEnv const&) [69] MCMCEnv::calcPChos(std::pair<unsigned long long, unsigned long long> const&, bool, std::vector<std::pair<unsigned long, unsigned long long>, std::allocator<std::pair<unsigned long, unsigned long long> > > const&) const
+ [137] ran_exp(double)        [66] matrixl::datasum()     [90] MCMCEnv::writeTree(std::ostream&) const
+  [98] ran_beta(double, double) [25] matrixl::setValue(long, long, long) [31] std::vector<dvector, std::allocator<dvector> >::at(unsigned long) const
+  [94] ran_unif(double, double) [27] matrixl::~matrixl()  [57] std::vector<long, std::allocator<long> >::_M_check_len(unsigned long, char const*) const
+  [86] ran_gamma(double, double) [59] matrixl::operator=(matrixl const&) [67] std::_Vector_base<long, std::allocator<long> >::_M_allocate(unsigned long)
+  [88] ClusterTree::fillWeights(std::vector<double, std::allocator<double> >) [180] __gnu_cxx::new_allocator<unsigned long>::allocate(unsigned long, void const*) [123] std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true>::_M_allocate_node(std::pair<unsigned long long const, ClusterTree> const&)
+ [175] ClusterTree::fillWeights(double) [159] __gnu_cxx::new_allocator<unsigned long long>::allocate(unsigned long, void const*) [140] std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true>::_M_insert_bucket(std::pair<unsigned long long const, ClusterTree> const&, unsigned long, unsigned long)
+ [165] ClusterTree::removeChild(unsigned long) [122] ClusterTree::getChildID(unsigned long) const [142] std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true>::_Hashtable(std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true> const&)
+ [130] ClusterTree::setNumOfTimePoints(unsigned long) [75] ClusterTree::calcKcWeight() const [103] std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true>::_Hashtable(std::tr1::_Hashtable<unsigned long long, std::pair<unsigned long long const, ClusterTree>, std::allocator<std::pair<unsigned long long const, ClusterTree> >, std::_Select1st<std::pair<unsigned long long const, ClusterTree> >, std::equal_to<unsigned long long>, std::tr1::hash<unsigned long long>, std::tr1::__detail::_Mod_range_hashing, std::tr1::__detail::_Default_ranged_hash, std::tr1::__detail::_Prime_rehash_policy, false, false, true> const&)
+ [164] ClusterTree::setChild(unsigned long long, unsigned long) [156] ClusterTree::getSampleNum(unsigned long) const [18] std::vector<dvector, std::allocator<dvector> >::at(unsigned long)
+ [157] ClusterTree::ClusterTree(ClusterTree const&) [84] ClusterTree::getSampleNum() const [24] std::vector<dvector, std::allocator<dvector> >::vector(std::vector<dvector, std::allocator<dvector> > const&)
+ [128] ClusterTree::ClusterTree(ClusterTree&, unsigned long long, unsigned long) [110] ClusterTree::writeWeights(std::ostream&) const [16] std::vector<dvector, std::allocator<dvector> >::vector(unsigned long, dvector const&, std::allocator<dvector> const&)
+ [176] ClusterTree::ClusterTree(unsigned long long) [158] ClusterTree::getNumOfChildren() const [19] std::vector<dvector, std::allocator<dvector> >::~vector()
+ [155] ClusterTree::~ClusterTree() [81] ClusterFlags::nonemptynum() const [23] std::vector<dvector, std::allocator<dvector> >::operator=(std::vector<dvector, std::allocator<dvector> > const&)
+ [168] ClusterFlags::setFlag(long, long, long) [26] ClusterFlags::onezerocluster(long) const [101] std::vector<lvector, std::allocator<lvector> >::vector(unsigned long, lvector const&, std::allocator<lvector> const&)
+ [177] ClusterFlags::ClusterFlags(long, std::vector<unsigned long, std::allocator<unsigned long> > const&) [104] ClusterFlags::getTimeSampleByCluster(long) const [63] std::vector<lvector, std::allocator<lvector> >::operator=(std::vector<lvector, std::allocator<lvector> > const&)
+ [138] ClusterFlags::ClusterFlags() [108] ClusterFlags::cols(int) const [51] void std::vector<std::vector<long, std::allocator<long> >, std::allocator<std::vector<long, std::allocator<long> > > >::_M_insert_aux<std::vector<long, std::allocator<long> > const&>(__gnu_cxx::__normal_iterator<std::vector<long, std::allocator<long> >*, std::vector<std::vector<long, std::allocator<long> >, std::allocator<std::vector<long, std::allocator<long> > > > >, std::vector<long, std::allocator<long> > const&&&)
+  [76] ClusterFlags::ClusterFlags(long, std::vector<unsigned long, std::allocator<unsigned long> > const&) [136] ClusterFlags::rows() const [68] std::vector<std::vector<long, std::allocator<long> >, std::allocator<std::vector<long, std::allocator<long> > > >::~vector()
+ [162] ClusterFlags::~ClusterFlags() [47] ClusterFlags::flagnum(long) const [93] std::vector<std::vector<long, std::allocator<long> >, std::allocator<std::vector<long, std::allocator<long> > > >::operator=(std::vector<std::vector<long, std::allocator<long> >, std::allocator<std::vector<long, std::allocator<long> > > > const&)
+  [92] ClusterFlags::operator=(ClusterFlags const&) [52] ClusterFlags::getFlag(long, long) const [167] void std::vector<std::pair<unsigned long long, unsigned long long>, std::allocator<std::pair<unsigned long long, unsigned long long> > >::_M_insert_aux<std::pair<unsigned long long, unsigned long long> >(__gnu_cxx::__normal_iterator<std::pair<unsigned long long, unsigned long long>*, std::vector<std::pair<unsigned long long, unsigned long long>, std::allocator<std::pair<unsigned long long, unsigned long long> > > >, std::pair<unsigned long long, unsigned long long>&&)
+ [107] ClusterFlags::operator()(long, long) [111] ClusterFlags::tflagnum(long, long) const [127] std::vector<std::pair<unsigned long long, unsigned long long>, std::allocator<std::pair<unsigned long long, unsigned long long> > >::reserve(unsigned long)
+  [44] mcmc::BirthDeath_move(double&) [109] ClusterFlags::operator()(long, long) const [160] void std::vector<double, std::allocator<double> >::_M_insert_aux<double>(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, double&&)
+  [29] mcmc::SplitMerge_move(double&) [28] matrix::determinant() const [181] std::vector<double, std::allocator<double> >::_M_fill_assign(unsigned long, double const&)
+ [178] mcmc::mcmc(MCMCEnv const&) [147] matrix::matrix_mean() const [9] std::vector<double, std::allocator<double> >::_M_fill_insert(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, unsigned long, double const&)
+ [179] mcmc::~mcmc()          [22] matrix::assertEqualDim(matrix const&, bool) const [7] std::vector<double, std::allocator<double> >::resize(unsigned long, double)
+  [13] matrix::datasum()      [50] matrix::getEarliestTime(long) const [34] std::vector<double, std::allocator<double> >::operator=(std::vector<double, std::allocator<double> > const&)
+  [36] matrix::getBlock(long, long, long, long) [65] matrix::dim() const [83] void std::vector<long, std::allocator<long> >::_M_insert_aux<long const&>(__gnu_cxx::__normal_iterator<long*, std::vector<long, std::allocator<long> > >, long const&&&)
+  [30] matrix::setValue(long, long, double) [15] matrix::cols() const [35] void std::vector<long, std::allocator<long> >::_M_insert_aux<long>(__gnu_cxx::__normal_iterator<long*, std::vector<long, std::allocator<long> > >, long&&)
+ [154] matrix::matrix(matrix const&) [60] matrix::rows() const [169] std::vector<long, std::allocator<long> >::_M_fill_insert(__gnu_cxx::__normal_iterator<long*, std::vector<long, std::allocator<long> > >, unsigned long, long const&)
+ [148] matrix::matrix(long, double, bool) [33] matrix::rbind(matrix const&) const [53] std::vector<long, std::allocator<long> >::at(unsigned long)
+ [145] matrix::matrix(long, long, double const*) [62] matrix::getCol(long) const [58] std::vector<long, std::allocator<long> >::resize(unsigned long, long)
+  [11] matrix::matrix(long, long, dvector const&) [8] matrix::getRow(long) const [97] std::vector<long, std::allocator<long> >::~vector()
+  [37] matrix::matrix(long, long, double) [112] matrix::getData() const [166] std::vector<long, std::allocator<long> >::operator=(std::vector<long, std::allocator<long> > const&)
+  [74] matrix::matrix()       [45] matrix::getValue(long, long) const [132] unsigned long* std::vector<unsigned long, std::allocator<unsigned long> >::_M_allocate_and_copy<__gnu_cxx::__normal_iterator<unsigned long const*, std::vector<unsigned long, std::allocator<unsigned long> > > >(unsigned long, __gnu_cxx::__normal_iterator<unsigned long const*, std::vector<unsigned long, std::allocator<unsigned long> > >, __gnu_cxx::__normal_iterator<unsigned long const*, std::vector<unsigned long, std::allocator<unsigned long> > >)
+  [78] matrix::matrix(long, long, double const**) [12] matrix::transpose() const [124] void std::vector<unsigned long long, std::allocator<unsigned long long> >::_M_insert_aux<unsigned long long const&>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, unsigned long long const&&&)
+  [10] matrix::matrix(long, long, double) [105] matrix::operator==(matrix const&) const [115] std::_Rb_tree<double, std::pair<double const, unsigned long long>, std::_Select1st<std::pair<double const, unsigned long long> >, std::less<double>, std::allocator<std::pair<double const, unsigned long long> > >::_M_erase(std::_Rb_tree_node<std::pair<double const, unsigned long long> >*)
+ [100] matrix::matrix()       [20] matrix::operator-(matrix const&) const [170] std::_Rb_tree<unsigned long, std::pair<unsigned long const, unsigned long>, std::_Select1st<std::pair<unsigned long const, unsigned long> >, std::less<unsigned long>, std::allocator<std::pair<unsigned long const, unsigned long> > >::_M_erase(std::_Rb_tree_node<std::pair<unsigned long const, unsigned long> >*)
+  [61] matrix::~matrix()     [117] matrix::operator-(double) const [49] dvector* std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<dvector const*, std::vector<dvector, std::allocator<dvector> > >, dvector*, dvector>(__gnu_cxx::__normal_iterator<dvector const*, std::vector<dvector, std::allocator<dvector> > >, __gnu_cxx::__normal_iterator<dvector const*, std::vector<dvector, std::allocator<dvector> > >, dvector*, std::allocator<dvector>&)
+  [21] matrix::operator=(matrix const&) [5] matrix::operator*(matrix const&) const [64] lvector* std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<lvector const*, std::vector<lvector, std::allocator<lvector> > >, lvector*, lvector>(__gnu_cxx::__normal_iterator<lvector const*, std::vector<lvector, std::allocator<lvector> > >, __gnu_cxx::__normal_iterator<lvector const*, std::vector<lvector, std::allocator<lvector> > >, lvector*, std::allocator<lvector>&)
+  [17] matrix::operator()(long, long) [41] matrix::operator*(double) const [56] double* std::__uninitialized_move_a<double*, double*, std::allocator<double> >(double*, double*, double*, std::allocator<double>&)
+  [32] matrix::operator-=(matrix const&) [42] matrix::operator+(matrix const&) const [48] long* std::__uninitialized_move_a<long*, long*, std::allocator<long> >(long*, long*, long*, std::allocator<long>&)
+ [120] matrix::operator*=(double) [82] matrix::operator+(double) const [171] unsigned long* std::__uninitialized_move_a<unsigned long*, unsigned long*, std::allocator<unsigned long> >(unsigned long*, unsigned long*, unsigned long*, std::allocator<unsigned long>&)
+   [6] matrix::operator+=(matrix const&) [118] MCMCEnv::IndexToCoor(unsigned long) const [87] operator<<(std::ostream&, ClusterFlags const&)
+ [150] MCMCEnv::createTree() [134] MCMCEnv::getDeathSet() const [133] operator<<(std::ostream&, matrix const&)
+ [119] MCMCEnv::createTree(unsigned long long, unsigned long) [106] MCMCEnv::getMergeSet() const [135] frame_dummy
+ [141] MCMCEnv::removeTree(unsigned long long) [126] MCMCEnv::getSplitSet() const [1] main
