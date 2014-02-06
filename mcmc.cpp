@@ -2268,7 +2268,7 @@ bool mcmc::SplitMerge_move_test(double &probability, bool isForest) {
 			// Note that splitnum is the splitted cluster vector before splitting.
 			//newEnv.flagSplitTest(P_alloc, NULLset, f_ui, chos_splitset);
 			// Splitset after split move, it can be used to compute G*,G1*,G0* in P_chos.
-		n_mergeset = newEnv.getMergeSet();
+		n_mergeset = newEnv.getMergeSet(isForest, isForest);
 		if(n_mergeset.size()){
 			chos_mergeset = n_mergeset[ran_iunif(0, n_splitset.size() - 1)];
 			//cout<<"Merge set chosen"<<endl;
