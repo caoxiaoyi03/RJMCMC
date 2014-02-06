@@ -322,12 +322,12 @@ void MCMCEnv::removeTree(unsigned long long TreeID) {
 //	return MapClusterTrees.find(root_ID)->second;
 //}
 
-MCMCEnv::TreeSet MCMCEnv::getSplitSet() const {
+MCMCEnv::TreeSet MCMCEnv::getSplitSet(bool hasForest, bool forestOnly) const {
 
 	MCMCEnv::TreeSet result;
 	result.reserve(NumOfTP * 2);
 
-	if(buildForest) {
+	if(buildForest && hasForest) {
 	// get the new tree split set
 		for(RootIDContainer::const_iterator itor = rootIDs.begin();
 			itor != rootIDs.end(); itor++) {
@@ -338,19 +338,21 @@ MCMCEnv::TreeSet MCMCEnv::getSplitSet() const {
 	}
 	
 	//cout << "Generating Split Set ... " << endl;
-	for(TreeContainer::const_iterator itor = MapClusterTrees.begin();
-		itor != MapClusterTrees.end(); itor++) {
-			//cout << "ID: " << itor->second.ID << " Parent ID: " 
-			//	<< itor->second.parentID 
-			//	<< " Born time: " << itor->second.born_time << endl;
-			for(unsigned long t = itor->second.born_time + 1; t < NumOfTP; t++) {
-				// the born time of its child must be at least 1 more than this
-				//cout << "Samples(" << t << "): " << itor->second.samples[t] << endl;
-				if(itor->second.samples[t] && !itor->second.children[t]) {
-					// has sample and no child at time t
-					result.push_back(MCMCEnv::TreeSet::value_type(t, itor->first));
+	if(!forestOnly) {
+		for(TreeContainer::const_iterator itor = MapClusterTrees.begin();
+			itor != MapClusterTrees.end(); itor++) {
+				//cout << "ID: " << itor->second.ID << " Parent ID: " 
+				//	<< itor->second.parentID 
+				//	<< " Born time: " << itor->second.born_time << endl;
+				for(unsigned long t = itor->second.born_time + 1; t < NumOfTP; t++) {
+					// the born time of its child must be at least 1 more than this
+					//cout << "Samples(" << t << "): " << itor->second.samples[t] << endl;
+					if(itor->second.samples[t] && !itor->second.children[t]) {
+						// has sample and no child at time t
+						result.push_back(MCMCEnv::TreeSet::value_type(t, itor->first));
+					}
 				}
-			}
+		}
 	}
 	return result;
 	//long i,j;
@@ -383,7 +385,7 @@ MCMCEnv::TreeSet MCMCEnv::getSplitSet() const {
 
 }
 
-MCMCEnv::TreeMergeSet MCMCEnv::getMergeSet() const {
+MCMCEnv::TreeMergeSet MCMCEnv::getMergeSet(bool hasForest, bool forestOnly) const {
 	//std::vector<long> flags = newz.getTtoTindicator(n_timepoints);
 	//std::vector<long> freeflags;
 	//std::vector<long> nonfreeflags;
@@ -398,7 +400,7 @@ MCMCEnv::TreeMergeSet MCMCEnv::getMergeSet() const {
 	TreeMergeSet result;
 	result.reserve(NumOfTP * 2);
 
-	if(buildForest) {
+	if(buildForest && hasForest) {
 		for(RootIDContainer::const_iterator itor = rootIDs.begin();
 			itor != rootIDs.end(); itor++) {
 				if(!getTreeFromID(itor->first).getNumOfChildren()) {
@@ -415,35 +417,37 @@ MCMCEnv::TreeMergeSet MCMCEnv::getMergeSet() const {
 		}
 	}
 
-	for(TreeContainer::const_iterator itor = MapClusterTrees.begin();
-		itor != MapClusterTrees.end(); itor++) {
-			// first check if the tree doesn't have any children
-			if(!itor->second.getNumOfChildren()) {
-				// this tree does not have any children
-				childID = itor->second.ID;
-				for(TreeContainer::const_iterator itor_parent = MapClusterTrees.begin();
-					itor_parent != MapClusterTrees.end(); itor_parent++) {
-						if(itor_parent->second.ID != itor->second.ID 
-							&& itor_parent->second.born_time < itor->second.born_time) {
-								// this parent is OK
-								result.push_back(TreeMergeSet::value_type(itor_parent->second.ID,
-									itor->second.ID));
-						}
+	if(!forestOnly) {
+		for(TreeContainer::const_iterator itor = MapClusterTrees.begin();
+			itor != MapClusterTrees.end(); itor++) {
+				// first check if the tree doesn't have any children
+				if(!itor->second.getNumOfChildren()) {
+					// this tree does not have any children
+					childID = itor->second.ID;
+					for(TreeContainer::const_iterator itor_parent = MapClusterTrees.begin();
+						itor_parent != MapClusterTrees.end(); itor_parent++) {
+							if(itor_parent->second.ID != itor->second.ID 
+								&& itor_parent->second.born_time < itor->second.born_time) {
+									// this parent is OK
+									result.push_back(TreeMergeSet::value_type(itor_parent->second.ID,
+										itor->second.ID));
+							}
+					}
 				}
-			}
+		}
 	}
 
 	return result;
 
 }
 
-MCMCEnv::TreeMergeSet MCMCEnv::getDeathSet() const {
+MCMCEnv::TreeMergeSet MCMCEnv::getDeathSet(bool hasForest, bool forestOnly) const {
 	TreeMergeSet result;
 	result.reserve(NumOfTP * 2);
 	
 	unsigned long long childID, parentID;
 
-	if(buildForest) {
+	if(buildForest && hasForest) {
 		for(RootIDContainer::const_iterator itor = rootIDs.begin();
 			itor != rootIDs.end(); itor++) {
 				if(!getTreeFromID(itor->first).getNumOfChildren() && !getTreeFromID(itor->first).getSampleNum()) {
@@ -460,25 +464,27 @@ MCMCEnv::TreeMergeSet MCMCEnv::getDeathSet() const {
 		}
 	}
 
-	for(TreeContainer::const_iterator itor = MapClusterTrees.begin();
-		itor != MapClusterTrees.end(); itor++) {
-			// first check if the tree doesn't have any children
-			if(!itor->second.getNumOfChildren()) {
-				// this tree does not have any children
-				if(!itor->second.getSampleNum()) {
-					// this tree is empty
-					childID = itor->second.ID;
-					for(TreeContainer::const_iterator itor_parent = MapClusterTrees.begin();
-						itor_parent != MapClusterTrees.end(); itor_parent++) {
-							if(itor_parent->second.ID != itor->second.ID 
-								&& itor_parent->second.born_time < itor->second.born_time) {
-									// this parent is OK
-									result.push_back(TreeMergeSet::value_type(itor_parent->second.ID,
-										itor->second.ID));
-							}
+	if(!forestOnly) {
+		for(TreeContainer::const_iterator itor = MapClusterTrees.begin();
+			itor != MapClusterTrees.end(); itor++) {
+				// first check if the tree doesn't have any children
+				if(!itor->second.getNumOfChildren()) {
+					// this tree does not have any children
+					if(!itor->second.getSampleNum()) {
+						// this tree is empty
+						childID = itor->second.ID;
+						for(TreeContainer::const_iterator itor_parent = MapClusterTrees.begin();
+							itor_parent != MapClusterTrees.end(); itor_parent++) {
+								if(itor_parent->second.ID != itor->second.ID 
+									&& itor_parent->second.born_time < itor->second.born_time) {
+										// this parent is OK
+										result.push_back(TreeMergeSet::value_type(itor_parent->second.ID,
+											itor->second.ID));
+								}
+						}
 					}
 				}
-			}
+		}
 	}
 
 	return result;

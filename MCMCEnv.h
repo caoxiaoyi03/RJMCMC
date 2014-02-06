@@ -130,13 +130,16 @@ public:
 	void removeTree(unsigned long long TreeID);
 
 	// get the set that can be split, merged, born or killed
-	TreeSet getSplitSet() const;
-	TreeMergeSet getMergeSet() const;
-	TreeMergeSet getDeathSet() const;
+	TreeSet getSplitSet(bool hasForest, bool forestOnly) const;
+	//TreeSet getTreeSplitSet() const;		// this is to get the new tree (separate process)
+	TreeMergeSet getMergeSet(bool hasForest, bool forestOnly) const;
+	//TreeMergeSet getTreeMergeSet() const;
+	TreeMergeSet getDeathSet(bool hasForest, bool forestOnly) const;
 
 	// the return value is the new tree / branch ID
 	unsigned long long flagSplit(double &P_alloc, bool &NULLset, double &f_ui,  
 		const TreeSet::value_type &split_pair);
+
 	void flagSplitTest(double &P_alloc, bool &NULLset, double &f_ui,  
 		const TreeSet::value_type &split_pair);
 	//void flagRootSplit(double &P_alloc, bool &NULLset, double &f_ui, unsigned long long FromID);
