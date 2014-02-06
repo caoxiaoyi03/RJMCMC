@@ -174,13 +174,13 @@ public:
 	//     const matrix &mu0, const matrix &mu1, const matrix &sigma0, 
 	//     const matrix &sigma1, const double beta0, const double beta1,const double deltar, const double alpha,
 	//	 bool &move, double &probability);
-	bool SplitMerge_move(double &probability);
-	bool SplitMerge_move_test(double &probability);
+	bool SplitMerge_move(double &probability, bool isForest = false);
+	bool SplitMerge_move_test(double &probability, bool isForest = false);
 	//void BirthDeath_move(double bk, ClusterFlags &newz, matrix &newweight, matrixl &newtree, matrixl &newchome,
 	//     const matrix &mu0, const matrix &mu1, const matrix &sigma0, 
 	//     const matrix &sigma1, const double beta0, const double beta1,const double deltar, const double alpha,
 	//	 bool &move, double &probability);
-	bool BirthDeath_move(double &probability);
+	bool BirthDeath_move(double &probability, bool isForest = false);
 	//void TailBirthDeath_move(const double ranc, ClusterFlags &newz, matrix &newweight, matrixl &newtree, matrixl &newchome,
 	//     const matrix &mu0, const matrix &mu1, const matrix &sigma0, 
 	//     const matrix &sigma1, const double beta0, const double beta1,const double deltar, const double alpha);

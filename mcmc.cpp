@@ -2179,7 +2179,7 @@ mcmc::~mcmc()
 //	const matrix &mu0, const matrix &mu1, const matrix &sigma0, 
 //	const matrix &sigma1, const double beta0, const double beta1,const double deltar, const double alpha, 
 //	bool &move, double &probability){
-bool mcmc::SplitMerge_move(double &probability) {
+bool mcmc::SplitMerge_move(double &probability, bool isForest) {
 	bool move_chosen;
 	MCMCEnv::TreeSet n_splitset;
 	MCMCEnv::TreeMergeSet n_mergeset;
@@ -2193,7 +2193,7 @@ bool mcmc::SplitMerge_move(double &probability) {
 	move_chosen = ran_ber(MCMCEnv::bk);
 
 	if(move_chosen){
-		n_splitset = newEnv.getSplitSet();
+		n_splitset = newEnv.getSplitSet(isForest, isForest);
 		unsigned long long childID;
 
 		//std::cout<<"Split chosen " << n_splitset.size() <<std::endl;
@@ -2204,7 +2204,7 @@ bool mcmc::SplitMerge_move(double &probability) {
 			// Note that splitnum is the splitted cluster vector before splitting.
 			childID = newEnv.flagSplit(P_alloc, NULLset, f_ui, chos_splitset);
 			// Splitset after split move, it can be used to compute G*,G1*,G0* in P_chos.
-			n_splitset = newEnv.getSplitSet();
+			n_splitset = newEnv.getSplitSet(isForest, isForest);
 			//P_chos = this->f_pchos(chos_splitset(0,0),chos_splitset(0,1),chos_splitset(0,1)+1,NULLset,n_splitset,
 			//                       newz,newweight);
 			probability = newEnv.apSplit(chos_splitset, NULLset, n_splitset, 
@@ -2222,7 +2222,7 @@ bool mcmc::SplitMerge_move(double &probability) {
 		}
 	} else {// Merge move is chosen
 		//std::cout<<"Merge chosen"<<std::endl;
-		n_mergeset = newEnv.getMergeSet();
+		n_mergeset = newEnv.getMergeSet(isForest, isForest);
 		if(n_mergeset.size()){
 			chos_mergeset = n_mergeset[ran_iunif(0, n_splitset.size() - 1)];
 			//cout<<"Merge set chosen"<<endl;
@@ -2230,7 +2230,7 @@ bool mcmc::SplitMerge_move(double &probability) {
 			newEnv.flagMerge(P_alloc, f_ui, chos_mergeset);
 			//cout<<"Merge flag complete"<<endl;
 			// cluster vectors can be used to do split move after merge.
-			n_splitset = newEnv.getSplitSet();
+			n_splitset = newEnv.getSplitSet(isForest, isForest);
 			probability = newEnv.apMerge(chos_mergeset, n_splitset, 
 				n_mergeset.size(), n_splitset.size(), P_alloc, f_ui, env);
 			//cout<<"APmerge complete, prob = " << probability <<endl;
@@ -2249,7 +2249,7 @@ bool mcmc::SplitMerge_move(double &probability) {
 	return move_chosen;
 }
 
-bool mcmc::SplitMerge_move_test(double &probability) {
+bool mcmc::SplitMerge_move_test(double &probability, bool isForest) {
 	bool move_chosen;
 	MCMCEnv::TreeSet n_splitset;
 	MCMCEnv::TreeMergeSet n_mergeset;
@@ -2276,7 +2276,7 @@ bool mcmc::SplitMerge_move_test(double &probability) {
 			newEnv.flagMerge(P_alloc, f_ui, chos_mergeset);
 			//cout<<"Merge flag complete"<<endl;
 			// cluster vectors can be used to do split move after merge.
-			n_splitset = newEnv.getSplitSet();
+			n_splitset = newEnv.getSplitSet(isForest, isForest);
 			probability = newEnv.apMerge(chos_mergeset, n_splitset, 
 				n_mergeset.size(), n_splitset.size(), P_alloc, f_ui, env);
 			//cout<<"APmerge complete, prob = " << probability <<endl;
@@ -2321,7 +2321,7 @@ bool mcmc::SplitMerge_move_test(double &probability) {
 	return move_chosen;
 }
 
-bool mcmc::BirthDeath_move(double &probability) {
+bool mcmc::BirthDeath_move(double &probability, bool isForest) {
 
 	bool move_chosen;
 	MCMCEnv::TreeSet n_splitset;
@@ -2338,14 +2338,14 @@ bool mcmc::BirthDeath_move(double &probability) {
 	if(move_chosen) { 
 		// Empty cluster birth.
 		//std::cout<<"BirthBirthBirth"<<std::endl;
-		n_splitset = newEnv.getSplitSet();
+		n_splitset = newEnv.getSplitSet(isForest, isForest);
 		// Justify there is indeed cluster set that can be used to do birth move.
 		if(n_splitset.size()){
 			chos_splitset = n_splitset[ran_iunif(0, n_splitset.size() - 1)];
 			//cout<<"Birth set chosen"<<endl;
 			newEnv.flagBirth(chos_splitset, weightratio, jacobi, f_wstar);
 			// Number of empty sets after birth				
-			splitnumafterbirth = newEnv.getDeathSet().size();
+			splitnumafterbirth = newEnv.getDeathSet(isForest, isForest).size();
 			probability = newEnv.apBirth(chos_splitset, splitnumafterbirth,
 				weightratio, jacobi, f_wstar, env);
 			//std::cout<<probability<<std::endl;
@@ -2361,7 +2361,7 @@ bool mcmc::BirthDeath_move(double &probability) {
 	} else {
 		// Empty cluster death.
 		//std::cout<<"DeathDeathDeath"<<std::endl;
-		n_deathset = newEnv.getDeathSet();
+		n_deathset = newEnv.getDeathSet(isForest, isForest);
 		emptynumbeforedeath = n_deathset.size();
 		if(emptynumbeforedeath){
 			chos_deathset = n_deathset[ran_iunif(0, n_splitset.size() - 1)];
