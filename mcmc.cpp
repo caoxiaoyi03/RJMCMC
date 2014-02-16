@@ -2364,7 +2364,7 @@ bool mcmc::BirthDeath_move(double &probability, bool isForest) {
 		n_deathset = newEnv.getDeathSet(isForest, isForest);
 		emptynumbeforedeath = n_deathset.size();
 		if(emptynumbeforedeath){
-			chos_deathset = n_deathset[ran_iunif(0, n_splitset.size() - 1)];
+			chos_deathset = n_deathset[ran_iunif(0, n_deathset.size() - 1)];
 			//cout<<"Death set chosen"<<endl;
 			newEnv.flagDeath(chos_deathset,jacobi, weightratio, f_wstar);
 			//cout<<"Flagdeath complete"<<endl;
