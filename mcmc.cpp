@@ -2193,11 +2193,11 @@ bool mcmc::SplitMerge_move(double &probability, bool isForest) {
 	move_chosen = ran_ber(MCMCEnv::bk);
 
 	if(move_chosen){
-		std::cout<<"Split " << std::endl;
+		//std::cout<<"Split " << std::endl;
 		n_splitset = newEnv.getSplitSet(isForest, isForest);
 		unsigned long long childID;
 
-		std::cout<<"Split chosen " << n_splitset.size() <<std::endl;
+		//std::cout<<"Split chosen " << n_splitset.size() <<std::endl;
 		// Justify there is indeed cluster set that can be used to do split move.
 		if(n_splitset.size()){
 			chos_splitset = n_splitset[ran_iunif(0, n_splitset.size() - 1)];
@@ -2207,13 +2207,13 @@ bool mcmc::SplitMerge_move(double &probability, bool isForest) {
 			n_splitset = newEnv.getSplitSet(isForest, isForest);
 			//P_chos = this->f_pchos(chos_splitset(0,0),chos_splitset(0,1),chos_splitset(0,1)+1,NULLset,n_splitset,
 			//                       newz,newweight);
-			std::cout<<"Split set chosen"<<std::endl;
+			//std::cout<<"Split set chosen"<<std::endl;
 			probability = newEnv.apSplit(chos_splitset, NULLset, n_splitset, 
 				n_splitset.size(), P_alloc, f_ui, env, childID);
 			if(ran_unif(0.0,1.0) < probability) {
 				env = newEnv;
 			}
-			std::cout<<"split"<<std::endl;
+			//std::cout<<"split"<<std::endl;
 			/*
 			std::cout<<ranmite<<std::endl;
 			std::cout<<z<<std::endl;
@@ -2223,9 +2223,9 @@ bool mcmc::SplitMerge_move(double &probability, bool isForest) {
 		}
 	} else {// Merge move is chosen
 		//std::cout<<"Merge chosen"<<std::endl;
-		std::cout<<"Merge " << std::endl;
+		//std::cout<<"Merge " << std::endl;
 		n_mergeset = newEnv.getMergeSet(isForest, isForest);
-		std::cout<<"Merge chosen " << n_mergeset.size() <<std::endl;
+		//std::cout<<"Merge chosen " << n_mergeset.size() <<std::endl;
 		if(n_mergeset.size()){
 			chos_mergeset = n_mergeset[ran_iunif(0, n_splitset.size() - 1)];
 			//cout<<"Merge set chosen"<<endl;
