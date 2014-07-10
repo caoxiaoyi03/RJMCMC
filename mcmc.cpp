@@ -2201,7 +2201,7 @@ bool mcmc::SplitMerge_move(double &probability, bool isForest) {
 		// Justify there is indeed cluster set that can be used to do split move.
 		if(n_splitset.size()){
 			chos_splitset = n_splitset[ran_iunif(0, n_splitset.size() - 1)];
-			//std::cout<<"Split set chosen"<<std::endl;
+			std::cout<<"Split set chosen"<<std::endl;
 			// Note that splitnum is the splitted cluster vector before splitting.
 			childID = newEnv.flagSplit(P_alloc, NULLset, f_ui, chos_splitset);
 			// Splitset after split move, it can be used to compute G*,G1*,G0* in P_chos.
@@ -2213,7 +2213,7 @@ bool mcmc::SplitMerge_move(double &probability, bool isForest) {
 			if(ran_unif(0.0,1.0) < probability) {
 				env = newEnv;
 			}
-			//std::cout<<"split"<<std::endl;
+			std::cout<<"split"<<std::endl;
 			/*
 			std::cout<<ranmite<<std::endl;
 			std::cout<<z<<std::endl;
