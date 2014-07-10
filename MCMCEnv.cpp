@@ -895,44 +895,46 @@ double MCMCEnv::calcLogDensityNonFlagPart(const TaoSet &newTao, long taonum) con
 double MCMCEnv::calcLogDensityFlagPart(const TaoSet &newTao, long taonum) const {
 	double gammaprod = 0.0, den = 0.0, K1 = 0.0;
 	long cclusternum;
-	for(TreeContainer::const_iterator itor = MapClusterTrees.begin();
-		itor != MapClusterTrees.end(); itor++) {
-			cclusternum = itor->second.getSampleNum();
-			if(cclusternum){
-				for(long j=1; j<=taonum; j++) {
-					gammaprod += gammaln(0.5 * (cclusternum + deltar + taonum - j))
-						- gammaln(0.5 * (deltar + taonum - j));
+	if(taonum) {
+		for(TreeContainer::const_iterator itor = MapClusterTrees.begin();
+			itor != MapClusterTrees.end(); itor++) {
+				cclusternum = itor->second.getSampleNum();
+				if(cclusternum){
+					for(long j=1; j<=taonum; j++) {
+						gammaprod += gammaln(0.5 * (cclusternum + deltar + taonum - j))
+							- gammaln(0.5 * (deltar + taonum - j));
+					}
+
+					K1 = log(itor->second.calcKcWeight()) 
+						+ log(beta1 * cclusternum + 1) * (-(double) taonum / 2.0) + gammaprod;
+					//std::cout<<"K1"<<std::endl;
+					//std::cout<<K1<<std::endl;
+					gammaprod = 0.0;
+
+					matrix mid(datacov(itor->first, true, newTao));
+					//cerr << "datacov1" << endl;
+
+					//std::cout<<"S1mid:"<<std::endl;
+					//std::cout<<mid<<std::endl;
+					matrix S1(mid.getBlock(1, taonum, 1, taonum));
+					S1 += mid.getBlock(taonum + 1, 2 * taonum, 1, taonum) 
+						* (cclusternum / (beta1 * cclusternum + 1));
+					for(unsigned long i = 0; i < taonum; i++) {
+						S1(i, i) += constSigma1;
+					}
+					/* std::cout<<"S1:"<<std::endl;
+					std::cout<<S1<<std::endl;*/
+
+					try {
+						den += K1 + log(fabs(constSigma1)) * (double) taonum * (0.5 * (deltar+taonum-1))
+							+ log(fabs(S1.determinant())) * (-0.5*(cclusternum+deltar+taonum-1));
+					} catch(std::logic_error &e) {
+						cerr << "Sigma 1:" << endl << sigma1 << "S1" << endl << S1;
+						throw e;
+					}
 				}
 
-				K1 = log(itor->second.calcKcWeight()) 
-					+ log(beta1 * cclusternum + 1) * (-(double) taonum / 2.0) + gammaprod;
-				//std::cout<<"K1"<<std::endl;
-				//std::cout<<K1<<std::endl;
-				gammaprod = 0.0;
-
-				matrix mid(datacov(itor->first, true, newTao));
-				//cerr << "datacov1" << endl;
-
-				//std::cout<<"S1mid:"<<std::endl;
-				//std::cout<<mid<<std::endl;
-				matrix S1(mid.getBlock(1, taonum, 1, taonum));
-				S1 += mid.getBlock(taonum + 1, 2 * taonum, 1, taonum) 
-					* (cclusternum / (beta1 * cclusternum + 1));
-				for(unsigned long i = 0; i < taonum; i++) {
-					S1(i, i) += constSigma1;
-				}
-				/* std::cout<<"S1:"<<std::endl;
-				std::cout<<S1<<std::endl;*/
-
-				try {
-					den += K1 + log(fabs(constSigma1)) * (double) taonum * (0.5 * (deltar+taonum-1))
-						+ log(fabs(S1.determinant())) * (-0.5*(cclusternum+deltar+taonum-1));
-				} catch(std::logic_error &e) {
-					cerr << "Sigma 1:" << endl << sigma1 << "S1" << endl << S1;
-					throw e;
-				}
-			}
-
+		}
 	}
 	return den;
 }
