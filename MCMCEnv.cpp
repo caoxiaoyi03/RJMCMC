@@ -800,8 +800,8 @@ double MCMCEnv::calcLogDensity() const {
 	if(!UpToDate) {
 		long taonum = taoCount(Tao);
 		LogDensityValue = 0.0;
-		LogDensityValueNonFlag = 0.0;
-		LogDensityValueFlag = 0.0;
+		//LogDensityValueNonFlag = 0.0;
+		//LogDensityValueFlag = 0.0;
 		/*std::cout<<"taonum"<<std::endl;
 		std::cout<<taonum<<std::endl;*/
 		if((taonum > 0) && (taonum < NumOfGenes)){
@@ -1382,6 +1382,7 @@ void MCMCEnv::sampleTao() {
 	}
 
 	double acceptedp = f_fmin(1.0, exp(calcLogDensity(newTao) - calcLogDensity()));
+	std::cout << "tao p: " << acceptedp << std::endl;
 
 	if(ran_ber(acceptedp)){
 		Tao = newTao;
