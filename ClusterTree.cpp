@@ -80,7 +80,7 @@ bool ClusterTree::tailBirth() {
 
 unsigned long ClusterTree::getEarliestDeathableTime() const {
 	unsigned long current_deathable;
-	for(unsigned long current_deathable = death_time; current_deathable > born_time; index--) {
+	for(unsigned long current_deathable = death_time; current_deathable > born_time; current_deathable--) {
 		if(children.at(current_deathable - 1) || samples.at(current_deathable - 1)) {
 			// there is child or sample, cannot call death
 			break;
@@ -96,7 +96,7 @@ ClusterTree &ClusterTree::setChild(ClusterTree &child, unsigned long time) {
 		throw(std::logic_error("Child already born at this time!"));
 	}
 	if(death_time <= time) {
-		throw(std::logic_error("Child cannot be born to a dead tree!");
+		throw(std::logic_error("Child cannot be born to a dead tree!"));
 	}
 	children.at(time) = child.ID;
 	numOfChildren++;
@@ -108,7 +108,7 @@ unsigned long long ClusterTree::setChild(unsigned long long childID, unsigned lo
 		throw(std::logic_error("Child already born at this time!"));
 	}
 	if(death_time <= time) {
-		throw(std::logic_error("Child cannot be born to a dead tree!");
+		throw(std::logic_error("Child cannot be born to a dead tree!"));
 	}
 	children.at(time) = childID;
 	numOfChildren++;
@@ -117,7 +117,7 @@ unsigned long long ClusterTree::setChild(unsigned long long childID, unsigned lo
 
 unsigned long long ClusterTree::removeChild(unsigned long time) {
 	if(death_time <= time) {
-		throw(std::logic_error("Tree is already dead at that time!");
+		throw(std::logic_error("Tree is already dead at that time!"));
 	}
 	unsigned long long oldChildID = children.at(time);
 	if(!oldChildID) {
