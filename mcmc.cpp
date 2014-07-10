@@ -2193,6 +2193,7 @@ bool mcmc::SplitMerge_move(double &probability, bool isForest) {
 	move_chosen = ran_ber(MCMCEnv::bk);
 
 	if(move_chosen){
+		std::cout<<"Split " << std::endl;
 		n_splitset = newEnv.getSplitSet(isForest, isForest);
 		unsigned long long childID;
 
@@ -2222,7 +2223,9 @@ bool mcmc::SplitMerge_move(double &probability, bool isForest) {
 		}
 	} else {// Merge move is chosen
 		//std::cout<<"Merge chosen"<<std::endl;
+		std::cout<<"Merge " << std::endl;
 		n_mergeset = newEnv.getMergeSet(isForest, isForest);
+		std::cout<<"Merge chosen " << n_mergeset.size() <<std::endl;
 		if(n_mergeset.size()){
 			chos_mergeset = n_mergeset[ran_iunif(0, n_splitset.size() - 1)];
 			//cout<<"Merge set chosen"<<endl;
