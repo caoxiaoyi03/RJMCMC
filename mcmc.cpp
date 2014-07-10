@@ -2196,7 +2196,7 @@ bool mcmc::SplitMerge_move(double &probability, bool isForest) {
 		n_splitset = newEnv.getSplitSet(isForest, isForest);
 		unsigned long long childID;
 
-		//std::cout<<"Split chosen " << n_splitset.size() <<std::endl;
+		std::cout<<"Split chosen " << n_splitset.size() <<std::endl;
 		// Justify there is indeed cluster set that can be used to do split move.
 		if(n_splitset.size()){
 			chos_splitset = n_splitset[ran_iunif(0, n_splitset.size() - 1)];
