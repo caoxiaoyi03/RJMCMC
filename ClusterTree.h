@@ -8,19 +8,19 @@
 
 class ClusterTree;
 
-// Notice that ClusterTree is a component of MCMCEnv (hence its construction is private)
 
+// Notice that ClusterTree is a component of MCMCEnv (hence its construction is private)
 class ClusterTree
 {
-	typedef std::vector<unsigned long long> ChildContainer;
 	// note that the index (unsigned long) is the time point for the child to be born
 	// can be NULL if no child is present
+	typedef std::vector<unsigned long long> ChildContainer;
 
-	typedef std::vector<double> WeightContainer;
 	// index is the time point, value is the weights;
+	typedef std::vector<double> WeightContainer;
 
-	typedef std::vector<unsigned long> NumOfSampleContainer;
 	// index is the time point again
+	typedef std::vector<unsigned long> NumOfSampleContainer;
 
 	//static unsigned long long ID_max;
 	static unsigned long numTimePoints;
@@ -32,21 +32,37 @@ class ClusterTree
 
 	unsigned long numOfChildren;
 
+	// the first time point this tree is born (appears)
+	// therefore, only the root node has a born time of 0, others should be at least 1
+	unsigned long born_time;
+
+	// the time that this tree is dead by that time
+	// must be greater than born_time
+	// after this time, there will be no child or any items in this tree
+	unsigned long death_time;
+
 public:
 	//static TreeContainer MapClusterTree;
+
 	ClusterTree(const ClusterTree &old);
 
 	unsigned long long ID;
 	unsigned long legacy_ID;		// used to ensure the tree term is the same as legacy
 
-	unsigned long born_time;
-	// the first time point this tree is born (appears)
-	// therefore, only the root node has a born time of 0, others should be at least 1
-
 	unsigned long long parentID;
 	ChildContainer children;
 	WeightContainer weights;
 	NumOfSampleContainer samples;
+
+	unsigned long getBornTime() const { return born_time; }
+	unsigned long getDeathTime() const { return death_time; }
+
+	// get the earliest time that is "deathable" (no child, no samples)
+	unsigned long getEarliestDeathableTime() const;
+
+	bool setDeathTime(unsigned long time);
+	// this is actually implemented by setDeathTime();
+	bool tailBirth();
 
 	static bool setNumOfTimePoints(unsigned long num);
 	static unsigned long getNumOfTimePoints();
@@ -64,8 +80,9 @@ public:
 	unsigned long long removeChild(ClusterTree &child);
 
 	void fillWeights(double value);
-	void fillWeights(WeightContainer values);
 	// this is a warpped weight container (if values is shorter than weights)
+	void fillWeights(WeightContainer values);
+
 	std::ostream &writeWeights(std::ostream &os) const;
 
 	//double getWeight(unsigned long time);

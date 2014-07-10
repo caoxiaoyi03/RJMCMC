@@ -2382,73 +2382,73 @@ bool mcmc::BirthDeath_move(double &probability, bool isForest) {
 	return move_chosen;
 }
 
+
+
+
+// Note that 'TailBirthDeath_move' is not a step for model selection or tree jumping, because
+// the number of parameters is not changed.
+//void mcmc::TailBirthDeath_move(double &probability, bool isForest) {
+//
+//	bool move_chosen;
+//	MCMCEnv::TreeSet n_splitset;
+//	MCMCEnv::TreeMergeSet n_deathset;
+//	MCMCEnv::TreeSet::value_type chos_splitset;
+//	MCMCEnv::TreeMergeSet::value_type chos_deathset;
+//	MCMCEnv newEnv(env);
+//	double APtailbirth,APtaildeath;
+//
+//	double ranmite;
 //
 //
+//	move_chosen = ran_ber(ranc);
+//	if(move_chosen){ 
+//		// Tail birth.
+//		n_tailbirthset = this->f_tailbirthset(newz,newweight,newtree);
 //
-//// Notet that 'TailBirthDeath_move' is not a step for model selection or tree jumping, because
-//// the number of parameters is not changed.
-//void mcmc::TailBirthDeath_move(const double ranc, ClusterFlags &newz, matrix &newweight, matrixl &newtree,
-//	matrixl &newchome,
-//	const matrix &mu0, const matrix &mu1, const matrix &sigma0, 
-//	const matrix &sigma1, const double beta0, const double beta1,const double deltar, const double alpha){
-//
-//		double move_chosen; 
-//		matrixl n_tailbirthset, chos_tailbirthset;
-//		matrixl n_taildeathset, chos_taildeathset;
-//		double APtailbirth,APtaildeath;
-//
-//		double ranmite;
-//
-//
-//		move_chosen = ran_ber(ranc);
-//		if(move_chosen){ 
-//			// Tail birth.
-//			n_tailbirthset = this->f_tailbirthset(newz,newweight,newtree);
-//
-//			if(n_tailbirthset.rows()!=0){
-//				chos_tailbirthset = n_tailbirthset.ran_getRow();
-//				this->tail_birth(chos_tailbirthset(0,0),chos_tailbirthset(0,1),
-//					newz,newweight,alpha);
-//				APtailbirth = this->AP_tailbirth(newz,newweight,
-//					mu1,mu0,sigma0,sigma1,beta0,beta1,deltar,alpha);
-//				ranmite = ran_unif(0.0,1.0);
-//				if(ranmite < APtailbirth){
-//					z = newz;
-//					weight = newweight;
-//					tree = newtree;
-//					clusterhome = newchome;
-//				}else{
-//				    newz = z;
-//					newweight = weight;
-//					newtree = tree;
-//					newchome = clusterhome;
-//				}
+//		if(n_tailbirthset.rows()!=0){
+//			chos_tailbirthset = n_tailbirthset.ran_getRow();
+//			this->tail_birth(chos_tailbirthset(0,0),chos_tailbirthset(0,1),
+//				newz,newweight,alpha);
+//			APtailbirth = this->AP_tailbirth(newz,newweight,
+//				mu1,mu0,sigma0,sigma1,beta0,beta1,deltar,alpha);
+//			ranmite = ran_unif(0.0,1.0);
+//			if(ranmite < APtailbirth){
+//				z = newz;
+//				weight = newweight;
+//				tree = newtree;
+//				clusterhome = newchome;
+//			}else{
+//				newz = z;
+//				newweight = weight;
+//				newtree = tree;
+//				newchome = clusterhome;
 //			}
-//
-//		}else{
-//			// Tail death.
-//			n_taildeathset = this->f_taildeathset(newz,newweight,newtree);
-//			if(n_taildeathset.rows()!=0){
-//				chos_taildeathset = n_taildeathset.ran_getRow();
-//				this->tail_death(chos_taildeathset(0,0),chos_taildeathset(0,1),chos_taildeathset(0,2),
-//					newz,newweight,alpha);
-//				APtaildeath = this->AP_taildeath(newz,newweight,mu1,mu0,sigma0,sigma1,beta0,beta1,deltar,alpha);
-//				ranmite = ran_unif(0.0,1.0);
-//				if(ranmite < APtaildeath){
-//					z = newz;
-//					weight = newweight;
-//					tree = newtree;
-//					clusterhome = newchome;
-//				}else{
-//				    newz = z;
-//					newweight = weight;
-//					newtree = tree;
-//					newchome = clusterhome;
-//				}
-//			}
-//
-//
 //		}
+//
+//	} else {
+//		// Tail death.
+//		n_taildeathset = this->f_taildeathset(newz,newweight,newtree);
+//		if(n_taildeathset.rows()!=0){
+//			chos_taildeathset = n_taildeathset.ran_getRow();
+//			this->tail_death(chos_taildeathset(0,0),chos_taildeathset(0,1),chos_taildeathset(0,2),
+//				newz,newweight,alpha);
+//			APtaildeath = this->AP_taildeath(newz,newweight,mu1,mu0,sigma0,sigma1,beta0,beta1,deltar,alpha);
+//			ranmite = ran_unif(0.0,1.0);
+//			if(ranmite < APtaildeath){
+//				z = newz;
+//				weight = newweight;
+//				tree = newtree;
+//				clusterhome = newchome;
+//			}else{
+//				newz = z;
+//				newweight = weight;
+//				newtree = tree;
+//				newchome = clusterhome;
+//			}
+//		}
+//
+//
+//	}
 //}
 
 
