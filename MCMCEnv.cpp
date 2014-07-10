@@ -37,9 +37,10 @@ MCMCEnv::SortedULContainer MCMCEnv::TPStartIndex,
 using namespace std;
 
 // matrix calculation
-// In this function, cluster inicator z is assumbed to be reflaged using 'reflag' function.
+// In this function, cluster indicator z is assumbed to be reflaged using 'reflag' function.
 // tao_NULL = 1, delete tao=0, otherwise delete tao=1.
 // the return matrix is the shrinked version of the data matrix
+// taoIndices: the indices for tao == 1
 matrix MCMCEnv::reData(unsigned long long ID, bool tao_NULL, const TaoSet &newTao, vector<unsigned long> &taoIndices) const {
 			// the indices of genes that will go to the result matrix
 	unsigned long index = 0;
@@ -303,7 +304,7 @@ void MCMCEnv::removeTree(unsigned long long TreeID) {
 		throw(std::logic_error("Tree has data points, cannot be removed."));
 	}
 	// check whether the tree is a root
-	if(!getTreeFromID(TreeID).born_time) {
+	if(!getTreeFromID(TreeID).getBornTime()) {
 		// is a root
 		if(rootIDs.size() <= 1) {
 			throw(std::logic_error("Last tree here, cannot be removed."));
@@ -343,8 +344,8 @@ MCMCEnv::TreeSet MCMCEnv::getSplitSet(bool hasForest, bool forestOnly) const {
 			itor != MapClusterTrees.end(); itor++) {
 				//cout << "ID: " << itor->second.ID << " Parent ID: " 
 				//	<< itor->second.parentID 
-				//	<< " Born time: " << itor->second.born_time << endl;
-				for(unsigned long t = itor->second.born_time + 1; t < NumOfTP; t++) {
+				//	<< " Born time: " << itor->second.getBornTime() << endl;
+				for(unsigned long t = itor->second.getBornTime() + 1; t < NumOfTP; t++) {
 					// the born time of its child must be at least 1 more than this
 					//cout << "Samples(" << t << "): " << itor->second.samples[t] << endl;
 					if(itor->second.samples[t] && !itor->second.children[t]) {
@@ -427,7 +428,7 @@ MCMCEnv::TreeMergeSet MCMCEnv::getMergeSet(bool hasForest, bool forestOnly) cons
 					for(TreeContainer::const_iterator itor_parent = MapClusterTrees.begin();
 						itor_parent != MapClusterTrees.end(); itor_parent++) {
 							if(itor_parent->second.ID != itor->second.ID 
-								&& itor_parent->second.born_time < itor->second.born_time) {
+								&& itor_parent->second.getBornTime() < itor->second.getBornTime()) {
 									// this parent is OK
 									result.push_back(TreeMergeSet::value_type(itor_parent->second.ID,
 										itor->second.ID));
@@ -476,7 +477,7 @@ MCMCEnv::TreeMergeSet MCMCEnv::getDeathSet(bool hasForest, bool forestOnly) cons
 						for(TreeContainer::const_iterator itor_parent = MapClusterTrees.begin();
 							itor_parent != MapClusterTrees.end(); itor_parent++) {
 								if(itor_parent->second.ID != itor->second.ID 
-									&& itor_parent->second.born_time < itor->second.born_time) {
+									&& itor_parent->second.getBornTime() < itor->second.getBornTime()) {
 										// this parent is OK
 										result.push_back(TreeMergeSet::value_type(itor_parent->second.ID,
 											itor->second.ID));
@@ -628,7 +629,7 @@ void MCMCEnv::flagMerge(double &P_alloc, double &f_ui, const TreeMergeSet::value
 	ClusterTree &parent = getTreeFromID(merge_pair.first),
 		&child = getTreeFromID(merge_pair.second);
 
-	unsigned long time = child.born_time;
+	unsigned long time = child.getBornTime();
 
 	for(unsigned long t = time; t < NumOfTP; t++){
 			
@@ -651,7 +652,7 @@ void MCMCEnv::flagMerge(double &P_alloc, double &f_ui, const TreeMergeSet::value
 		parent.samples[t] += child.samples[t];
 		child.samples[t] = 0;
 	}
-	if(child.born_time > 0) {
+	if(child.getBornTime() > 0) {
 		// not a root
 		getTreeFromID(child.parentID).removeChild(time);
 	}
@@ -746,7 +747,7 @@ void MCMCEnv::flagDeath(const TreeMergeSet::value_type &merge_pair,
 		ClusterTree &parent = getTreeFromID(merge_pair.first),
 			&child = getTreeFromID(merge_pair.second);
 
-		unsigned long time = child.born_time;
+		unsigned long time = child.getBornTime();
 		//// Mother
 		//leftflag = clusterindex1;
 		//// Son
@@ -771,7 +772,7 @@ void MCMCEnv::flagDeath(const TreeMergeSet::value_type &merge_pair,
 			// cluster indicator reloaded.
 		}
 
-		if(child.born_time){
+		if(child.getBornTime()){
 			getTreeFromID(child.parentID).removeChild(time);
 		}
 		// remove child from its original parent
@@ -983,7 +984,7 @@ double MCMCEnv::calcPChos(const TreeMergeSet::value_type &parentChildPair, const
 	const TreeSet &SplitSet) const {
 		const ClusterTree &parent = getTreeFromID(parentChildPair.first),
 			&child = getTreeFromID(parentChildPair.second);
-		unsigned long time = getTreeFromID(parentChildPair.second).born_time;
+		unsigned long time = getTreeFromID(parentChildPair.second).getBornTime();
 		long G_star = getClusterNumber();
 		long G1_star = getNonEmptyClusterNumber();
 		long G0_star = G_star - G1_star;
@@ -1151,7 +1152,7 @@ double MCMCEnv::apMerge(const TreeMergeSet::value_type &mergePair, const TreeSet
 		const ClusterTree &oldparent = oldenv.getTreeFromID(mergePair.first), 
 			&oldchild = oldenv.getTreeFromID(mergePair.second),
 			&newparent = getTreeFromID(mergePair.first);
-		unsigned long time = oldchild.born_time;
+		unsigned long time = oldchild.getBornTime();
 
 		if((!mergesetsrows) || (!splitnumaftermerge)){
 			return 0.0;
@@ -1295,7 +1296,7 @@ unsigned long MCMCEnv::getClusterNumber(unsigned long time) const {
 	unsigned long count = 0;
 	for(TreeContainer::const_iterator itor = MapClusterTrees.begin();
 		itor != MapClusterTrees.end(); itor++) {
-			if(itor->second.born_time <= time) {
+			if(itor->second.getBornTime() <= time) {
 				count++;
 			}
 	}
@@ -1328,7 +1329,7 @@ void MCMCEnv::sampleWeight() {
 		for(TreeContainer::iterator itor = MapClusterTrees.begin();
 			itor != MapClusterTrees.end(); itor++) {
 				
-				if(itor->second.born_time <= t) {
+				if(itor->second.getBornTime() <= t) {
 					itor->second.weights[t] = ran_gamma(alpha 
 						+ itor->second.getSampleNum(t), shape);
 					//cerr << '[' << itor->second.ID << ',' << t << ']' 
@@ -1344,7 +1345,7 @@ void MCMCEnv::sampleWeight() {
 		// normalize all weights
 		for(TreeContainer::iterator itor = MapClusterTrees.begin();
 			itor != MapClusterTrees.end(); itor++) {
-				if(itor->second.born_time <= t) {
+				if(itor->second.getBornTime() <= t) {
 					if(wnum > SMALLNUM) {
 						itor->second.weights[t] = itor->second.weights[t] / wnum;
 					} else {
@@ -1468,7 +1469,7 @@ double MCMCEnv::treeSummary() const {
 	for(TreeContainer::const_iterator itor = MapClusterTrees.begin();
 		itor != MapClusterTrees.end(); itor++) {
 			if(itor->second.getSampleNum()) {
-				value += pow(4, (double) (NumOfTP - 1 - itor->second.born_time));
+				value += pow(4, (double) (NumOfTP - 1 - itor->second.getBornTime()));
 			}
 	}
 	return value;
@@ -1486,9 +1487,9 @@ ostream &MCMCEnv::writeTree(ostream &os) const {
 					const ClusterTree &currTree = getTreeFromID(IdToShow.front());
 					IdToShow.pop_front();
 					for(unsigned long t = 0; t < NumOfTP; t++) {
-						if(t < currTree.born_time) {
+						if(t < currTree.getBornTime()) {
 							os << "   " << setfill(' ') << setw(TREE_ID_SIZE + 2) << ' ';
-						} else if(t == currTree.born_time) {
+						} else if(t == currTree.getBornTime()) {
 							os << "   [" << setfill(' ') << setw(TREE_ID_SIZE) << currTree.ID << "]";
 						} else {
 							if(currTree.getChildID(t)) {
