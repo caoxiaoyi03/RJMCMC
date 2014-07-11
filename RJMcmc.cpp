@@ -387,7 +387,8 @@ int main(int argc, char* argv[])
 		n_mcmc.env.sampleWeight();
 		n_mcmc.env.sampleZ();
 		if(!(j % 10)) {
-			cout<<"\rSTEP: "<<j+1<<' ' << n_mcmc.env.getClusterNumber() << ' '
+			cout<< "\rSTEP: " << j + 1 << ' ' << n_mcmc.env.taoCount() << ' '
+				<< n_mcmc.env.getClusterNumber() << ' '
 				<< n_mcmc.env.treeSummary() << flush;
 		}
 		outfile<<"STEP: "<<j+1<<std::endl;
