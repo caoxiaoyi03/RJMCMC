@@ -50,7 +50,7 @@ void initializeParameters(long NumOfGenes, long n_time, const matrix &Data, doub
 void getInputsFromFile(istream &is, long &n_time, long &n_gene, long &n_num,
 	vector<unsigned long> &n_Nt, matrix &datamat, double &k1, double &k0,
 	vector<pair<unsigned long, unsigned long> > &weightToMon, bool &bForest, bool &bInitTao, 
-	double &beta0, double &beta1, double &deltar, double &alpha,
+	bool &bSampleTao, double &beta0, double &beta1, double &deltar, double &alpha,
 	double &shape, double &bk, double &ranc) {
 		if(!is) {
 			throw(logic_error("Cannot open file!"));
@@ -142,6 +142,10 @@ void getInputsFromFile(istream &is, long &n_time, long &n_gene, long &n_num,
 				is >> varName >> ws;
 				bInitTao = (((*varName.begin()) == 'T' || (*varName.begin()) == 't' 
 					|| (*varName.begin()) == '1'));
+			} else if (varName == "VARIABLE_SELECTION") {
+				is >> varName >> ws;
+				bInitTao = (((*varName.begin()) == 'T' || (*varName.begin()) == 't' 
+					|| (*varName.begin()) == '1'));
 			} else if (varName == "BETA0") {
 				is >> beta0 >> ws;
 			} else if (varName == "BETA1") {
@@ -179,7 +183,7 @@ int main(int argc, char* argv[])
 	vector <unsigned long> n_Nt;
 	// Genes relating to clustering(1) and not relating to clustering(0).
 	matrix n_Data;
-	bool bForest = false, bInitTao = true;
+	bool bForest = false, bInitTao = true, bSampleTao = true;
 	double k0, k1;
 	if(argc < 2) {
 		cerr << "Usage:" << endl << "./rjmcmc <data file name> [number of iterations]" << endl;
@@ -204,7 +208,8 @@ int main(int argc, char* argv[])
 	vector<pair<unsigned long, unsigned long> > weightToMon;
 	
 	getInputsFromFile(fin, n_time, n_gene, n_num, n_Nt, n_Data, k1, k0, weightToMon, bForest, bInitTao,
-			beta0, beta1, deltar, alpha, shape, bk, ranc);
+			bSampleTao, beta0, beta1, deltar, alpha, shape, bk, ranc);
+	bInitTao = bInitTao || (!bSampleTao);		// doesn't make sense if no variable selection and all Tao = 0
 	fin.close();
 	cout << "done." << endl;
 	vector <bool> n_tao(n_gene, bInitTao);
@@ -383,7 +388,9 @@ int main(int argc, char* argv[])
 
 	for(j=0; j<iterations; j++){
 
-		n_mcmc.env.sampleTao();
+		if(bSampleTao) {
+			n_mcmc.env.sampleTao();
+		}
 		n_mcmc.env.sampleWeight();
 		n_mcmc.env.sampleZ();
 		if(!(j % 10)) {
