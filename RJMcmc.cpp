@@ -144,7 +144,7 @@ void getInputsFromFile(istream &is, long &n_time, long &n_gene, long &n_num,
 					|| (*varName.begin()) == '1'));
 			} else if (varName == "VARIABLE_SELECTION") {
 				is >> varName >> ws;
-				bInitTao = (((*varName.begin()) == 'T' || (*varName.begin()) == 't' 
+				bSampleTao = (((*varName.begin()) == 'T' || (*varName.begin()) == 't' 
 					|| (*varName.begin()) == '1'));
 			} else if (varName == "BETA0") {
 				is >> beta0 >> ws;
