@@ -1382,7 +1382,7 @@ void MCMCEnv::sampleTao() {
 	}
 
 	double acceptedp = f_fmin(1.0, exp(calcLogDensity(newTao) - calcLogDensity()));
-	std::cout << "current tao: " << taoCount() << "; new tao: " << taoCount() << "; tao p: " << acceptedp << std::endl;
+	std::cout << "current tao: " << taoCount() << "; new tao: " << taoCount(newTao) << "; tao p: " << acceptedp << std::endl;
 
 	if(ran_ber(acceptedp)){
 		Tao = newTao;
