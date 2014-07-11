@@ -866,21 +866,21 @@ double MCMCEnv::calcLogDensityNonFlagPart(const TaoSet &newTao, long taonum) con
 	}
 
 	K0 = log(beta0*NumOfData+1) * (-0.5*(NumOfGenes-taonum)) + gammaprod;
-	std::cout<<"K0"<<std::endl;
-	std::cout<<K0<<std::endl;
+	//std::cout<<"K0"<<std::endl;
+	//std::cout<<K0<<std::endl;
 
 	matrix mid(datacov(0l, false, newTao));
-	std::cout<<"mid"<<std::endl;
-	std::cout<<mid<<std::endl;
+	//std::cout<<"mid"<<std::endl;
+	//std::cout<<mid<<std::endl;
 	matrix S0(mid.getBlock(1,NumOfGenes - taonum,1,NumOfGenes - taonum));
 	S0 += mid.getBlock(NumOfGenes - taonum + 1, 2 * (NumOfGenes - taonum),
 		1, NumOfGenes - taonum) * (NumOfData / (beta0 * NumOfData + 1));
 	for(unsigned long i = 0; i < NumOfGenes - taonum; i++) {
 		S0(i, i) += constSigma0;
 	}
-	std::cout<<"S0:"<<std::endl;
-	std::cout<<S0<<std::endl;
-	std::cout<<S0.determinant()<<std::endl;
+	//std::cout<<"S0:"<<std::endl;
+	//std::cout<<S0<<std::endl;
+	//std::cout<<S0.determinant()<<std::endl;
 	try {
 		den = K0 + log(fabs(constSigma0)) * (double) (NumOfGenes - taonum) * (0.5*(deltar+NumOfGenes-taonum-1))
 			+ log(fabs(S0.determinant())) * (-0.5*(NumOfData+deltar+NumOfGenes-taonum-1));
@@ -908,24 +908,24 @@ double MCMCEnv::calcLogDensityFlagPart(const TaoSet &newTao, long taonum) const 
 
 					K1 = log(itor->second.calcKcWeight()) 
 						+ log(beta1 * cclusternum + 1) * (-(double) taonum / 2.0) + gammaprod;
-					std::cout<<"K1"<<std::endl;
-					std::cout<<K1<<std::endl;
+					//std::cout<<"K1"<<std::endl;
+					//std::cout<<K1<<std::endl;
 					gammaprod = 0.0;
 
 					matrix mid(datacov(itor->first, true, newTao));
 					//cerr << "datacov1" << endl;
 
-					std::cout<<"S1mid:"<<std::endl;
-					std::cout<<mid<<std::endl;
+					//std::cout<<"S1mid:"<<std::endl;
+					//std::cout<<mid<<std::endl;
 					matrix S1(mid.getBlock(1, taonum, 1, taonum));
 					S1 += mid.getBlock(taonum + 1, 2 * taonum, 1, taonum) 
 						* (cclusternum / (beta1 * cclusternum + 1));
 					for(unsigned long i = 0; i < taonum; i++) {
 						S1(i, i) += constSigma1;
 					}
-					std::cout<<"S1:"<<std::endl;
-					std::cout<<S1<<std::endl;
-					std::cout<<S1.determinant()<<std::endl;
+					//std::cout<<"S1:"<<std::endl;
+					//std::cout<<S1<<std::endl;
+					//std::cout<<S1.determinant()<<std::endl;
 
 					try {
 						den += K1 + log(fabs(constSigma1)) * (double) taonum * (0.5 * (deltar+taonum-1))
@@ -1412,56 +1412,58 @@ void MCMCEnv::sampleZ() {
 	long taonum = taoCount(Tao);
 	//double denNonFlag = calcLogDensityNonFlagPart(taonum);
 
-	for(unsigned long t = 0; t < Flags.rows(); t++){
+	if(taonum) {
+		for(unsigned long t = 0; t < Flags.rows(); t++){
 		
-		flagl.clear();
-		for(TreeContainer::iterator itor = MapClusterTrees.begin();
-			itor != MapClusterTrees.end(); itor++) {
-				if(itor->second.weights[t] > SMALLNUM) {
-					flagl.push_back(itor->second.ID);
-				}
-		}
-
-		for(unsigned long j = 0; j < Flags.cols(t); j++){
-			(getTreeFromID(Flags(t, j)).samples[t])--;
-			if(flagl.size() > 1) {
-				prob_z.clear();
-				for(std::vector<unsigned long long>::const_iterator itor = flagl.begin();
-					itor != flagl.end(); itor++) {
-						Flags(t, j) = *itor;
-						(getTreeFromID(*itor).samples[t])++;
-						UpToDate = false;
-						prob_z.push_back(calcLogDensityFlagPart(taonum));
-						(getTreeFromID(*itor).samples[t])--;
-				}
-				Flags(t, j) = ran_num_log(prob_z, flagl);
-			} else {
-				Flags(t, j) = flagl[0];
+			flagl.clear();
+			for(TreeContainer::iterator itor = MapClusterTrees.begin();
+				itor != MapClusterTrees.end(); itor++) {
+					if(itor->second.weights[t] > SMALLNUM) {
+						flagl.push_back(itor->second.ID);
+					}
 			}
-			(getTreeFromID(Flags(t, j)).samples[t])++;
+
+			for(unsigned long j = 0; j < Flags.cols(t); j++){
+				(getTreeFromID(Flags(t, j)).samples[t])--;
+				if(flagl.size() > 1) {
+					prob_z.clear();
+					for(std::vector<unsigned long long>::const_iterator itor = flagl.begin();
+						itor != flagl.end(); itor++) {
+							Flags(t, j) = *itor;
+							(getTreeFromID(*itor).samples[t])++;
+							UpToDate = false;
+							prob_z.push_back(calcLogDensityFlagPart(taonum));
+							(getTreeFromID(*itor).samples[t])--;
+					}
+					Flags(t, j) = ran_num_log(prob_z, flagl);
+				} else {
+					Flags(t, j) = flagl[0];
+				}
+				(getTreeFromID(Flags(t, j)).samples[t])++;
 
 
-			//for(k=0; k<flagl.size(); k++){
-			//	z(i,j) = flagl.at(k);
-			//	prob_z.push_back(z_density(z, mu1, mu0, sigma0, sigma1, beta0, beta1, deltar));
-			//	// optimize?
-			//		
-			//}
-			//z(i,j) = ran_num(prob_z,flagl);
-			//z_mid(i,j) = z(i,j);
-			/*std::cout<<"Data"<<"("<<i<<","<<j<<")"<<std::endl;
-				for(l=0; l<flagl.size(); l++)
-			std::cout<<prob_z.at(l)<<' ';
-			std::cout<<std::endl;*/
-			/*if(i==3&&j==0){
-				for(l=0; l<flagl.size(); l++)
-				    std::cout<<prob_z.at(l)<<' ';
-				std::cout<<std::endl;
-			}*/
+				//for(k=0; k<flagl.size(); k++){
+				//	z(i,j) = flagl.at(k);
+				//	prob_z.push_back(z_density(z, mu1, mu0, sigma0, sigma1, beta0, beta1, deltar));
+				//	// optimize?
+				//		
+				//}
+				//z(i,j) = ran_num(prob_z,flagl);
+				//z_mid(i,j) = z(i,j);
+				/*std::cout<<"Data"<<"("<<i<<","<<j<<")"<<std::endl;
+					for(l=0; l<flagl.size(); l++)
+				std::cout<<prob_z.at(l)<<' ';
+				std::cout<<std::endl;*/
+				/*if(i==3&&j==0){
+					for(l=0; l<flagl.size(); l++)
+						std::cout<<prob_z.at(l)<<' ';
+					std::cout<<std::endl;
+				}*/
 				
-		}	 
+			}	 
+		}
+		UpToDate = false;
 	}
-	UpToDate = false;
 	// Do we need to reflag the cluster indicators?
 	//z.reflag();
 	/*std::cout<<"Sampled z"<<std::endl;

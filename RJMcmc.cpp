@@ -394,81 +394,85 @@ int main(int argc, char* argv[])
 		n_mcmc.env.writeStatus(outfile);
 		outfile_taonum<< n_mcmc.env.taoCount() <<std::endl;
 
-		//cout<<"After SplitMerge_move!"<<std::endl;
-		outfile<<"After SplitMerge_move!"<<std::endl;
-		probability = 0.0;
-		move = n_mcmc.SplitMerge_move(probability, false);
-		i = 0;
-		for(vector<pair<unsigned long, unsigned long> >::const_iterator itor = weightToMon.begin();
-			itor != weightToMon.end(); itor++, i++) {
-				*(outfile_weights[i]) 
-				<< n_mcmc.env.getWeightFromSample(itor->first, itor->second) << std::endl;
+		if(n_mcmc.env.taoCount()) {
+			//cout<<"After SplitMerge_move!"<<std::endl;
+			outfile<<"After SplitMerge_move!"<<std::endl;
+			probability = 0.0;
+			move = n_mcmc.SplitMerge_move(probability, false);
+			i = 0;
+			for(vector<pair<unsigned long, unsigned long> >::const_iterator itor = weightToMon.begin();
+				itor != weightToMon.end(); itor++, i++) {
+					*(outfile_weights[i]) 
+					<< n_mcmc.env.getWeightFromSample(itor->first, itor->second) << std::endl;
+			}
+
+
+			outfile<<"move: "<<move<<std::endl;
+
+			if(move){
+				outfile<<"SplitSplitSplit:"<<endl;
+				outfile<<"accepted probability:"<<endl;
+			}else{
+				outfile<<"MergeMergeMerge:"<<endl;
+				outfile<<"accetped probability:"<<endl;
+			}
+
+			outfile<<probability<<endl;
+			n_mcmc.env.writeStatus(outfile);
+
+			//cout<<"After BirthDeath_move!"<<std::endl;
+			outfile<<"After BirthDeath_move!"<<std::endl;
+
+			probability = 0.0;
+			move = n_mcmc.BirthDeath_move(probability, false);
+
+			if(move){
+				outfile<<"BirthBirthBirth:"<<std::endl;
+				outfile<<"accepted probability:"<<endl;
+			}else{
+				outfile<<"DeathDeathDeath:"<<std::endl;
+				outfile<<"accepted probability:"<<endl;
+			}
+
+			outfile<<probability<<endl;
+			n_mcmc.env.writeStatus(outfile);
+
+			//cout<<"After Tree SplitMerge_move!"<<std::endl;
+			outfile<<"After Tree SplitMerge_move!"<<std::endl;
+
+			probability = 0.0;
+			move = n_mcmc.SplitMerge_move(probability, true);
+
+			if(move){
+				outfile<<"Tree SplitSplitSplit:"<<std::endl;
+				outfile<<"accepted probability:"<<endl;
+			}else{
+				outfile<<"Tree MergeMergeMerge:"<<std::endl;
+				outfile<<"accepted probability:"<<endl;
+			}
+
+			outfile<<probability<<endl;
+			n_mcmc.env.writeStatus(outfile);
+
+			//cout<<"After Tree BirthDeath_move!"<<std::endl;
+			outfile<<"After Tree BirthDeath_move!"<<std::endl;
+
+			probability = 0.0;
+			move = n_mcmc.BirthDeath_move(probability, true);
+
+			if(move){
+				outfile<<"Tree BirthBirthBirth:"<<std::endl;
+				outfile<<"accepted probability:"<<endl;
+			}else{
+				outfile<<"Tree DeathDeathDeath:"<<std::endl;
+				outfile<<"accepted probability:"<<endl;
+			}
+
+			outfile<<probability<<endl;
+			n_mcmc.env.writeStatus(outfile);
+		} else {
+			outfile<<"Tao = 0, no change!"<<std::endl;
 		}
-
-
-		outfile<<"move: "<<move<<std::endl;
-
-		if(move){
-			outfile<<"SplitSplitSplit:"<<endl;
-			outfile<<"accepted probability:"<<endl;
-		}else{
-			outfile<<"MergeMergeMerge:"<<endl;
-			outfile<<"accetped probability:"<<endl;
-		}
-
-		outfile<<probability<<endl;
-		n_mcmc.env.writeStatus(outfile);
-
-		//cout<<"After BirthDeath_move!"<<std::endl;
-		outfile<<"After BirthDeath_move!"<<std::endl;
-
-		probability = 0.0;
-		move = n_mcmc.BirthDeath_move(probability, false);
-
-		if(move){
-			outfile<<"BirthBirthBirth:"<<std::endl;
-			outfile<<"accepted probability:"<<endl;
-		}else{
-			outfile<<"DeathDeathDeath:"<<std::endl;
-			outfile<<"accepted probability:"<<endl;
-		}
-
-		outfile<<probability<<endl;
-		n_mcmc.env.writeStatus(outfile);
-
-		//cout<<"After Tree SplitMerge_move!"<<std::endl;
-		outfile<<"After Tree SplitMerge_move!"<<std::endl;
-
-		probability = 0.0;
-		move = n_mcmc.SplitMerge_move(probability, true);
-
-		if(move){
-			outfile<<"Tree SplitSplitSplit:"<<std::endl;
-			outfile<<"accepted probability:"<<endl;
-		}else{
-			outfile<<"Tree MergeMergeMerge:"<<std::endl;
-			outfile<<"accepted probability:"<<endl;
-		}
-
-		outfile<<probability<<endl;
-		n_mcmc.env.writeStatus(outfile);
-
-		//cout<<"After Tree BirthDeath_move!"<<std::endl;
-		outfile<<"After Tree BirthDeath_move!"<<std::endl;
-
-		probability = 0.0;
-		move = n_mcmc.BirthDeath_move(probability, true);
-
-		if(move){
-			outfile<<"Tree BirthBirthBirth:"<<std::endl;
-			outfile<<"accepted probability:"<<endl;
-		}else{
-			outfile<<"Tree DeathDeathDeath:"<<std::endl;
-			outfile<<"accepted probability:"<<endl;
-		}
-
-		outfile<<probability<<endl;
-		n_mcmc.env.writeStatus(outfile);
 
 		outfile_branch << n_mcmc.env.getClusterNumber() << std::endl;
 		outfile_treenum << n_mcmc.env.getTreeNumbers() << endl;
