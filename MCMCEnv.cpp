@@ -866,20 +866,21 @@ double MCMCEnv::calcLogDensityNonFlagPart(const TaoSet &newTao, long taonum) con
 	}
 
 	K0 = log(beta0*NumOfData+1) * (-0.5*(NumOfGenes-taonum)) + gammaprod;
-	/*  std::cout<<"K0"<<std::endl;
-	std::cout<<K0<<std::endl;*/
+	std::cout<<"K0"<<std::endl;
+	std::cout<<K0<<std::endl;
 
 	matrix mid(datacov(0l, false, newTao));
-	/*   std::cout<<"mid"<<std::endl;
-	std::cout<<mid<<std::endl;*/
+	std::cout<<"mid"<<std::endl;
+	std::cout<<mid<<std::endl;
 	matrix S0(mid.getBlock(1,NumOfGenes - taonum,1,NumOfGenes - taonum));
 	S0 += mid.getBlock(NumOfGenes - taonum + 1, 2 * (NumOfGenes - taonum),
 		1, NumOfGenes - taonum) * (NumOfData / (beta0 * NumOfData + 1));
 	for(unsigned long i = 0; i < NumOfGenes - taonum; i++) {
 		S0(i, i) += constSigma0;
 	}
-	/* std::cout<<"S0:"<<std::endl;
-	std::cout<<S0<<std::endl;*/
+	std::cout<<"S0:"<<std::endl;
+	std::cout<<S0<<std::endl;
+	std::cout<<S0.determinant()<<std::endl;
 	try {
 		den = K0 + log(fabs(constSigma0)) * (double) (NumOfGenes - taonum) * (0.5*(deltar+NumOfGenes-taonum-1))
 			+ log(fabs(S0.determinant())) * (-0.5*(NumOfData+deltar+NumOfGenes-taonum-1));
@@ -907,23 +908,24 @@ double MCMCEnv::calcLogDensityFlagPart(const TaoSet &newTao, long taonum) const 
 
 					K1 = log(itor->second.calcKcWeight()) 
 						+ log(beta1 * cclusternum + 1) * (-(double) taonum / 2.0) + gammaprod;
-					//std::cout<<"K1"<<std::endl;
-					//std::cout<<K1<<std::endl;
+					std::cout<<"K1"<<std::endl;
+					std::cout<<K1<<std::endl;
 					gammaprod = 0.0;
 
 					matrix mid(datacov(itor->first, true, newTao));
 					//cerr << "datacov1" << endl;
 
-					//std::cout<<"S1mid:"<<std::endl;
-					//std::cout<<mid<<std::endl;
+					std::cout<<"S1mid:"<<std::endl;
+					std::cout<<mid<<std::endl;
 					matrix S1(mid.getBlock(1, taonum, 1, taonum));
 					S1 += mid.getBlock(taonum + 1, 2 * taonum, 1, taonum) 
 						* (cclusternum / (beta1 * cclusternum + 1));
 					for(unsigned long i = 0; i < taonum; i++) {
 						S1(i, i) += constSigma1;
 					}
-					/* std::cout<<"S1:"<<std::endl;
-					std::cout<<S1<<std::endl;*/
+					std::cout<<"S1:"<<std::endl;
+					std::cout<<S1<<std::endl;
+					std::cout<<S1.determinant()<<std::endl;
 
 					try {
 						den += K1 + log(fabs(constSigma1)) * (double) taonum * (0.5 * (deltar+taonum-1))
