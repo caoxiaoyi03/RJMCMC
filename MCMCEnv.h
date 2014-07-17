@@ -136,6 +136,9 @@ public:
 	//TreeMergeSet getTreeMergeSet() const;
 	TreeMergeSet getDeathSet(bool hasForest, bool forestOnly) const;
 
+	TreeSet getTailBirthSet(bool hasForest, bool forestOnly) const;		// time actually doesn't matter here
+	TreeSet getTailDeathSet(bool hasForest, bool forestOnly) const;		// time and ID
+
 	// the return value is the new tree / branch ID
 	unsigned long long flagSplit(double &P_alloc, bool &NULLset, double &f_ui,  
 		const TreeSet::value_type &split_pair);
@@ -150,12 +153,15 @@ public:
 	void flagBirth(const TreeSet::value_type &splitPair,
 		double &weightratio, double &jacobi, double &f_wstar);
 	void flagBirth(const TreeSet::value_type &splitPair);
-	//void flagRootBirth(double &weightratio, double &jacobi, double &f_wstar);
+
+	void flagTailBirth(const TreeSet::value_type &splitPair,
+		double &weightratio, double &jacobi, double &f_wstar);
 	
 	void flagDeath(const TreeMergeSet::value_type &merge_pair, 
 		double &jacobi, double &weightratio, double &f_wstar);
-	//void flagRootDeath(unsigned long long DeathID,
-	//	double &jacobi, double &weightratio, double &f_wstar);
+
+	void flagTailDeath(const TreeSet::value_type &merge_pair,
+		double &jacobi, double &weightratio, double &f_wstar);
 
 	void testNumberSet();
 
@@ -171,6 +177,13 @@ public:
 		const double weightratio, const double jacobi, const double f_wstar,
 		const MCMCEnv &oldenv) const;
 	double apDeath(const TreeMergeSet::value_type &mergePair, const long emptynumbeforedeath,
+		const double weightratio, const double jacobi, const double f_wstar, 
+		const MCMCEnv &oldenv) const;
+
+	double apTailBirth(const TreeSet::value_type &splitPair, const long splitnumafterbirth,
+		const double weightratio, const double jacobi, const double f_wstar,
+		const MCMCEnv &oldenv) const;
+	double apTailDeath(const TreeSet::value_type &mergePair, const long emptynumbeforedeath,
 		const double weightratio, const double jacobi, const double f_wstar, 
 		const MCMCEnv &oldenv) const;
 

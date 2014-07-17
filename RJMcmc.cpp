@@ -388,9 +388,9 @@ int main(int argc, char* argv[])
 
 	for(j=0; j<iterations; j++){
 
-		if(bSampleTao) {
+		//if(bSampleTao) {
 			n_mcmc.env.sampleTao();
-		}
+		//}
 		n_mcmc.env.sampleWeight();
 		n_mcmc.env.sampleZ();
 		if(!(j % 10)) {
@@ -402,7 +402,7 @@ int main(int argc, char* argv[])
 		n_mcmc.env.writeStatus(outfile);
 		outfile_taonum<< n_mcmc.env.taoCount() <<std::endl;
 
-		if(n_mcmc.env.taoCount()) {
+		//if(n_mcmc.env.taoCount()) {
 			//cout<<"After SplitMerge_move!"<<std::endl;
 			outfile<<"After SplitMerge_move!"<<std::endl;
 			probability = 0.0;
@@ -445,6 +445,20 @@ int main(int argc, char* argv[])
 			outfile<<probability<<endl;
 			n_mcmc.env.writeStatus(outfile);
 
+
+			probability = 0.0;
+			move = n_mcmc.TailBirthDeath_move(probability, true);
+
+			if(move){
+				outfile<<"Tail BirthBirthBirth:"<<std::endl;
+				outfile<<"accepted probability:"<<endl;
+			}else{
+				outfile<<"Tail DeathDeathDeath:"<<std::endl;
+				outfile<<"accepted probability:"<<endl;
+			}
+
+			outfile<<probability<<endl;
+			n_mcmc.env.writeStatus(outfile);
 			//cout<<"After Tree SplitMerge_move!"<<std::endl;
 			outfile<<"After Tree SplitMerge_move!"<<std::endl;
 
@@ -478,9 +492,10 @@ int main(int argc, char* argv[])
 
 			outfile<<probability<<endl;
 			n_mcmc.env.writeStatus(outfile);
-		} else {
-			outfile<<"Tao = 0, no change!"<<std::endl;
-		}
+
+		//} else {
+		//	outfile<<"Tao = 0, no change!"<<std::endl;
+		//}
 
 		outfile_branch << n_mcmc.env.getClusterNumber() << std::endl;
 		outfile_treenum << n_mcmc.env.getTreeNumbers() << endl;

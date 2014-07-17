@@ -122,7 +122,7 @@ double & matrix::operator()(long row, long col) {
 }
 
 
-bool matrix::assertEqualDim(const matrix &mat, bool throwexcept) const throw(std::logic_error) {
+bool matrix::assertEqualDim(const matrix &mat, bool throwexcept) const {
 	if(rows() != mat.rows() || cols() != mat.cols()) {
 		if(throwexcept) {
 			throw(logic_error("Matrices dimension not equal!"));
@@ -688,7 +688,7 @@ long & matrixl::operator()(long row, long col) {
 }
 
 
-bool matrixl::assertEqualDim(const matrixl &mat, bool throwexcept) const throw(std::logic_error) {
+bool matrixl::assertEqualDim(const matrixl &mat, bool throwexcept) const {
 	if(rows() != mat.rows() || cols() != mat.cols()) {
 		if(throwexcept) {
 			throw(std::logic_error("Matrices dimension not equal!"));

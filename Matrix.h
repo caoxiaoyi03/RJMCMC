@@ -36,10 +36,10 @@ public:
 
 	double getValue(long row, long col) const;
 	void setValue(long row, long col, double value);
-	std::vector<dvector> getData()const;
+	std::vector<dvector> getData() const;
 
 	// try to see if the two matrices have equal dimension, if not return false or throw an exception
-	bool assertEqualDim(const matrix &mat, bool throwexcept = true) const throw(std::logic_error);
+	bool assertEqualDim(const matrix &mat, bool throwexcept = true) const;
 
 	// can use matrix(row, col) to get a reference of the value
 	double operator()(long row, long col) const;
@@ -154,7 +154,7 @@ public:
 	std::vector<lvector> getData()const;
 
 	// try to see if the two matrices have equal dimension, if not return false or throw an exception
-	bool assertEqualDim(const matrixl &mat, bool throwexcept = true) const throw(std::logic_error);
+	bool assertEqualDim(const matrixl &mat, bool throwexcept = true) const;
 
 	// can use matrix(row, col) to get a reference of the value
 	long operator()(long row, long col) const;

@@ -491,6 +491,48 @@ MCMCEnv::TreeMergeSet MCMCEnv::getDeathSet(bool hasForest, bool forestOnly) cons
 	return result;
 }
 
+MCMCEnv::TreeSet MCMCEnv::getTailBirthSet(bool hasForest, bool forestOnly) const {
+	// This actually has nothing to do with forests so both flags will not be used at all.
+
+	MCMCEnv::TreeSet result;
+	result.reserve(NumOfTP * 2);
+
+	//cout << "Generating Split Set ... " << endl;
+	for(TreeContainer::const_iterator itor = MapClusterTrees.begin();
+		itor != MapClusterTrees.end(); itor++) {
+			//cout << "ID: " << itor->second.ID << " Parent ID: " 
+			//	<< itor->second.parentID 
+			//	<< " Born time: " << itor->second.getBornTime() << endl;
+			if(itor->second.getDeathTime() < NumOfTP) {
+				// can birth
+				result.push_back(MCMCEnv::TreeSet::value_type(itor->second.getDeathTime(), itor->first));
+			}
+	}
+	return result;
+}
+
+MCMCEnv::TreeSet MCMCEnv::getTailDeathSet(bool hasForest, bool forestOnly) const {
+	// This actually has nothing to do with forests so both flags will not be used at all.
+
+	MCMCEnv::TreeSet result;
+	result.reserve(NumOfTP * 2);
+
+	//cout << "Generating Split Set ... " << endl;
+	for(TreeContainer::const_iterator itor = MapClusterTrees.begin();
+		itor != MapClusterTrees.end(); itor++) {
+			//cout << "ID: " << itor->second.ID << " Parent ID: " 
+			//	<< itor->second.parentID 
+			//	<< " Born time: " << itor->second.getBornTime() << endl;
+			if(itor->second.getDeathTime() >= NumOfTP && itor->second.getEarliestDeathableTime() < NumOfTP) {
+				// can death
+				for(unsigned long t = itor->second.getEarliestDeathableTime(); t < itor->second.getDeathTime(); t++) {
+					result.push_back(MCMCEnv::TreeSet::value_type(t, itor->first));
+				}
+			}
+	}
+	return result;
+}
+
 unsigned long long MCMCEnv::flagSplit(double &P_alloc, bool &NULLset, double &f_ui,  
 	const MCMCEnv::TreeSet::value_type &split_pair) {
 		ClusterTree &parent = getTreeFromID(split_pair.second);
@@ -630,9 +672,11 @@ void MCMCEnv::flagMerge(double &P_alloc, double &f_ui, const TreeMergeSet::value
 		&child = getTreeFromID(merge_pair.second);
 
 	unsigned long time = child.getBornTime();
+	if(parent.getDeathTime() < child.getDeathTime()) {
+		parent.setDeathTime(child.getDeathTime());
+	}
+	for(unsigned long t = time; t < parent.getDeathTime(); t++) {
 
-	for(unsigned long t = time; t < NumOfTP; t++){
-			
 		if(child.weights[t] > SMALLNUM && parent.weights[t] > SMALLNUM) {
 			ut = parent.weights[t] / (parent.weights[t] + child.weights[t]);
 			parentNum = Flags.tflagnum(parent.ID, t);
@@ -690,7 +734,7 @@ void MCMCEnv::flagBirth(const TreeSet::value_type &splitPair,
 
 			ClusterTree &child = (time? createTree(parent.ID, time): createTree());
 
-			for(unsigned long t = time; t < NumOfTP; t++){
+			for(unsigned long t = time; t < child.getDeathTime(); t++){
 				/*weight*/
 				timec = getNoZeroWeights(t);
 				w_star = ran_beta(1.0, (double) timec);
@@ -752,7 +796,7 @@ void MCMCEnv::flagDeath(const TreeMergeSet::value_type &merge_pair,
 		//leftflag = clusterindex1;
 		//// Son
 		//mergeflag = clusterindex2;
-		for(unsigned long t = time; t < NumOfTP; t++){
+		for(unsigned long t = time; t < child.getDeathTime(); t++){
 			midw = child.weights[t];
 			if(midw > SMALLNUM){
 				midn = getNoZeroWeights(t);
@@ -779,6 +823,128 @@ void MCMCEnv::flagDeath(const TreeMergeSet::value_type &merge_pair,
 		//child.parentID = 0;			// reset the parentID of the child, mark it for deletion
 		try {
 			removeTree(child.ID);
+		} catch(std::logic_error &e) {
+			cerr << "Death" << endl;
+			throw e;
+		}
+		UpToDate = false;
+
+		/*std::cout<<"Death"<<std::endl;
+		std::cout<<"weightratio"<<std::endl;
+		std::cout<<weightratio<<std::endl;
+		std::cout<<"Jacobi"<<std::endl;
+		std::cout<<jacobi<<std::endl;
+		std::cout<<"f_wstar"<<std::endl;
+		std::cout<<f_wstar<<std::endl;*/
+
+}
+
+void MCMCEnv::flagTailBirth(const TreeSet::value_type &splitPair,
+	double &weightratio, double &jacobi, double &f_wstar) {
+		long j,k,n,timec;
+		double w_star;
+
+		jacobi = 1.0;
+		f_wstar = 1.0;
+		weightratio = 1.0;
+
+		// technically time should just be parent.getDeathTime();
+
+		ClusterTree &parent = getTreeFromID(splitPair.second);
+		unsigned long time = parent.getDeathTime();
+
+		parent.tailBirth();
+
+		if(time < NumOfTP) {
+			/*Justify whether clusterindex is an empty cluster.*/
+
+			//ClusterTree &child = (time? createTree(parent.ID, time): createTree());
+
+			for(unsigned long t = time; t < NumOfTP; t++){
+				/*weight*/
+				timec = getNoZeroWeights(t);
+				w_star = ran_beta(1.0, (double) timec);
+				jacobi *= pow(1 - w_star, timec - 1);
+				f_wstar *= betad(w_star, 1.0, (double) timec);
+				weightratio *= (pow(w_star, alpha - 1) * pow(1 - w_star, 
+					(double)timec * (alpha - 1)) / betaf(alpha, (double) timec * alpha));
+
+				/* This is a good choice for resetting the cluster indicators and weight parameter */
+				//two(i-1,clusterindex-1) = (1.0 - w_star) * weight(i-1,clusterindex-1);
+				parent.weights[t] = w_star;
+
+				for(TreeContainer::iterator itor = MapClusterTrees.begin();
+					itor != MapClusterTrees.end(); itor++) {
+						if(itor->first != parent.ID){
+							itor->second.weights[t] = (1.0 - w_star) * itor->second.weights[t];
+						}
+				}
+				/*weight relocated.*/
+			}
+
+
+			// Tree reset
+			// This step is implemented according to the weight setting.
+
+			/*std::cout<<"Birth"<<std::endl;
+			std::cout<<"weightratio"<<std::endl;
+			std::cout<<weightratio<<std::endl;
+			std::cout<<"Jacobi"<<std::endl;
+			std::cout<<jacobi<<std::endl;
+			std::cout<<"f_wstar"<<std::endl;
+			std::cout<<f_wstar<<std::endl;*/
+			UpToDate = false;
+
+		} else {
+			std::cout<<"This is an empty cluster!"<<std::endl;
+			std::cout<<"This cluster can not be splitted!"<<std::endl;
+		}
+
+}
+
+void MCMCEnv::flagTailDeath(const TreeSet::value_type &death_set, 
+	double &jacobi, double &weightratio, double &f_wstar) {
+
+		long mergeflag, leftflag;
+		long mergenum, leftnum;
+		long i,j,k;
+		double midw,midn;
+
+		jacobi = 1.0;
+		weightratio = 1.0;
+		f_wstar = 1.0;
+
+		ClusterTree &parent = getTreeFromID(death_set.second);
+
+		unsigned long time = death_set.first;
+		//// Mother
+		//leftflag = clusterindex1;
+		//// Son
+		//mergeflag = clusterindex2;
+		for(unsigned long t = time; t < parent.getDeathTime(); t++){
+			midw = parent.weights[t];
+			if(midw > SMALLNUM){
+				midn = getNoZeroWeights(t);
+				f_wstar *= betad(midw, 1.0, (double) midn);
+				weightratio *= (betaf(alpha, (double) (midn - 1) * alpha)
+					/ pow(midw, (alpha - 1.0)) 
+					/ pow(1.0 - midw, (double) (midn - 1) * (alpha - 1.0)));
+				jacobi *= pow(1.0 - midw, -1.0 * (double) (midn - 2));
+
+				for(TreeContainer::iterator itor = MapClusterTrees.begin();
+					itor != MapClusterTrees.end(); itor++) {
+						if(itor->first != parent.ID){
+							itor->second.weights[t] = itor->second.weights[t] / (1.0 - midw);
+						}
+				}
+			}
+			// cluster indicator reloaded.
+		}
+
+		// remove child from its original parent
+		//child.parentID = 0;			// reset the parentID of the child, mark it for deletion
+		try {
+			parent.tailDeath(time);
 		} catch(std::logic_error &e) {
 			cerr << "Death" << endl;
 			throw e;
@@ -975,7 +1141,7 @@ long MCMCEnv::getNoZeroWeights(unsigned long time) const {
 	for(TreeContainer::const_iterator itor = MapClusterTrees.begin(); 
 		itor != MapClusterTrees.end(); itor++) {
 			//cout << itor->second.weights[time] << ' ';
-			if(itor->second.weights[time] > SMALLNUM) {
+			if(itor->second.getDeathTime() > time && itor->second.weights[time] > SMALLNUM) {
 				result++;
 			}
 	}
@@ -1278,6 +1444,63 @@ double MCMCEnv::apDeath(const TreeMergeSet::value_type &mergePair, const long em
 		return f_fmin(AP,1.0);
 }
 
+double MCMCEnv::apTailBirth(const TreeSet::value_type &splitPair, const long splitnumafterbirth,
+	const double weightratio, const double jacobi, const double f_wstar,
+	const MCMCEnv &oldenv) const {
+		double densityratio, modelratio;
+		double AP = 1.0;
+		double dbratio = 1.0;
+		long i;
+		if(splitnumafterbirth == 0){
+			return 0.0;
+		}else{
+			long taonum = taoCount(Tao);
+			densityratio = exp(calcLogDensityFlagPart(Tao, taonum) - oldenv.calcLogDensityFlagPart(Tao, taonum));
+
+			// The ratio of f(Tree_new) and f(Tree_old).
+			// If we set the same unchange and change probability, then it is equal to 1.0; 
+			modelratio = 1.0;
+			// The ratio of d_new and b_old, here dbratio = 1.0, because d_new = b_old = 0.5.
+			dbratio = (1.0 - bk) / bk;
+
+			AP = densityratio * weightratio * modelratio * dbratio * jacobi
+				/ (double) splitnumafterbirth / f_wstar;
+
+			/*std::cout<<"densityratio"<<std::endl;
+			std::cout<<densityratio<<std::endl;
+			std::cout<<"weightratio"<<std::endl;
+			std::cout<<weightratio<<std::endl;
+			std::cout<<"splitnumafterbirth"<<std::endl;
+			std::cout<<splitnumafterbirth<<std::endl;
+			std::cout<<"f_wstar"<<std::endl;
+			std::cout<<f_wstar<<std::endl;
+			std::cout<<"Jacobi"<<std::endl;
+			std::cout<<jacobi<<std::endl;*/
+			return f_fmin(AP,1.0);
+		}
+}
+
+double MCMCEnv::apTailDeath(const TreeSet::value_type &mergePair, const long emptynumbeforedeath,
+	const double weightratio, const double jacobi, const double f_wstar, 
+	const MCMCEnv &oldenv) const {
+		double densityratio,modelratio,bdratio;
+		double AP;
+
+		if(emptynumbeforedeath == 0){
+			return 0.0;
+		}else{
+			long taonum = taoCount(Tao);
+			densityratio = exp(calcLogDensityFlagPart(Tao, taonum) - oldenv.calcLogDensityFlagPart(Tao, taonum));
+			modelratio = 1.0;
+			bdratio = bk / (1.0 - bk);
+		}
+
+		AP = densityratio * weightratio * modelratio * bdratio 
+			* f_wstar * emptynumbeforedeath * jacobi;
+
+		return f_fmin(AP,1.0);
+}
+
 unsigned long MCMCEnv::getClusterNumber() const {
 	// get the number of trees
 	return MapClusterTrees.size();
@@ -1333,7 +1556,7 @@ void MCMCEnv::sampleWeight() {
 		for(TreeContainer::iterator itor = MapClusterTrees.begin();
 			itor != MapClusterTrees.end(); itor++) {
 				
-				if(itor->second.getBornTime() <= t) {
+				if(itor->second.getBornTime() <= t && itor->second.getDeathTime() > t) {
 					itor->second.weights[t] = ran_gamma(alpha 
 						+ itor->second.getSampleNum(t), shape);
 					//cerr << '[' << itor->second.ID << ',' << t << ']' 
@@ -1349,7 +1572,7 @@ void MCMCEnv::sampleWeight() {
 		// normalize all weights
 		for(TreeContainer::iterator itor = MapClusterTrees.begin();
 			itor != MapClusterTrees.end(); itor++) {
-				if(itor->second.getBornTime() <= t) {
+				if(itor->second.getBornTime() <= t && itor->second.getDeathTime() > t) {
 					if(wnum > SMALLNUM) {
 						itor->second.weights[t] = itor->second.weights[t] / wnum;
 					} else {
@@ -1369,7 +1592,7 @@ void MCMCEnv::sampleTao() {
 
 	TaoSet newTao = Tao;
 
-	if(ran_ber(0.5)) {
+	if(ran_ber(0.5) || newTao.size() <= 1) {
 		coin2 = ran_iunif(0, newTao.size() - 1);
 		newTao[coin2] = !newTao[coin2]; //1. Change value.
 	} else {

@@ -181,7 +181,7 @@ public:
 	//     const matrix &sigma1, const double beta0, const double beta1,const double deltar, const double alpha,
 	//	 bool &move, double &probability);
 	bool BirthDeath_move(double &probability, bool isForest = false);
-	//bool TailBirthDeath_move(double &probability, bool isForest = false);
+	bool TailBirthDeath_move(double &probability, bool isForest = false);
 
 
 

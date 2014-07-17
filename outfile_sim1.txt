@@ -1,0 +1,18 @@
+STEP: 1
+Cluster proportions in each cluster: 
+[1] 1 1 1
+
+Featured genes: 
+0 
+
+Cluster index: 
+1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	
+
+Tree: 
+[] Tree was born;
+() A new Tree with this ID is born from the current tree.
+   [   1] - ------ - ------
+
+After SplitMerge_move!

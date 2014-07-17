@@ -61,8 +61,10 @@ public:
 	unsigned long getEarliestDeathableTime() const;
 
 	bool setDeathTime(unsigned long time);
-	// this is actually implemented by setDeathTime();
+	
+	// these are actually implemented by setDeathTime();
 	bool tailBirth();
+	bool tailDeath(unsigned long time);
 
 	static bool setNumOfTimePoints(unsigned long num);
 	static unsigned long getNumOfTimePoints();

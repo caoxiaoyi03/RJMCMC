@@ -2367,9 +2367,9 @@ bool mcmc::BirthDeath_move(double &probability, bool isForest) {
 		n_deathset = newEnv.getDeathSet(isForest, isForest);
 		emptynumbeforedeath = n_deathset.size();
 		if(emptynumbeforedeath){
-			chos_deathset = n_deathset[ran_iunif(0, n_deathset.size() - 1)];
+			chos_deathset = n_deathset[ran_iunif(0, emptynumbeforedeath - 1)];
 			//cout<<"Death set chosen"<<endl;
-			newEnv.flagDeath(chos_deathset,jacobi, weightratio, f_wstar);
+			newEnv.flagDeath(chos_deathset, jacobi, weightratio, f_wstar);
 			//cout<<"Flagdeath complete"<<endl;
 			probability = newEnv.apDeath(chos_deathset, emptynumbeforedeath, f_wstar,
 				weightratio, jacobi, env);
@@ -2390,69 +2390,53 @@ bool mcmc::BirthDeath_move(double &probability, bool isForest) {
 
 // Note that 'TailBirthDeath_move' is not a step for model selection or tree jumping, because
 // the number of parameters is not changed.
-//void mcmc::TailBirthDeath_move(double &probability, bool isForest) {
-//
-//	bool move_chosen;
-//	MCMCEnv::TreeSet n_splitset;
-//	MCMCEnv::TreeMergeSet n_deathset;
-//	MCMCEnv::TreeSet::value_type chos_splitset;
-//	MCMCEnv::TreeMergeSet::value_type chos_deathset;
-//	MCMCEnv newEnv(env);
-//	double APtailbirth,APtaildeath;
-//
-//	double ranmite;
-//
-//
-//	move_chosen = ran_ber(ranc);
-//	if(move_chosen){ 
-//		// Tail birth.
-//		n_tailbirthset = this->f_tailbirthset(newz,newweight,newtree);
-//
-//		if(n_tailbirthset.rows()!=0){
-//			chos_tailbirthset = n_tailbirthset.ran_getRow();
-//			this->tail_birth(chos_tailbirthset(0,0),chos_tailbirthset(0,1),
-//				newz,newweight,alpha);
-//			APtailbirth = this->AP_tailbirth(newz,newweight,
-//				mu1,mu0,sigma0,sigma1,beta0,beta1,deltar,alpha);
-//			ranmite = ran_unif(0.0,1.0);
-//			if(ranmite < APtailbirth){
-//				z = newz;
-//				weight = newweight;
-//				tree = newtree;
-//				clusterhome = newchome;
-//			}else{
-//				newz = z;
-//				newweight = weight;
-//				newtree = tree;
-//				newchome = clusterhome;
-//			}
-//		}
-//
-//	} else {
-//		// Tail death.
-//		n_taildeathset = this->f_taildeathset(newz,newweight,newtree);
-//		if(n_taildeathset.rows()!=0){
-//			chos_taildeathset = n_taildeathset.ran_getRow();
-//			this->tail_death(chos_taildeathset(0,0),chos_taildeathset(0,1),chos_taildeathset(0,2),
-//				newz,newweight,alpha);
-//			APtaildeath = this->AP_taildeath(newz,newweight,mu1,mu0,sigma0,sigma1,beta0,beta1,deltar,alpha);
-//			ranmite = ran_unif(0.0,1.0);
-//			if(ranmite < APtaildeath){
-//				z = newz;
-//				weight = newweight;
-//				tree = newtree;
-//				clusterhome = newchome;
-//			}else{
-//				newz = z;
-//				newweight = weight;
-//				newtree = tree;
-//				newchome = clusterhome;
-//			}
-//		}
-//
-//
-//	}
-//}
+bool mcmc::TailBirthDeath_move(double &probability, bool isForest) {
+
+	bool move_chosen;
+	MCMCEnv::TreeSet n_tailbirthset, n_taildeathset;
+	MCMCEnv::TreeSet::value_type chos_tailbirthset, chos_taildeathset;
+	MCMCEnv newEnv(env);
+
+	long splitnumafterbirth, emptynumbeforedeath;
+	double weightratio = 1.0;
+	double jacobi = 1.0;
+	double f_wstar = 1.0;
+
+	move_chosen = ran_ber(MCMCEnv::bk);
+	if(move_chosen){ 
+		// Tail birth.
+		n_tailbirthset = newEnv.getTailBirthSet(isForest, isForest);
+
+		if(n_tailbirthset.size()){
+			chos_tailbirthset = n_tailbirthset[ran_iunif(0, n_tailbirthset.size() - 1)];
+			newEnv.flagTailBirth(chos_tailbirthset, weightratio, jacobi, f_wstar);
+			splitnumafterbirth = newEnv.getTailDeathSet(isForest, isForest).size();
+			probability = newEnv.apTailBirth(chos_tailbirthset, splitnumafterbirth,
+				weightratio, jacobi, f_wstar, env);
+			if(ran_unif(0.0,1.0) < probability) {
+				env = newEnv;
+			}
+		}
+
+	} else {
+		// Tail death.
+		n_taildeathset = newEnv.getTailDeathSet(isForest, isForest);
+		emptynumbeforedeath = n_taildeathset.size();
+		if(emptynumbeforedeath){
+			chos_taildeathset = n_taildeathset[ran_iunif(0, emptynumbeforedeath - 1)];
+			newEnv.flagTailDeath(chos_taildeathset, weightratio, jacobi, f_wstar);
+			probability = newEnv.apTailDeath(chos_taildeathset, splitnumafterbirth,
+				weightratio, jacobi, f_wstar, env);
+			if(ran_unif(0.0,1.0) < probability){
+				env = newEnv;
+			}
+		}
+
+
+	}
+
+	return move_chosen;
+}
 
 
 //
