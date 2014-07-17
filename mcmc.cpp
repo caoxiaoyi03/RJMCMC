@@ -2425,7 +2425,7 @@ bool mcmc::TailBirthDeath_move(double &probability, bool isForest) {
 		if(emptynumbeforedeath){
 			chos_taildeathset = n_taildeathset[ran_iunif(0, emptynumbeforedeath - 1)];
 			newEnv.flagTailDeath(chos_taildeathset, weightratio, jacobi, f_wstar);
-			probability = newEnv.apTailDeath(chos_taildeathset, splitnumafterbirth,
+			probability = newEnv.apTailDeath(chos_taildeathset, emptynumbeforedeath,
 				weightratio, jacobi, f_wstar, env);
 			if(ran_unif(0.0,1.0) < probability){
 				env = newEnv;

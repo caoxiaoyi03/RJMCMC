@@ -49,7 +49,9 @@ void initializeParameters(long NumOfGenes, long n_time, const matrix &Data, doub
 
 void getInputsFromFile(istream &is, long &n_time, long &n_gene, long &n_num,
 	vector<unsigned long> &n_Nt, matrix &datamat, double &k1, double &k0,
-	vector<pair<unsigned long, unsigned long> > &weightToMon, bool &bForest, bool &bInitTao, 
+	vector<pair<unsigned long, unsigned long> > &weightToMon, 
+	vector<pair<unsigned long, unsigned long> > &branchToMon, 
+	bool &bForest, bool &bInitTao, 
 	bool &bSampleTao, double &beta0, double &beta1, double &deltar, double &alpha,
 	double &shape, double &bk, double &ranc) {
 		if(!is) {
@@ -134,6 +136,26 @@ void getInputsFromFile(istream &is, long &n_time, long &n_gene, long &n_num,
 						}
 					}
 				}
+			} else if(varName == "BRANCH_MONITOR") {
+				branchToMon.clear();
+				is.exceptions(istream::failbit | istream::eofbit | istream::badbit);
+				is.clear();
+				while(true) {
+					try {
+						unsigned long time, sample;
+						is >> time >> sample;
+						branchToMon.push_back(pair<unsigned long, unsigned long>(time, sample));
+					} catch(ios::failure &e) {
+						is.clear();
+						is.exceptions(istream::goodbit);
+						is >> ws;
+						if(((char) is.peek()) == '#' || ((char) is.peek()) == '/') {
+							getline(is, varName);
+						} else {
+							break;
+						}
+					}
+				}
 			} else if (varName == "BUILD_FOREST") {
 				is >> varName >> ws;
 				bForest = (((*varName.begin()) == 'T' || (*varName.begin()) == 't' 
@@ -173,6 +195,16 @@ void getInputsFromFile(istream &is, long &n_time, long &n_gene, long &n_num,
 					itor++;
 				}
 		}
+		for(vector<pair<unsigned long, unsigned long> >::iterator itor = branchToMon.begin();
+			itor != branchToMon.end();) {
+				if(itor->first >= n_time || itor->second >= n_Nt[itor->first]) {
+					vector<pair<unsigned long, unsigned long> >::iterator itor_to_remove = itor;
+					itor++;
+					branchToMon.erase(itor_to_remove);
+				} else {
+					itor++;
+				}
+		}
 }	
 
 int main(int argc, char* argv[])
@@ -205,9 +237,9 @@ int main(int argc, char* argv[])
 	
 	cout << "Reading input file ... " << flush;
 	ifstream fin(argv[1]);
-	vector<pair<unsigned long, unsigned long> > weightToMon;
+	vector<pair<unsigned long, unsigned long> > weightToMon, branchToMon;
 	
-	getInputsFromFile(fin, n_time, n_gene, n_num, n_Nt, n_Data, k1, k0, weightToMon, bForest, bInitTao,
+	getInputsFromFile(fin, n_time, n_gene, n_num, n_Nt, n_Data, k1, k0, weightToMon, branchToMon, bForest, bInitTao,
 			bSampleTao, beta0, beta1, deltar, alpha, shape, bk, ranc);
 	bInitTao = bInitTao || (!bSampleTao);		// doesn't make sense if no variable selection and all Tao = 0
 	fin.close();
@@ -361,6 +393,9 @@ int main(int argc, char* argv[])
       }
 
 	vector<ofstream*> outfile_weights;
+	vector<ofstream*> outfile_branch_birthes;
+	vector<ofstream*> outfile_branch_deathes;
+
 	i = 0;
 	for(vector<pair<unsigned long, unsigned long> >::const_iterator itor = weightToMon.begin();
 		itor != weightToMon.end(); itor++, i++) {
@@ -372,6 +407,28 @@ int main(int argc, char* argv[])
 			}
 
 			outfile_weights.push_back(fout);
+	}
+
+	i = 0;
+	for(vector<pair<unsigned long, unsigned long> >::const_iterator itor = branchToMon.begin();
+		itor != branchToMon.end(); itor++, i++) {
+			ostringstream ostr;
+			ostr << "bbirth" << i << "_sim1.txt";
+			ofstream *foutb = new ofstream(ostr.str().c_str());
+			if ( ! *foutb ) {
+				cerr << "error: unable to open output file!\n";
+			}
+
+			outfile_branch_birthes.push_back(foutb);
+
+			ostr.clear();
+			ostr << "bdeath" << i << "_sim1.txt";
+			ofstream *foutd = new ofstream(ostr.str().c_str());
+			if ( ! *foutd ) {
+				cerr << "error: unable to open output file!\n";
+			}
+
+			outfile_branch_deathes.push_back(foutd);
 	}
 
 
@@ -388,9 +445,9 @@ int main(int argc, char* argv[])
 
 	for(j=0; j<iterations; j++){
 
-		//if(bSampleTao) {
+		if(bSampleTao) {
 			n_mcmc.env.sampleTao();
-		//}
+		}
 		n_mcmc.env.sampleWeight();
 		n_mcmc.env.sampleZ();
 		if(!(j % 10)) {
@@ -402,7 +459,7 @@ int main(int argc, char* argv[])
 		n_mcmc.env.writeStatus(outfile);
 		outfile_taonum<< n_mcmc.env.taoCount() <<std::endl;
 
-		//if(n_mcmc.env.taoCount()) {
+		if(n_mcmc.env.taoCount()) {
 			//cout<<"After SplitMerge_move!"<<std::endl;
 			outfile<<"After SplitMerge_move!"<<std::endl;
 			probability = 0.0;
@@ -412,6 +469,14 @@ int main(int argc, char* argv[])
 				itor != weightToMon.end(); itor++, i++) {
 					*(outfile_weights[i]) 
 					<< n_mcmc.env.getWeightFromSample(itor->first, itor->second) << std::endl;
+			}
+			for(vector<pair<unsigned long, unsigned long> >::const_iterator itor = branchToMon.begin();
+				itor != branchToMon.end(); itor++, i++) {
+					*(outfile_branch_birthes[i]) 
+						<< n_mcmc.env.getBranchFromSample(itor->first, itor->second).getBornTime() << std::endl;
+					*(outfile_branch_deathes[i]) 
+						<< n_mcmc.env.getBranchFromSample(itor->first, itor->second).getDeathTime() << std::endl;
+
 			}
 
 
@@ -493,9 +558,9 @@ int main(int argc, char* argv[])
 			outfile<<probability<<endl;
 			n_mcmc.env.writeStatus(outfile);
 
-		//} else {
-		//	outfile<<"Tao = 0, no change!"<<std::endl;
-		//}
+		} else {
+			outfile<<"Tao = 0, no change!"<<std::endl;
+		}
 
 		outfile_branch << n_mcmc.env.getClusterNumber() << std::endl;
 		outfile_treenum << n_mcmc.env.getTreeNumbers() << endl;
@@ -505,6 +570,20 @@ int main(int argc, char* argv[])
 
 	for(vector<ofstream*>::iterator itor = outfile_weights.begin();
 		itor != outfile_weights.end(); itor++) {
+			(*itor)->close();
+			delete(*itor);
+			*itor = NULL;
+	}
+
+	for(vector<ofstream*>::iterator itor = outfile_branch_birthes.begin();
+		itor != outfile_branch_birthes.end(); itor++) {
+			(*itor)->close();
+			delete(*itor);
+			*itor = NULL;
+	}
+
+	for(vector<ofstream*>::iterator itor = outfile_branch_deathes.begin();
+		itor != outfile_branch_deathes.end(); itor++) {
 			(*itor)->close();
 			delete(*itor);
 			*itor = NULL;

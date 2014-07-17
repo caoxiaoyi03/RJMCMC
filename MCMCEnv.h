@@ -228,6 +228,7 @@ public:
 	// get the number of trees that are not empty throughout the time
 
 	double getWeightFromSample(unsigned long time, unsigned long sampleNum) const;
+	const ClusterTree &getBranchFromSample(unsigned long time, unsigned long sampleNum) const;
 
 	void sampleWeight();
 	void sampleTao();

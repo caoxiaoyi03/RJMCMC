@@ -87,7 +87,7 @@ bool ClusterTree::tailDeath(unsigned long time) {
 
 unsigned long ClusterTree::getEarliestDeathableTime() const {
 	unsigned long current_deathable;
-	for(unsigned long current_deathable = death_time; current_deathable > born_time + 1; current_deathable--) {
+	for(current_deathable = death_time; current_deathable > born_time + 1; current_deathable--) {
 		if(children.at(current_deathable - 1) || samples.at(current_deathable - 1)) {
 			// there is child or sample, cannot call death
 			break;

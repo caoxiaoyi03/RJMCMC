@@ -1546,6 +1546,10 @@ double MCMCEnv::getWeightFromSample(unsigned long time, unsigned long sampleNum)
 	return getTreeFromID(Flags(time, sampleNum)).weights[time];
 }
 
+const ClusterTree &MCMCEnv::getBranchFromSample(unsigned long time, unsigned long sampleNum) const {
+	return getTreeFromID(Flags(time, sampleNum));
+}
+
 void MCMCEnv::sampleWeight() {
 
 	double wnum;
