@@ -1716,7 +1716,7 @@ ostream &MCMCEnv::writeTree(ostream &os) const {
 				while(!IdToShow.empty()) {
 					const ClusterTree &currTree = getTreeFromID(IdToShow.front());
 					IdToShow.pop_front();
-					for(unsigned long t = 0; t < NumOfTP; t++) {
+					for(unsigned long t = 0; t < currTree.getDeathTime(); t++) {
 						if(t < currTree.getBornTime()) {
 							os << "   " << setfill(' ') << setw(TREE_ID_SIZE + 2) << ' ';
 						} else if(t == currTree.getBornTime()) {
@@ -1729,6 +1729,11 @@ ostream &MCMCEnv::writeTree(ostream &os) const {
 								os << " - " << setfill('-') << setw(TREE_ID_SIZE + 2) << '-';
 							}
 						}
+					}
+
+					if(currTree.getDeathTime() < NumOfTP) {
+						// early death
+						os << " - X";
 					}
 					os << setfill(' ') << endl;
 				}
