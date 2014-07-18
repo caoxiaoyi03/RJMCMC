@@ -421,6 +421,7 @@ int main(int argc, char* argv[])
 
 			outfile_branch_birthes.push_back(foutb);
 
+			ostr.str("");
 			ostr.clear();
 			ostr << "bdeath" << i << "_sim1.txt";
 			ofstream *foutd = new ofstream(ostr.str().c_str());
