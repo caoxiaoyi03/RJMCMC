@@ -470,6 +470,7 @@ int main(int argc, char* argv[])
 					*(outfile_weights[i]) 
 					<< n_mcmc.env.getWeightFromSample(itor->first, itor->second) << std::endl;
 			}
+			i = 0;
 			for(vector<pair<unsigned long, unsigned long> >::const_iterator itor = branchToMon.begin();
 				itor != branchToMon.end(); itor++, i++) {
 					*(outfile_branch_birthes[i]) 
