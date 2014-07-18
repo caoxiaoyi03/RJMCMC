@@ -524,8 +524,8 @@ MCMCEnv::TreeSet MCMCEnv::getTailDeathSet(bool hasForest, bool forestOnly) const
 			//cout << "ID: " << itor->second.ID << " Parent ID: " 
 			//	<< itor->second.parentID 
 			//	<< " Born time: " << itor->second.getBornTime() << endl;
-			if(itor->second.getSampleNum() && (itor->second.getDeathTime() >= NumOfTP 
-				&& itor->second.getEarliestDeathableTime() < NumOfTP)) {
+			if(itor->second.getSampleNum() 
+				&& (itor->second.getDeathTime() > itor->second.getEarliestDeathableTime())) {
 					// can death
 					for(unsigned long t = itor->second.getEarliestDeathableTime(); t < itor->second.getDeathTime(); t++) {
 						result.push_back(MCMCEnv::TreeSet::value_type(t, itor->first));
