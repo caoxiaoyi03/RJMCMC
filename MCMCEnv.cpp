@@ -542,11 +542,11 @@ unsigned long long MCMCEnv::flagSplit(double &P_alloc, bool &NULLset, double &f_
 		f_ui = 1.0;
 		long s = 0;
 		unsigned long long childID;
-		if(parent.samples[split_pair.first] && split_pair.first < NumOfTP) {
+		if(parent.samples[split_pair.first] && split_pair.first < parent.getDeathTime()) {
 			ClusterTree &child = (split_pair.first)? 
 				createTree(split_pair.second, split_pair.first): createTree();
 			childID = child.ID;
-			for(unsigned long i = split_pair.first; i < NumOfTP; i++) {
+			for(unsigned long i = split_pair.first; i < parent.getDeathTime(); i++) {
 
 				/*weight*/
 				ut = ran_beta(2.0,2.0);

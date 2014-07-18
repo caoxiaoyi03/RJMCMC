@@ -62,6 +62,9 @@ bool ClusterTree::setDeathTime(unsigned long time) {
 		} else {
 			// valid death time
 			death_time = time;
+			for(unsigned long i = time; i < numTimePoints; i++) {
+				weights[i] = 0.0;
+			}
 			return true;
 		}
 	} else {
