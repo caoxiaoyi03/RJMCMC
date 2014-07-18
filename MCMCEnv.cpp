@@ -345,7 +345,7 @@ MCMCEnv::TreeSet MCMCEnv::getSplitSet(bool hasForest, bool forestOnly) const {
 				//cout << "ID: " << itor->second.ID << " Parent ID: " 
 				//	<< itor->second.parentID 
 				//	<< " Born time: " << itor->second.getBornTime() << endl;
-				for(unsigned long t = itor->second.getBornTime() + 1; t < NumOfTP; t++) {
+				for(unsigned long t = itor->second.getBornTime() + 1; t < itor->second.getDeathTime(); t++) {
 					// the born time of its child must be at least 1 more than this
 					//cout << "Samples(" << t << "): " << itor->second.samples[t] << endl;
 					if(itor->second.samples[t] && !itor->second.children[t]) {
