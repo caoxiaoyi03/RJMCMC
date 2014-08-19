@@ -2193,7 +2193,6 @@ bool mcmc::SplitMerge_move(double &probability, bool isForest) {
 	move_chosen = ran_ber(MCMCEnv::bk);
 
 	if(move_chosen){
-		//std::cout<<"Split " << std::endl;
 		n_splitset = newEnv.getSplitSet(isForest, isForest);
 		unsigned long long childID;
 
@@ -2437,7 +2436,6 @@ bool mcmc::TailBirthDeath_move(double &probability, bool isForest) {
 
 	return move_chosen;
 }
-
 
 //
 //

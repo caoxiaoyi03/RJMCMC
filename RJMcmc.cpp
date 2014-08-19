@@ -564,6 +564,40 @@ int main(int argc, char* argv[])
 			outfile<<"Tao = 0, no change!"<<std::endl;
 		}
 
+		//cout<<"After Tree SplitMerge_move!"<<std::endl;
+		outfile<<"After Tree SplitMerge_move!"<<std::endl;
+
+		probability = 0.0;
+		move = n_mcmc.SplitMerge_move(probability, true);
+
+		if(move){
+			outfile<<"Tree SplitSplitSplit:"<<std::endl;
+			outfile<<"accepted probability:"<<endl;
+		}else{
+			outfile<<"Tree MergeMergeMerge:"<<std::endl;
+			outfile<<"accepted probability:"<<endl;
+		}
+
+		outfile<<probability<<endl;
+		n_mcmc.env.writeStatus(outfile);
+
+		//cout<<"After Tree BirthDeath_move!"<<std::endl;
+		outfile<<"After Tree BirthDeath_move!"<<std::endl;
+
+		probability = 0.0;
+		move = n_mcmc.BirthDeath_move(probability, true);
+
+		if(move){
+			outfile<<"Tree BirthBirthBirth:"<<std::endl;
+			outfile<<"accepted probability:"<<endl;
+		}else{
+			outfile<<"Tree DeathDeathDeath:"<<std::endl;
+			outfile<<"accepted probability:"<<endl;
+		}
+
+		outfile<<probability<<endl;
+		n_mcmc.env.writeStatus(outfile);
+
 		outfile_branch << n_mcmc.env.getClusterNumber() << std::endl;
 		outfile_treenum << n_mcmc.env.getTreeNumbers() << endl;
 		outfile_tree<<n_mcmc.env.treeSummary()<<endl;
