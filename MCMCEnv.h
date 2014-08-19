@@ -14,6 +14,7 @@
 #include <unordered_map>
 #endif
 
+#define TREE_ID_SIZE	4
 
 class MCMCEnv
 {
@@ -25,6 +26,12 @@ public:
 
 	typedef std::vector<std::pair<unsigned long long, unsigned long long> > TreeMergeSet;
 	// parent ID and child ID
+
+	typedef struct {
+		std::vector<std::string> display;
+		unsigned long rootLine;
+		unsigned long birthTime;
+	} TreeDisplay;
 
 private:
 	typedef std::pair<unsigned long, unsigned long> TimeCoordinate;
@@ -80,6 +87,15 @@ private:
 
 	TimeCoordinate IndexToCoor(unsigned long index) const;
 	unsigned long CoorToIndex(const TimeCoordinate &corr) const;
+
+	static const unsigned int TreeNodeWidth = TREE_ID_SIZE + 2;
+	//      /- O ----- O , this is to specify the number of '-' s here, 
+	//		for branching, the rest will be filled with this
+
+	TreeDisplay &attachTrees(TreeDisplay &parent, const TreeDisplay &child,
+		bool attachedToTop) const;
+
+	TreeDisplay writeSingleTree(unsigned long long TreeID, bool topPrefered = false) const;
 
 public:
 	ClusterFlags Flags;

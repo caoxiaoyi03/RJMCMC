@@ -7,7 +7,6 @@
 #include <sstream>
 
 #define SMALLNUM 1e-200
-#define TREE_ID_SIZE	4
 
 unsigned long MCMCEnv::NumOfTP = 0;
 unsigned long MCMCEnv::NumOfGenes = 0;
@@ -1711,42 +1710,196 @@ double MCMCEnv::treeSummary() const {
 	return value;
 }
 
+// Notice that every tree start with a blank
+// also childTime is based on parent, so it's actually child.birthTime() - parent.birthTime()
+MCMCEnv::TreeDisplay &MCMCEnv::attachTrees(MCMCEnv::TreeDisplay &parent, const MCMCEnv::TreeDisplay &child,
+								   bool attachedToTop) const {
+									   // this is to attach child tree to parent
+									   unsigned long childTime = child.birthTime - parent.birthTime;
+									   if(attachedToTop) {
+										   parent.display.insert(parent.display.begin(), child.display.begin(), child.display.end());
+										   parent.rootLine += child.display.size();
+										   unsigned long i = 0;
+										   for(; i < child.rootLine; i++) {
+											   parent.display.at(i) = string((MCMCEnv::TreeNodeWidth + 3) * childTime, ' ') + parent.display.at(i); 
+										   }
+										   // then it's childRow, calculate how many lines the slash needs to cross
+										   unsigned long linesBetween = parent.rootLine - i, indent = (MCMCEnv::TreeNodeWidth + 3) * childTime - 1;
+										   if(linesBetween <= MCMCEnv::TreeNodeWidth) {
+											   indent -= MCMCEnv::TreeNodeWidth - linesBetween + 1;
+											   parent.display.at(i) = string(indent, ' ') + '/' 
+												   + string((MCMCEnv::TreeNodeWidth + 3) * childTime - indent - 1, '-') + parent.display.at(i);
+											   i++;
+											   indent--;
+											   for(; i < child.display.size(); i++, indent--) {
+												   // fill in the blanks for child
+												   parent.display.at(i) = string(indent, ' ') + '/' 
+													   + string((MCMCEnv::TreeNodeWidth + 3) * childTime - indent - 1, ' ') + parent.display.at(i);
+											   }
+											   for(; i < parent.rootLine; i++, indent--) {
+												   // now it's within parent, just substitute the character
+												   parent.display.at(i).at(indent) = '/';
+											   }
+										   } else {
+											   unsigned long linesForIndent = (linesBetween - 1) / MCMCEnv::TreeNodeWidth + 1, count = 0;
+											   parent.display.at(i) = string(indent, ' ') + '/' 
+												   + string((MCMCEnv::TreeNodeWidth + 3) * childTime - indent - 1, '-') + parent.display.at(i);
+											   i++;
+											   count++;
+											   for(; i < child.display.size(); i++, count++) {
+												   // fill in the blanks for child
+												   if(count >= linesForIndent) {
+													   indent--;
+													   count = 0;
+												   }
+												   parent.display.at(i) = string(indent, ' ') + '/' 
+													   + string((MCMCEnv::TreeNodeWidth + 3) * childTime - indent - 1, ' ') + parent.display.at(i);
+											   }
+											   for(; i < parent.rootLine; i++, count++) {
+												   // now it's within parent, just substitute the character
+												   if(count >= linesForIndent) {
+													   indent--;
+													   count = 0;
+												   }
+												   parent.display.at(i).at(indent) = '/';
+											   }
+
+										   }
+									   } else {
+										   // attach child after parent
+										   unsigned long i = parent.rootLine + 1, childRow = child.rootLine + parent.display.size(),
+											   linesBetween = childRow - parent.rootLine, indent = (MCMCEnv::TreeNodeWidth + 3) * (childTime - 1) + 2;
+										   if(linesBetween <= MCMCEnv::TreeNodeWidth) {
+										       // first replace blanks with '\' in parent rows
+											   for(; i < parent.display.size(); i++, indent++) {
+												   // now it's within parent, just substitute the character
+												   parent.display.at(i).at(indent) = '\\';
+											   }
+											   parent.display.insert(parent.display.end(), child.display.begin(), child.display.end());
+
+											   for(; i < childRow; i++, indent++) {
+												   // fill in the blanks for child
+												   parent.display.at(i) = string(indent, ' ') + '\\' 
+													   + string((MCMCEnv::TreeNodeWidth + 3) * childTime - indent - 1, ' ') + parent.display.at(i);
+											   }
+
+											   parent.display.at(i) = string(indent, ' ') + '\\' 
+												   + string((MCMCEnv::TreeNodeWidth + 3) * childTime - indent - 1, '-') + parent.display.at(i);
+											   i++;
+										   } else {
+											   unsigned long linesForIndent = (linesBetween - 1) / MCMCEnv::TreeNodeWidth + 1, count = 0;
+											   for(; i < parent.display.size(); i++, count++) {
+												   // now it's within parent, just substitute the character
+												   if(count >= linesForIndent) {
+													   indent++;
+													   count = 0;
+												   }
+												   parent.display.at(i).at(indent) = '\\';
+											   }
+											   parent.display.insert(parent.display.end(), child.display.begin(), child.display.end());
+
+											   for(; i < childRow; i++, count++) {
+												   // fill in the blanks for child
+												   if(count >= linesForIndent) {
+													   indent++;
+													   count = 0;
+												   }
+												   parent.display.at(i) = string(indent, ' ') + '\\' 
+													   + string((MCMCEnv::TreeNodeWidth + 3) * childTime - indent - 1, ' ') + parent.display.at(i);
+											   }
+
+											   parent.display.at(i) = string(indent, ' ') + '\\' 
+												   + string((MCMCEnv::TreeNodeWidth + 3) * childTime - indent - 1, '-') + parent.display.at(i);
+											   i++;
+										   }
+
+										   // fill in all the blanks for child
+										   for(; i < parent.display.size(); i++) {
+											   parent.display.at(i) = string((MCMCEnv::TreeNodeWidth + 3) * childTime, ' ') + parent.display.at(i); 
+										   }
+									   }
+									   return parent;
+}
+
+MCMCEnv::TreeDisplay MCMCEnv::writeSingleTree(unsigned long long TreeID, bool topPrefered) const {
+	// the returned value is the number of line for "root"
+	// will erase everything that was in the vector
+
+	// first get the tree
+	const ClusterTree &currTree = getTreeFromID(TreeID);
+	MCMCEnv::TreeDisplay output;
+	ostringstream ostr;
+	ostr << " O ";
+	output.rootLine = 0;
+	output.birthTime = currTree.getBornTime();
+
+	// build the stem first
+	for(unsigned long i = currTree.getBornTime() + 1; i < currTree.getDeathTime(); i++) {
+		ostr << string(MCMCEnv::TreeNodeWidth, '-') << " O ";
+	}
+
+	if(currTree.getDeathTime() < NumOfTP) {
+		ostr << string(MCMCEnv::TreeNodeWidth, '-') << " X ";
+	}
+
+	for(unsigned long i = currTree.getDeathTime() + 1; i < NumOfTP; i++) {
+		ostr << string(MCMCEnv::TreeNodeWidth + 3, ' ');
+	}
+
+	ostr << string(MCMCEnv::TreeNodeWidth * 2, ' ') << '(' << setfill(' ') 
+		<< setw(MCMCEnv::TreeNodeWidth - 2) 
+		<< currTree.ID << ')';
+
+	output.display.push_back(ostr.str());
+	for(unsigned long t = currTree.getDeathTime() - 1; t > currTree.getBornTime(); t--) {
+		if(currTree.getChildID(t)) {
+			attachTrees(output, writeSingleTree(currTree.getChildID(t), topPrefered), topPrefered);
+			topPrefered = !topPrefered;
+		}
+	}
+	return output;
+}
+
 ostream &MCMCEnv::writeTree(ostream &os) const {
-	os << "[] Tree was born;" << endl 
-		<< "() A new Tree with this ID is born from the current tree." << endl;
-	deque<unsigned long long> IdToShow;
+	//os << "[] Tree was born;" << endl 
+	//	<< "() A new Tree with this ID is born from the current tree." << endl;
+	//deque<unsigned long long> IdToShow;
 	for(RootIDContainer::const_iterator itor = rootIDs.begin();
 		itor != rootIDs.end(); itor++) {
-			IdToShow.push_back(itor->first);
-			try {
-				while(!IdToShow.empty()) {
-					const ClusterTree &currTree = getTreeFromID(IdToShow.front());
-					IdToShow.pop_front();
-					for(unsigned long t = 0; t < currTree.getDeathTime(); t++) {
-						if(t < currTree.getBornTime()) {
-							os << "   " << setfill(' ') << setw(TREE_ID_SIZE + 2) << ' ';
-						} else if(t == currTree.getBornTime()) {
-							os << "   [" << setfill(' ') << setw(TREE_ID_SIZE) << currTree.ID << "]";
-						} else {
-							if(currTree.getChildID(t)) {
-								os << " - (" << setfill(' ') << setw(TREE_ID_SIZE) << currTree.getChildID(t) << ")";
-								IdToShow.push_back(currTree.getChildID(t));
-							} else {
-								os << " - " << setfill('-') << setw(TREE_ID_SIZE + 2) << '-';
-							}
-						}
-					}
-
-					if(currTree.getDeathTime() < NumOfTP) {
-						// early death
-						os << " - X";
-					}
-					os << setfill(' ') << endl;
+			//IdToShow.push_back(itor->first);
+			//try {
+				TreeDisplay td = writeSingleTree(itor->first);
+				for(vector<string>::const_iterator itorLine = td.display.begin(); itorLine < td.display.end(); itorLine++) {
+					os << *itorLine << endl;
 				}
-			} catch(std::logic_error &e) {
-				cout << "Logic error is caught in writeTree." << endl;
-				throw e;
-			}
+				//while(!IdToShow.empty()) {
+				//	const ClusterTree &currTree = getTreeFromID(IdToShow.front());
+				//	IdToShow.pop_front();
+				//	for(unsigned long t = 0; t < currTree.getDeathTime(); t++) {
+				//		if(t < currTree.getBornTime()) {
+				//			os << "   " << setfill(' ') << setw(TREE_ID_SIZE + 2) << ' ';
+				//		} else if(t == currTree.getBornTime()) {
+				//			os << "   [" << setfill(' ') << setw(TREE_ID_SIZE) << currTree.ID << "]";
+				//		} else {
+				//			if(currTree.getChildID(t)) {
+				//				os << " - (" << setfill(' ') << setw(TREE_ID_SIZE) << currTree.getChildID(t) << ")";
+				//				IdToShow.push_back(currTree.getChildID(t));
+				//			} else {
+				//				os << " - " << setfill('-') << setw(TREE_ID_SIZE + 2) << '-';
+				//			}
+				//		}
+				//	}
+
+				//	if(currTree.getDeathTime() < NumOfTP) {
+				//		// early death
+				//		os << " - X";
+				//	}
+				//	os << setfill(' ') << endl;
+				//}
+			//} catch(std::logic_error &e) {
+			//	cout << "Logic error is caught in writeTree." << endl;
+			//	throw e;
+			//}
 	}
 	return os;
 }
