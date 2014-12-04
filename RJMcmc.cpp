@@ -40,8 +40,9 @@ void initializeParameters(long NumOfGenes, long n_time, const matrix &Data, doub
 
 	// Beta controls the prior effect to the sampling probability
 	// A large Beta value should be set, if you want to decrease the prior effect.
-	// The data effect is controlled by deltar, if you want to increase data effect, a large deltar should be set.
-	// However the minimum of 
+	// The data effect is controlled by deltar
+	// deltar is the r in IW distribution in Eq. 6 from the paper
+	// If you want to increase data effect, a large deltar should be set.
 
 	MCMCEnv::initializeParameters(mu1, mu0, sigma1, sigma0, beta1, beta0, deltar, alpha, shape, bk, ranc, bForest);
 

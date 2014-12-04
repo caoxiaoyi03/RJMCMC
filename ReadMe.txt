@@ -1,40 +1,25 @@
-========================================================================
-    CONSOLE APPLICATION : RJMcmc Project Overview
-========================================================================
 
-AppWizard has created this RJMcmc application for you.
+RJMCMC README
 
-This file contains a summary of what you will find in each of the files that
-make up your RJMcmc application.
+=============
 
+INTRODUCTION
 
-RJMcmc.vcxproj
-    This is the main project file for VC++ projects generated using an Application Wizard.
-    It contains information about the version of Visual C++ that generated the file, and
-    information about the platforms, configurations, and project features selected with the
-    Application Wizard.
+RJMCMC is the program for dynamic clustering of time-course data in which the cluster structure itself can be changed along time. Clusters can be born from the others or dead during the time course.
 
-RJMcmc.vcxproj.filters
-    This is the filters file for VC++ projects generated using an Application Wizard. 
-    It contains information about the association between the files in your project 
-    and the filters. This association is used in the IDE to show grouping of files with
-    similar extensions under a specific node (for e.g. ".cpp" files are associated with the
-    "Source Files" filter).
+BUILD
 
-RJMcmc.cpp
-    This is the main application source file.
+To build the code, run build.sh under the root of the source. Currently only linux is supported (64bit recommended) and the output will be rjmcmc under the root directory.
 
-/////////////////////////////////////////////////////////////////////////////
-Other standard files:
+We are planning to include a makefile for flexible build/install purposes.
 
-StdAfx.h, StdAfx.cpp
-    These files are used to build a precompiled header (PCH) file
-    named RJMcmc.pch and a precompiled types file named StdAfx.obj.
+DATA FORMAT
 
-/////////////////////////////////////////////////////////////////////////////
-Other notes:
+Please refer to Data_sample.txt under root for proper data format and usage of the program.
 
-AppWizard uses "TODO:" comments to indicate parts of the source code you
-should add to or customize.
+REFERENCE
 
-/////////////////////////////////////////////////////////////////////////////
+This is the source code for time-variant clustering published in the following paper:
+
+Wei Huang, Xiaoyi Cao, Fernando H. Biase, Pengfei Yu, Sheng Zhong. Time-variant clustering model for understanding cell fate decisions. PNAS, 111(44):E4797-E4806.
+
