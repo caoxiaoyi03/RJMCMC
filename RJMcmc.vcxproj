@@ -75,6 +75,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="build.sh" />
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
